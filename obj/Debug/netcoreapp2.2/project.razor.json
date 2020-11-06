@@ -1925,6 +1925,11 @@
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Footer.cshtml",
+      "TargetPath": "Views\\Shared\\_Footer.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"
