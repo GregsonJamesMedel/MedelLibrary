@@ -1907,6 +1907,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Sidebar.cshtml",
+      "TargetPath": "Views\\Shared\\_Sidebar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Login.cshtml",
       "TargetPath": "Views\\Account\\Login.cshtml",
       "FileKind": "mvc"
