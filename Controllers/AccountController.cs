@@ -10,9 +10,10 @@ namespace MedelLibrary.Controllers
 {
     public class AccountController : Controller
     {
-        public IActionResult Login()
-        {
-            return View();
-        }
+        [HttpGet]
+        public IActionResult SignIn() => View();
+
+        public IActionResult SignUp() => View();
+    
     }
 }
