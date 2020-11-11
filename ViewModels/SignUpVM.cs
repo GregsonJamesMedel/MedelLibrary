@@ -37,5 +37,15 @@ namespace MedelLibrary.ViewModels
         [MinLength(2)]
         [MaxLength(15)]
         public string Lastname { get; set; }
+
+        [Required]
+        [MinLength(5)]
+        [MaxLength(50)]
+        public string Address { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [DisplayName("Contact Number")]
+        public string ContactNumber { get; set; }
     }
 }
