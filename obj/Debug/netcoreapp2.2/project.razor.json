@@ -1872,6 +1872,11 @@
   "RootNamespace": "MedelLibrary",
   "Documents": [
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Logout_Modal.cshtml",
+      "TargetPath": "Views\\Shared\\_Logout_Modal.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
