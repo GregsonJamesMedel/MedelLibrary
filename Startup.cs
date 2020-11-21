@@ -1,4 +1,5 @@
 ﻿using MedelLibrary.Data;
+using MedelLibrary.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,8 @@ namespace MedelLibrary
             services.AddDbContext<DataContext>(options => {
                 options.UseMySql(this.Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddScoped<ICategory,CategoryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
