@@ -1882,6 +1882,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/AddCategory.cshtml",
+      "TargetPath": "Views\\Book\\AddCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Home/Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
@@ -1897,13 +1902,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_CookieConsentPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/Categories.cshtml",
+      "TargetPath": "Views\\Book\\Categories.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/NewCategory.cshtml",
-      "TargetPath": "Views\\Book\\NewCategory.cshtml",
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_CookieConsentPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
       "FileKind": "mvc"
     },
     {

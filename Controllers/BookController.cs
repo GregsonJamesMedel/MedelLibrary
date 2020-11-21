@@ -18,16 +18,16 @@ namespace MedelLibrary.Controllers
         public IActionResult Categories() => View();
 
         [HttpGet]
-        public IActionResult NewCategory() => View();
+        public IActionResult AddCategory() => View();
 
         [HttpPost]
-        public IActionResult NewCategory(NewCategoryVM model)
+        public IActionResult AddCategory(NewCategoryVM model)
         {
             if (ModelState.IsValid)
             {
                 var category = new Category() { Name = model.Name };
                 this._category.AddCategory(category);
-                return RedirectToAction("NewCategory", "Book");
+                return RedirectToAction("Categories");
             }
 
             return View(model);
