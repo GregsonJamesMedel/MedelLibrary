@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MedelLibrary.ViewModels;
 
 namespace MedelLibrary.Controllers
 {
@@ -8,6 +9,11 @@ namespace MedelLibrary.Controllers
         public IActionResult Categories() => View();
 
         public IActionResult NewCategory() => View();
-    
+
+        // public IActionResult NewCategory(NewCategoryVM model)
+        // {
+
+        // }
+
     }
 }

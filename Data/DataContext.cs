@@ -7,5 +7,7 @@ namespace MedelLibrary.Data
     public class DataContext : IdentityDbContext<Patron>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options){}
+
+        public DbSet<Category> Categories { get; set; }
     }
 }

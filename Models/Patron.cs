@@ -23,8 +23,5 @@ namespace MedelLibrary.Models
         [MaxLength(50)]
         public string Address { get; set; }
 
-        [Required]
-        [DataType(DataType.PhoneNumber)]
-        public string ContactNumber { get; set; }
     }
 }
