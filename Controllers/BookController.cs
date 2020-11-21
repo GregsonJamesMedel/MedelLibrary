@@ -41,5 +41,7 @@ namespace MedelLibrary.Controllers
 
         }
 
+        public IActionResult Books() => View();
+
     }
 }
