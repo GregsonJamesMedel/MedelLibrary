@@ -15,7 +15,12 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Categories() => View();
+        public IActionResult Categories()
+        {
+            var categories = this._category.GetAllCategories();
+            return View(categories);
+        }
+
 
         [HttpGet]
         public IActionResult AddCategory() => View();
