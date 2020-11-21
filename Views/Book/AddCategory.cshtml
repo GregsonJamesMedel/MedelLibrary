@@ -1,4 +1,4 @@
-@model MedelLibrary.Models.Category
+@model MedelLibrary.ViewModels.AddCategoryVM
 @{
     ViewBag.Title = "New Category";
 }
@@ -14,6 +14,7 @@
                 <div class="form-group">
                     <label asp-for="@Model.Name">Category Name</label>
                     <input asp-for="@Model.Name" class="form-control form-control-user">
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>

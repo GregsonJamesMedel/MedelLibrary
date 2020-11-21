@@ -21,7 +21,7 @@ namespace MedelLibrary.Controllers
         public IActionResult AddCategory() => View();
 
         [HttpPost]
-        public IActionResult AddCategory(NewCategoryVM model)
+        public IActionResult AddCategory(AddCategoryVM model)
         {
             if (ModelState.IsValid)
             {
@@ -29,8 +29,11 @@ namespace MedelLibrary.Controllers
                 this._category.AddCategory(category);
                 return RedirectToAction("Categories");
             }
+            else
+            {
+                return View(model);
+            }
 
-            return View(model);
         }
 
     }
