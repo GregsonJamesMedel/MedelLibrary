@@ -1902,6 +1902,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/NewCategory.cshtml",
+      "TargetPath": "Views\\Book\\NewCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

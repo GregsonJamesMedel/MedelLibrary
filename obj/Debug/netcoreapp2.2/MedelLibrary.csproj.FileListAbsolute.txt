@@ -33,3 +33,5 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Sidebar.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Signin.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Signup.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/NewCategory.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Logout_Modal.g.cshtml.cs

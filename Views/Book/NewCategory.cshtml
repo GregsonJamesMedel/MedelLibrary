@@ -1,0 +1,22 @@
+@model MedelLibrary.Models.Category
+@{
+    ViewBag.Title = "New Category";
+}
+
+<div class="col-md-6">
+    <div class="card mb-4">
+        <div class="card-header text-primary">
+            Add New Category
+        </div>
+        <div class="card-body">
+            <form asp-controller="Book" asp-action="NewCategory" method="post">
+
+                <div class="form-group">
+                    <label asp-for="@Model.Name">Category Name</label>
+                    <input asp-for="@Model.Name" type="email" class="form-control form-control-user">
+                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
