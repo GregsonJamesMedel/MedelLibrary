@@ -7,7 +7,7 @@ namespace MedelLibrary.Services
     {
         void AddCategory(Category category);
         void DeleteCategory(int id);
-        bool UpdateCategory(Category category);
+        bool UpdateCategory(int id, Category category);
         Category GetCategoryById(int id);
         IEnumerable<Category> GetAllCategories();
     }

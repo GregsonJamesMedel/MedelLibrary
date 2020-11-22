@@ -4,7 +4,7 @@ namespace MedelLibrary.ViewModels
 {
     public class SaveCategoryVM
     {
-        public int id { get; set; }
+        public int? id { get; set; }
         [Required]
         [MinLength(3)]
         [MaxLength(15)]
