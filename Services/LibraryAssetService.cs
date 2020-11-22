@@ -14,7 +14,10 @@ namespace MedelLibrary.Services
         
         public bool AddLibraryAsset(LibraryAsset asset)
         {
-            throw new System.NotImplementedException();
+            this._context.LibraryAsset.Add(asset);
+            var result = this._context.SaveChanges();
+
+            return result > 0 ? true : false;
         }
     }
 }
