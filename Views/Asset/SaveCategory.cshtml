@@ -1,12 +1,10 @@
 @model MedelLibrary.ViewModels.SaveCategoryVM
-@{
-    ViewBag.Title = "New Category";
-}
+
 
 <div class="col-md-6">
     <div class="card mb-4">
         <div class="card-header text-primary">
-            Add Category
+            @ViewBag.Title
         </div>
         <div class="card-body">
             <form asp-controller="Asset" asp-action="SaveCategory" method="post">
@@ -16,7 +14,7 @@
                     <input asp-for="@Model.Name" class="form-control form-control-user">
                     <span asp-validation-for="@Model.Name" class="text-danger"></span>
                 </div>
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Save</button>
             </form>
         </div>
     </div>

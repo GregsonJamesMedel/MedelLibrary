@@ -22,7 +22,11 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddCategory() => View("SaveCategory");
+        public IActionResult AddCategory() {
+            ViewBag.Title = "Add Category";
+            return View("SaveCategory");
+        }
+            
 
         [HttpPost]
         public IActionResult SaveCategory(SaveCategoryVM model)
@@ -43,6 +47,7 @@ namespace MedelLibrary.Controllers
         [HttpGet]
         public IActionResult EditCategory(int id)
         {
+            ViewBag.Title = "Edit Category";
             var categoryToEdit = this._category.GetCategoryById(id);
             var saveCategoryVM = new SaveCategoryVM(){ id = categoryToEdit.id, Name = categoryToEdit.Name };
             return View("SaveCategory",saveCategoryVM);
