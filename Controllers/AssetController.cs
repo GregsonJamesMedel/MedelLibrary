@@ -5,11 +5,11 @@ using MedelLibrary.Models;
 
 namespace MedelLibrary.Controllers
 {
-    public class BookController : Controller
+    public class AssetController : Controller
     {
         private readonly ICategory _category;
 
-        public BookController(ICategory category)
+        public AssetController(ICategory category)
         {
             this._category = category;
         }

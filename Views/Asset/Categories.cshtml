@@ -17,10 +17,10 @@
             <td>@category.id</td>
             <td>@category.Name</td>
             <td>
-                <a class="btn btn-sm btn-warning" asp-controller="Book" asp-action="AddCategory" asp-route-id="@category.id"> 
+                <a class="btn btn-sm btn-warning" asp-controller="Asset" asp-action="AddCategory" asp-route-id="@category.id"> 
                     <i class="fas fa-fw fa-edit"></i> Edit
                 </a> | 
-                <form asp-controller="Book" asp-action="DeleteCategory" asp-route-id="@category.id" method="post" style="display: inline;">
+                <form asp-controller="Asset" asp-action="DeleteCategory" asp-route-id="@category.id" method="post" style="display: inline;">
                     <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                 </form>
             </td>
