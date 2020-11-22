@@ -34,5 +34,10 @@ namespace MedelLibrary.Services
         {
             return this._context.Categories;
         }
+
+        public Category GetCategoryById(int id)
+        {
+            return this._context.Categories.Find(id);
+        }
     }
 }

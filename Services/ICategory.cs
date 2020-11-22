@@ -6,7 +6,9 @@ namespace MedelLibrary.Services
     public interface ICategory
     {
         void AddCategory(Category category);
-        IEnumerable<Category> GetAllCategories();
         void DeleteCategory(int id);
+
+        Category GetCategoryById(int id);
+        IEnumerable<Category> GetAllCategories();
     }
 }
