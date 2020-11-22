@@ -41,6 +41,13 @@ namespace MedelLibrary.Controllers
 
         }
 
+        [HttpPost]
+        public IActionResult DeleteCategory(int id)
+        {
+            this._category.DeleteCategory(id);
+            return RedirectToAction("Categories");
+        }
+
         public IActionResult Books() => View();
 
     }

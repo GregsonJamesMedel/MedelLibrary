@@ -7,6 +7,6 @@ namespace MedelLibrary.Services
     {
         void AddCategory(Category category);
         IEnumerable<Category> GetAllCategories();
-        void DeleteCategory(Category category);
+        void DeleteCategory(int id);
     }
 }

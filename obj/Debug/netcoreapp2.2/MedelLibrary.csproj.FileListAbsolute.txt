@@ -17,6 +17,7 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Signin.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/SignUp.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/AddCategory.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/Books.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/Categories.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
@@ -34,4 +35,3 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.dll
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.pdb
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.csproj.CopyComplete
-/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/Books.g.cshtml.cs
