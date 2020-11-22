@@ -20,7 +20,7 @@ namespace MedelLibrary.Controllers
         public IActionResult Books() 
         {
 
-            return View(this._libraryAsset.GetAllAssets());
+            return View(this._libraryAsset.GetAllBooks());
         } 
 
         [HttpGet]
