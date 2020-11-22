@@ -16,7 +16,6 @@ namespace MedelLibrary.Models
         public string ImageUrl { get; set; }
         public int NumberOfCopies { get; set; }
         public string Shelf { get; set; }
-
         public string Condition { get; set; }
         public Category Category { get; set; }
     }

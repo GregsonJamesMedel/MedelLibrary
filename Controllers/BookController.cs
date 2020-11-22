@@ -1,3 +1,4 @@
+using MedelLibrary.Models;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,20 @@ namespace MedelLibrary.Controllers
         [HttpPost]
         public IActionResult SaveBook(NewBookVM model)
         {
+            var category = this._category.GetCategoryById(model.Category);
+
+            var book = new Book()
+            {
+                ISBN = model.ISBN,
+                Title = model.Title,
+                Author = model.Author,
+                Year = model.Year,
+                Cost = model.Cost,
+                NumberOfCopies = model.NumberOfCopies,
+                Shelf = model.Shelf,
+                Category = category
+            };
+
             model.Categories = this._category.GetAllCategories();
             return View("test",model);
         }
