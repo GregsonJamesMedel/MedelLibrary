@@ -8,7 +8,7 @@ namespace MedelLibrary.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public int Year { get; set; }
+        public string Year { get; set; }
         [Required]
         public string Status { get; set; }
         [Required]
@@ -16,6 +16,8 @@ namespace MedelLibrary.Models
         public string ImageUrl { get; set; }
         public int NumberOfCopies { get; set; }
         public string Shelf { get; set; }
+
+        public string Condition { get; set; }
         public Category Category { get; set; }
     }
 }
