@@ -13,10 +13,11 @@ namespace MedelLibrary.Services
             this._context = context;
         }
 
-        public void AddCategory(Category category)
+        public bool AddCategory(Category category)
         {
             this._context.Categories.Add(category);
-            this._context.SaveChanges();
+            var result = this._context.SaveChanges();
+            return result > 0 ? true : false;
         }
 
         public void DeleteCategory(int id)

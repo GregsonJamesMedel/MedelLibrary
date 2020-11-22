@@ -36,23 +36,23 @@ namespace MedelLibrary.Controllers
                 return View(model);
 
             var category = new Category();
+            var result = false;
 
             if (model.id != null || model.id == 0)
             {
                 category.Name = model.Name;
-                var result = this._category.UpdateCategory((int)model.id, category);
-
-                if (result)
-                    return RedirectToAction("Categories");
-
-                return View(model);
+                result = this._category.UpdateCategory((int)model.id, category);
             }
             else
             {
                 category.Name = model.Name;
-                this._category.AddCategory(category);
-                return RedirectToAction("Categories");
+                result = this._category.AddCategory(category);
             }
+
+            if(result)
+                return RedirectToAction("Categories");
+
+            return View(model);
         }
 
         [HttpGet]
