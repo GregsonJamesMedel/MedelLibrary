@@ -26,7 +26,7 @@ namespace MedelLibrary.Controllers
         public IActionResult AddCategory() => View();
 
         [HttpPost]
-        public IActionResult AddCategory(AddCategoryVM model)
+        public IActionResult SaveCategory(AddCategoryVM model)
         {
             if (ModelState.IsValid)
             {

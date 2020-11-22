@@ -1882,11 +1882,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/AddCategory.cshtml",
-      "TargetPath": "Views\\Book\\AddCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -1894,11 +1889,6 @@
     {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/SignUp.cshtml",
       "TargetPath": "Views\\Account\\SignUp.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/Categories.cshtml",
-      "TargetPath": "Views\\Book\\Categories.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -1912,6 +1902,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/Books.cshtml",
+      "TargetPath": "Views\\Asset\\Books.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -1922,18 +1917,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/Categories.cshtml",
+      "TargetPath": "Views\\Asset\\Categories.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Navbar.cshtml",
       "TargetPath": "Views\\Shared\\_Navbar.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/Books.cshtml",
-      "TargetPath": "Views\\Book\\Books.cshtml",
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Sidebar.cshtml",
+      "TargetPath": "Views\\Shared\\_Sidebar.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Sidebar.cshtml",
-      "TargetPath": "Views\\Shared\\_Sidebar.cshtml",
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/SaveCategory.cshtml",
+      "TargetPath": "Views\\Asset\\SaveCategory.cshtml",
       "FileKind": "mvc"
     },
     {
