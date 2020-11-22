@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using MedelLibrary.ViewModels;
 using MedelLibrary.Services;
 using MedelLibrary.Models;
+using MedelLibrary.Data;
 
 namespace MedelLibrary.Controllers
 {
-    public class AssetController : Controller
+    public class CategoryController : Controller
     {
         private readonly ICategory _category;
 
-        public AssetController(ICategory category)
+        public CategoryController(ICategory category)
         {
             this._category = category;
         }
@@ -49,7 +50,7 @@ namespace MedelLibrary.Controllers
                 result = this._category.AddCategory(category);
             }
 
-            if(result)
+            if (result)
                 return RedirectToAction("Categories");
 
             return View(model);
@@ -72,8 +73,6 @@ namespace MedelLibrary.Controllers
             this._category.DeleteCategory(id);
             return RedirectToAction("Categories");
         }
-
-        public IActionResult Books() => View();
 
     }
 }

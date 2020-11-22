@@ -60,7 +60,7 @@ namespace MedelLibrary
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Asset}/{action=Books}/{id?}");
+                    template: "{controller=Book}/{action=Books}/{id?}");
             });
         }
     }
