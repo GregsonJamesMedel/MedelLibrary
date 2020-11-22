@@ -19,6 +19,17 @@ namespace MedelLibrary.Services
             this._context.SaveChanges();
         }
 
+        public void DeleteCategory(Category category)
+        {
+            var catToRemove = this._context.Categories.Find(category);
+            if (catToRemove != null)
+            {
+                this._context.Categories.Remove(catToRemove);
+                this._context.SaveChanges();
+            }
+            return;
+        }
+
         public IEnumerable<Category> GetAllCategories()
         {
             return this._context.Categories;
