@@ -1,5 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using MedelLibrary.Data;
 using MedelLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedelLibrary.Services
 {
@@ -18,6 +22,11 @@ namespace MedelLibrary.Services
             var result = this._context.SaveChanges();
 
             return result > 0 ? true : false;
+        }
+
+        public IEnumerable<LibraryAsset> GetAllAssets()
+        {
+            return this._context.LibraryAsset.Include(asset => asset.Category);
         }
     }
 }

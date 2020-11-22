@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using MedelLibrary.Models;
 
 namespace MedelLibrary.Services
@@ -5,5 +7,6 @@ namespace MedelLibrary.Services
     public interface ILibraryAsset
     {
         bool AddLibraryAsset(LibraryAsset asset);
+        IEnumerable<LibraryAsset> GetAllAssets();
     }
 }

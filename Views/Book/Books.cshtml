@@ -1,1 +1,7 @@
-<h1>Books</h1>
+@model IEnumerable<MedelLibrary.Models.LibraryAsset>
+
+@foreach (var book in Model)
+{
+    <p>@book.Title</p>
+    <p>@book.Category.Name</p>
+}
