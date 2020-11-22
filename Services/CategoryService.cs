@@ -39,5 +39,17 @@ namespace MedelLibrary.Services
         {
             return this._context.Categories.Find(id);
         }
+
+        public bool UpdateCategory(Category category)
+        {
+            var categoryToUpdate = this._context.Categories.Find(category.id);
+
+            categoryToUpdate.Name = category.Name;
+
+            this._context.Update(categoryToUpdate);
+            var res = this._context.SaveChanges();
+
+            return res > 0 ? true : false;
+        }
     }
 }
