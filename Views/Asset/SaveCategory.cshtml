@@ -1,4 +1,4 @@
-@model MedelLibrary.ViewModels.AddCategoryVM
+@model MedelLibrary.ViewModels.SaveCategoryVM
 @{
     ViewBag.Title = "New Category";
 }
@@ -9,7 +9,7 @@
             Add Category
         </div>
         <div class="card-body">
-            <form asp-controller="Asset" asp-action="NewCategory" method="post">
+            <form asp-controller="Asset" asp-action="SaveCategory" method="post">
 
                 <div class="form-group">
                     <label asp-for="@Model.Name">Category Name</label>

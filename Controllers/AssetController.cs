@@ -21,12 +21,11 @@ namespace MedelLibrary.Controllers
             return View(categories);
         }
 
-
         [HttpGet]
-        public IActionResult AddCategory() => View();
+        public IActionResult AddCategory() => View("SaveCategory");
 
         [HttpPost]
-        public IActionResult SaveCategory(AddCategoryVM model)
+        public IActionResult SaveCategory(SaveCategoryVM model)
         {
             if (ModelState.IsValid)
             {
@@ -39,6 +38,14 @@ namespace MedelLibrary.Controllers
                 return View(model);
             }
 
+        }
+
+        [HttpGet]
+        public IActionResult EditCategory(int id)
+        {
+            var categoryToEdit = this._category.GetCategoryById(id);
+            var saveCategoryVM = new SaveCategoryVM(){ id = categoryToEdit.id, Name = categoryToEdit.Name };
+            return View("SaveCategory",saveCategoryVM);
         }
 
         [HttpPost]

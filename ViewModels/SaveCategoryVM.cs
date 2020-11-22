@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MedelLibrary.ViewModels
 {
-    public class AddCategoryVM
+    public class SaveCategoryVM
     {
         public int id { get; set; }
         [Required]
