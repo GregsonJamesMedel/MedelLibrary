@@ -47,7 +47,7 @@ namespace MedelLibrary.Controllers
             var result = this._asset.AddLibraryAsset(video);
             
             if(result)
-                return RedirectToAction("Books","Book");
+                return RedirectToAction("AssetCatalog","Asset");
 
             return View(model);
 

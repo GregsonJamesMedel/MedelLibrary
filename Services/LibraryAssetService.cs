@@ -31,8 +31,25 @@ namespace MedelLibrary.Services
 
         public IEnumerable<Book> GetAllBooks()
         {
-            return this._context.Books.Include(asset => asset.Category);
+            return this._context.LibraryAsset.OfType<Book>().Include(asset => asset.Category);
 
+        }
+
+        public string GetAuthorOrDirector(int id)
+        {
+            var isBook = this._context.LibraryAsset.OfType<Book>().Where(asset => asset.Id == id).Any();
+
+            return isBook ? 
+                this._context.Books.FirstOrDefault(b => b.Id == id).Author : 
+                this._context.Videos.FirstOrDefault(v => v.Id == id).Director;
+        }
+
+        public string GetISBN(int id)
+        {
+            if(this._context.Books.Any(b => b.Id == id))
+                return this._context.Books.FirstOrDefault(b => b.Id == id).ISBN;
+
+            return "";
         }
     }
 }

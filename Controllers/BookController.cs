@@ -54,7 +54,7 @@ namespace MedelLibrary.Controllers
             var result = this._libraryAsset.AddLibraryAsset(book);
 
             if(result)
-                return RedirectToAction("Books");
+                return RedirectToAction("AssetCatalog","Asset");
 
             return View(model);
         }
