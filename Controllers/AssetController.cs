@@ -44,7 +44,8 @@ namespace MedelLibrary.Controllers
         {
             var assets = this._asset.GetAllAssets();
 
-            var assetList = assets.Select(result => new AssetVM(){
+            var assetList = assets.Select(result => new AssetVM()
+            {
                 Id = result.Id,
                 Title = result.Title,
                 Year = result.Year,
@@ -58,12 +59,22 @@ namespace MedelLibrary.Controllers
                 ISBN = this._asset.GetISBN(result.Id),
                 AuthorOrDirector = this._asset.GetAuthorOrDirector(result.Id),
                 Type = this._asset.GetType(result.Id)
-            }); 
+            });
 
-            var model = new AssetCatalogVM(){ Assets = assetList };
+            var model = new AssetCatalogVM() { Assets = assetList };
 
             return View(model);
         }
-    
+
+        public IActionResult DeleteAsset(int id)
+        {
+            var result = this._asset.DeleteAsset(id);
+
+            if (result)
+                return RedirectToAction("AssetCatalog");
+
+            return RedirectToAction("Details", id);
+        }
+
     }
 }
