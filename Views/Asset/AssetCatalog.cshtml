@@ -7,6 +7,7 @@
 <div class="col-md-12">
     <table class="table table-hover table-striped">
         <thead>
+            <th>Cover</th>
             <th>Title</th>
             <th>Author/Director</th>
             <th>Status</th>
@@ -19,6 +20,7 @@
             @foreach (var asset in Model.Assets)
             {
                 <tr>
+                    <td><img src="~/img/@asset.ImageUrl" style="width: 60px; height: 80px" asp-append-version="true"></td>
                     <td>@asset.Title</td>
                     <td>@asset.AuthorOrDirector</td>
                     <td>@asset.Status</td>

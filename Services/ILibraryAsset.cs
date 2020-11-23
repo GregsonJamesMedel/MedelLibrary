@@ -12,5 +12,6 @@ namespace MedelLibrary.Services
         string GetAuthorOrDirector(int id);
         string GetISBN(int id);
         string GetType(int id);
+        LibraryAsset GetAsset(int id, string type);
     }
 }

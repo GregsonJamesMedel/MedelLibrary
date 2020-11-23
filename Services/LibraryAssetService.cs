@@ -35,6 +35,14 @@ namespace MedelLibrary.Services
 
         }
 
+        public LibraryAsset GetAsset(int id, string type)
+        {
+            if(type == "Book")
+                return this._context.Books.Find(id);
+            
+            return this._context.Videos.Find(id);
+        }
+
         public string GetAuthorOrDirector(int id)
         {
             var isBook = this._context.LibraryAsset.OfType<Book>().Where(asset => asset.Id == id).Any();
