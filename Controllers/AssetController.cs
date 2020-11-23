@@ -16,6 +16,13 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var asset = this._asset.GetAsset(id);
+            return View(asset);
+        }
+
+        [HttpGet]
         public IActionResult AssetCatalog()
         {
             var assets = this._asset.GetAllAssets();

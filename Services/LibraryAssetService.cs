@@ -35,9 +35,9 @@ namespace MedelLibrary.Services
 
         }
 
-        public LibraryAsset GetAsset(int id, string type)
+        public LibraryAsset GetAsset(int id)
         {
-            if(type == "Book")
+            if(this.GetType(id) == "Book")
                 return this._context.Books.Find(id);
             
             return this._context.Videos.Find(id);

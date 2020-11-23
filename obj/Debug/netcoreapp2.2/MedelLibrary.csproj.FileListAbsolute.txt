@@ -39,3 +39,4 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/test.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Video/SaveVideo.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Asset/AssetCatalog.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Asset/Details.g.cshtml.cs
