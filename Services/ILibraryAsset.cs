@@ -11,5 +11,6 @@ namespace MedelLibrary.Services
         IEnumerable<Book> GetAllBooks();
         string GetAuthorOrDirector(int id);
         string GetISBN(int id);
+        string GetType(int id);
     }
 }

@@ -33,8 +33,8 @@ namespace MedelLibrary.Controllers
                 Category = result.Category,
                 ISBN = this._asset.GetISBN(result.Id),
                 Author = this._asset.GetAuthorOrDirector(result.Id),
-                Director = this._asset.GetAuthorOrDirector(result.Id)
-
+                Director = this._asset.GetAuthorOrDirector(result.Id),
+                Type = this._asset.GetType(result.Id)
             }); 
 
             var model = new AssetCatalogVM(){ Assets = assetList };

@@ -17,5 +17,6 @@ namespace MedelLibrary.ViewModels
         public string ISBN { get; set; }
         public string Author { get; set; }
         public string Director { get; set; }
+        public string Type { get; set; }
     }
 }

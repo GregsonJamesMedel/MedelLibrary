@@ -51,5 +51,10 @@ namespace MedelLibrary.Services
 
             return "";
         }
+
+        public string GetType(int id)
+        {
+            return this._context.Books.Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";  
+        }
     }
 }

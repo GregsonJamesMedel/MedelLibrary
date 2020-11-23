@@ -13,6 +13,7 @@
             <th>Cost</th>
             <th>Condition</th>
             <th>Category</th>
+            <th>Type</th>
         </thead>
         <tbody>
             @foreach (var asset in Model.Assets)
@@ -33,7 +34,7 @@
                     <td>P @asset.Cost.ToString("0.##")</td>
                     <td>@asset.Condition</td>
                     <td>@asset.Category.Name</td>
-
+                    <td>@asset.Type</td>
                 </tr>
             }
         </tbody>
