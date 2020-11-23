@@ -15,8 +15,7 @@ namespace MedelLibrary.ViewModels
         public string Condition { get; set; }
         public Category Category { get; set; }
         public string ISBN { get; set; }
-        public string Author { get; set; }
-        public string Director { get; set; }
+        public string AuthorOrDirector { get; set; }
         public string Type { get; set; }
     }
 }

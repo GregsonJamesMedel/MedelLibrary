@@ -20,16 +20,7 @@
             {
                 <tr>
                     <td>@asset.Title</td>
-                    <td>@{
-                            if(asset.Author != null){
-                                @asset.Author
-                            }
-                            else
-                            {
-                                @asset.Director
-                            }
-                        }
-                    </td>
+                    <td>@asset.AuthorOrDirector</td>
                     <td>@asset.Status</td>
                     <td>P @asset.Cost.ToString("0.##")</td>
                     <td>@asset.Condition</td>

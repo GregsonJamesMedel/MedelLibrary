@@ -32,8 +32,7 @@ namespace MedelLibrary.Controllers
                 Condition = result.Condition,
                 Category = result.Category,
                 ISBN = this._asset.GetISBN(result.Id),
-                Author = this._asset.GetAuthorOrDirector(result.Id),
-                Director = this._asset.GetAuthorOrDirector(result.Id),
+                AuthorOrDirector = this._asset.GetAuthorOrDirector(result.Id),
                 Type = this._asset.GetType(result.Id)
             }); 
 
