@@ -4,7 +4,7 @@ using MedelLibrary.Models;
 
 namespace MedelLibrary.ViewModels
 {
-    public class NewBookVM
+    public class NewVideoVM
     {
         public int Id { get; set; }
         [Required]
@@ -18,9 +18,7 @@ namespace MedelLibrary.ViewModels
         public int NumberOfCopies { get; set; }
         public string Shelf { get; set; }
         [Required]
-        public string ISBN { get; set; }
-        [Required]
-        public string Author { get; set; }
+        public string Director { get; set; }
         public int Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
     }
