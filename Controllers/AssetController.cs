@@ -19,7 +19,24 @@ namespace MedelLibrary.Controllers
         public IActionResult Details(int id)
         {
             var asset = this._asset.GetAsset(id);
-            return View(asset);
+            var model = new AssetVM()
+            {
+                Id = asset.Id,
+                Title = asset.Title,
+                AuthorOrDirector = this._asset.GetAuthorOrDirector(asset.Id),
+                Year = asset.Year,
+                Status = asset.Status,
+                Cost = asset.Cost,
+                ImageUrl = asset.ImageUrl,
+                NumberOfCopies = asset.NumberOfCopies,
+                Shelf = asset.Shelf,
+                Condition = asset.Condition,
+                Category = asset.Category,
+                ISBN = this._asset.GetISBN(id),
+                Type = this._asset.GetType(id)
+            };
+
+            return View(model);
         }
 
         [HttpGet]

@@ -38,9 +38,9 @@ namespace MedelLibrary.Services
         public LibraryAsset GetAsset(int id)
         {
             if(this.GetType(id) == "Book")
-                return this._context.Books.Find(id);
+                return this._context.Books.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
             
-            return this._context.Videos.Find(id);
+            return this._context.Videos.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
         }
 
         public string GetAuthorOrDirector(int id)

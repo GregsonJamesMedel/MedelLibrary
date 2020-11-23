@@ -1,7 +1,62 @@
-@model MedelLibrary.Models.Book
+@model MedelLibrary.ViewModels.AssetVM
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
+    if (Model.Type == "Book")
+    {
+        ViewBag.Controller = "Book";
+        ViewBag.Action = "EditBook";
+    }
+    else
+    {
+        ViewBag.Controller = "Video";
+        ViewBag.Action = "EditVideo";
+    }
 }
 
-@Model.Id
-@Model.Title
+<div class="row">
+    <div class="col-md-4">
+        <img src="~/img/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;" asp-append-version="true">
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center">@Model.Title</h3>
+        @{
+            if (Model.Type == "Book")
+            {
+                <p>Author: @Model.AuthorOrDirector</p>
+            }
+            else
+            {
+                <p>Director: @Model.AuthorOrDirector</p>
+            }
+        }
+        <p>Year: @Model.Year</p>
+        <p>Copies: @Model.NumberOfCopies</p>
+        <p>Cost: @Model.Cost.ToString("0.##")</p>
+        <p>Location: @Model.Shelf</p>
+        <p>Condition: @Model.Condition</p>
+        <p>Status: @Model.Status</p>
+        <p>Type: @Model.Type</p>
+        <p>Category: @Model.Category.Name</p>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block mb-1">Check out</button>
+            </div>
+
+
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block mb-1">Hold</button>
+            </div>
+
+
+            <div class="col-md-3">
+                <a asp-controller="@Model.Type" asp-action="Edit@Model.Type" asp-route-id="@Model.Id"
+                    class="btn btn-primary btn-block mb-1">Edit</a>
+            </div>
+
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block mb-1">Delete</button>
+            </div>
+        </div>
+    </div></div>
