@@ -17,11 +17,7 @@ namespace MedelLibrary.Controllers
         }
         
         [HttpGet]
-        public IActionResult Books() 
-        {
-
-            return View(this._libraryAsset.GetAllBooks());
-        } 
+        public IActionResult Books() => View(this._libraryAsset.GetAllBooks());
 
         [HttpGet]
         public IActionResult AddBook()

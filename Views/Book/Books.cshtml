@@ -1,16 +1,15 @@
 @model IEnumerable<MedelLibrary.Models.Book>
+@{
+    ViewBag.Title = "Books";
+}
 
 <div class="col-md-12">
     <table class="table table-hover table-striped">
         <thead>
-            <th>ISBN</th>
             <th>Title</th>
             <th>Author</th>
-            <th>Year</th>
             <th>Status</th>
             <th>Cost</th>
-            <th>Copies</th>
-            <th>Shelf</th>
             <th>Condition</th>
             <th>Category</th>
         </thead>
@@ -18,14 +17,10 @@
             @foreach (var book in Model)
             {
                 <tr>
-                    <td>@book.ISBN</td>
                     <td>@book.Title</td>
                     <td>@book.Author</td>
-                    <td>@book.Year</td>
                     <td>@book.Status</td>
-                    <td>@book.Cost</td>
-                    <td>@book.NumberOfCopies</td>
-                    <td>@book.Shelf</td>
+                    <td>P @book.Cost.ToString("0.##")</td>
                     <td>@book.Condition</td>
                     <td>@book.Category.Name</td>
 
