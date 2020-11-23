@@ -26,6 +26,8 @@ namespace MedelLibrary.Controllers
         [HttpPost]
         public IActionResult SaveVideo(NewVideoVM model)
         {
+            model.Categories = this._category.GetAllCategories();
+            
             if(!ModelState.IsValid)
                 return View(model);
 
