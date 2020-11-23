@@ -1922,6 +1922,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/AddVideo.cshtml",
+      "TargetPath": "Views\\Video\\AddVideo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/SaveBook.cshtml",
       "TargetPath": "Views\\Book\\SaveBook.cshtml",
       "FileKind": "mvc"
