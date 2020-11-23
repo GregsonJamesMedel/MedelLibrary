@@ -1877,6 +1877,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/AssetCatalog.cshtml",
+      "TargetPath": "Views\\Asset\\AssetCatalog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/SaveVideo.cshtml",
+      "TargetPath": "Views\\Video\\SaveVideo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -1919,11 +1929,6 @@
     {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Signin.cshtml",
       "TargetPath": "Views\\Account\\Signin.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/AddVideo.cshtml",
-      "TargetPath": "Views\\Video\\AddVideo.cshtml",
       "FileKind": "mvc"
     },
     {
