@@ -24,6 +24,19 @@ namespace MedelLibrary.Services
             return result > 0 ? true : false;
         }
 
+        public bool DeleteAsset(int id)
+        {
+            var asset = this._context.LibraryAsset.Find(id);
+
+            if(asset == null)
+                return false;
+            
+            this._context.LibraryAsset.Remove(asset);
+            var result = this._context.SaveChanges();
+
+            return result > 0 ? true : false;
+        }
+
         public IEnumerable<LibraryAsset> GetAllAssets()
         {
             return this._context.LibraryAsset.Include(asset => asset.Category);
