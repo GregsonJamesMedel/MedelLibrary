@@ -33,19 +33,29 @@ namespace MedelLibrary.Controllers
         [HttpPost]
         public IActionResult SaveCategory(SaveCategoryVM model)
         {
-            if (!ModelState.IsValid)
-                return View(model);
 
             var category = new Category();
             var result = false;
 
             if (model.id != null || model.id == 0)
             {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Title = "Edit Category";
+                    return View(model);
+                }
+
                 category.Name = model.Name;
                 result = this._category.UpdateCategory((int)model.id, category);
             }
             else
             {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.Title = "Add Category";
+                    return View(model);
+                }
+
                 category.Name = model.Name;
                 result = this._category.AddCategory(category);
             }

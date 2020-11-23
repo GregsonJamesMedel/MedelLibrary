@@ -15,16 +15,16 @@ namespace MedelLibrary.Controllers
             this._category = category;
             this._libraryAsset = libraryAsset;
         }
-        
+
         [HttpGet]
         public IActionResult Books() => View(this._libraryAsset.GetAllBooks());
 
         [HttpGet]
         public IActionResult AddBook()
         {
-            var saveBookVM = new NewBookVM(){ Categories = this._category.GetAllCategories() };
-        
-            return View("SaveBook",saveBookVM);
+            var saveBookVM = new NewBookVM() { Categories = this._category.GetAllCategories() };
+
+            return View("SaveBook", saveBookVM);
         }
 
         [HttpPost]
@@ -32,7 +32,7 @@ namespace MedelLibrary.Controllers
         {
             model.Categories = this._category.GetAllCategories();
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View(model);
 
             var category = this._category.GetCategoryById(model.Category);
@@ -53,11 +53,37 @@ namespace MedelLibrary.Controllers
 
             var result = this._libraryAsset.AddLibraryAsset(book);
 
-            if(result)
-                return RedirectToAction("AssetCatalog","Asset");
+            if (result)
+                return RedirectToAction("AssetCatalog", "Asset");
 
             return View(model);
         }
-    
+
+        public IActionResult EditBook(int id)
+        {
+            var book = this._libraryAsset.GetAsset(id);
+
+            //Write error if book didn't exists
+
+            var model = new EditBookVM()
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Year = book.Year,
+                Status = book.Status,
+                Cost = book.Cost,
+                ImageUrl = book.ImageUrl,
+                NumberOfCopies = book.NumberOfCopies,
+                Shelf = book.Shelf,
+                Condition = book.Condition,
+                ISBN = this._libraryAsset.GetISBN(book.Id),
+                Author = this._libraryAsset.GetAuthorOrDirector(book.Id),
+                Category = book.Category,
+                Categories = this._category.GetAllCategories()
+            };
+
+            return View(model);
+        }
+
     }
 }
