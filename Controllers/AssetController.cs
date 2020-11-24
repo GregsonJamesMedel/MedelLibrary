@@ -86,6 +86,7 @@ namespace MedelLibrary.Controllers
             {
                 Id = asset.Id,
                 Title = asset.Title,
+                ImageUrl = asset.ImageUrl,
                 AuthorOrDirector = this._asset.GetAuthorOrDirector(asset.Id)
             };
 

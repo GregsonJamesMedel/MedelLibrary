@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
 namespace MedelLibrary.ViewModels
@@ -7,6 +8,8 @@ namespace MedelLibrary.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public string AuthorOrDirector { get; set; }
-        public IFormFile image { get; set; }
+        public string ImageUrl { get; set; }
+        [Required]
+        public IFormFile Image { get; set; }
     }
 }
