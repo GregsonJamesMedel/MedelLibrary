@@ -1962,6 +1962,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/EditVideo.cshtml",
+      "TargetPath": "Views\\Video\\EditVideo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"

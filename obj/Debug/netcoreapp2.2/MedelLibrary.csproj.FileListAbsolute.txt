@@ -40,3 +40,4 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.pdb
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.csproj.CopyComplete
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Book/EditBook.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Video/EditVideo.g.cshtml.cs

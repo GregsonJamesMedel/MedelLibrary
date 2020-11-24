@@ -54,6 +54,31 @@ namespace MedelLibrary.Controllers
             return View(model);
 
         }
+
+        [HttpGet]
+        public IActionResult EditVideo(int id)
+        {
+            //NOTE: add error if video didn't exist
+            var video = this._asset.GetAsset(id);
+            
+            var model = new EditVideoVM()
+            {
+                Id = video.Id,
+                Title = video.Title,
+                Year = video.Year,
+                Cost = video.Cost,
+                ImageUrl = video.ImageUrl,
+                NumberOfCopies = video.NumberOfCopies,
+                Shelf = video.Shelf,
+                Director = this._asset.GetAuthorOrDirector(video.Id),
+                Condition = video.Condition,
+                Status = video.Status,
+                Category = video.Category.id,
+                Categories = this._category.GetAllCategories()
+            };
+
+            return View(model);
+        }
     
     }
 }
