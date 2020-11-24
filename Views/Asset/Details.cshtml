@@ -44,6 +44,9 @@
                 @if(Model.Type == "Book")
                 {
                     <a class="btn btn-primary btn-block" asp-controller="Book" asp-action="EditBook" asp-route-id="@Model.Id">Edit</a> 
+                }else
+                {
+                    <a class="btn btn-primary btn-block" asp-controller="Video" asp-action="VideoBook" asp-route-id="@Model.Id">Edit</a> 
                 }
                 
 

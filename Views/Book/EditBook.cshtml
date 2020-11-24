@@ -73,15 +73,6 @@
 
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <label asp-for="@Model.Status"></label>
-                            <select asp-for="@Model.Status" class="form-control">
-                                <option value="Available">Available</option>
-                                <option value="Checked Out">Checked Out</option>
-                                <option value="Lost">Lost</option>
-                            </select>
-                            <span asp-validation-for="@Model.Status" class="text-danger"></span>
-                        </div>
-                        <div class="col-sm-6">
                             <label asp-for="@Model.Condition"></label>
                             <select asp-for="@Model.Condition" class="form-control">
                                 <option value="New">New</option>
@@ -91,6 +82,7 @@
                             <span asp-validation-for="@Model.Condition" class="text-danger"></span>
                         </div>
                         <input type="hidden" asp-for="@Model.ImageUrl">
+                        <input type="hidden" asp-for="@Model.Status">
                     </div>
                     <button type="submit" class="btn btn-primary float-right">Save</button>
                     <a class="btn btn-primary mr-1 float-right" asp-controller="Asset" asp-action="Details" asp-route-id="@Model.Id">Cancel</a>
