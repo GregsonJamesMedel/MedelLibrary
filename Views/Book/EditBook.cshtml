@@ -92,8 +92,8 @@
                         </div>
                         <input type="hidden" asp-for="@Model.ImageUrl">
                     </div>
-
                     <button type="submit" class="btn btn-primary float-right">Save</button>
+                    <a class="btn btn-primary mr-1 float-right" asp-controller="Asset" asp-action="Details" asp-route-id="@Model.Id">Cancel</a>
                 </form>
             </div>
         </div>
