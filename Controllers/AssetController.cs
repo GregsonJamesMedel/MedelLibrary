@@ -76,5 +76,21 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("Details", id);
         }
 
+        [HttpGet]
+        public IActionResult EditCover(int id)
+        {
+            var asset = this._asset.GetAsset(id);
+            //NOTE: ADD ERROR IF ASSET DIDN'T EXIST
+
+            var model = new EditCoverVM()
+            {
+                Id = asset.Id,
+                Title = asset.Title,
+                AuthorOrDirector = this._asset.GetAuthorOrDirector(asset.Id)
+            };
+
+            return View(model);
+        }
+
     }
 }
