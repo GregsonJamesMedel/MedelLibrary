@@ -4,12 +4,15 @@
 }
 
 <div class="row">
-    <div class="col-md-3 text-center">
+    <div class="col-md-4 offset-md-4 text-center">
         <h4>@Model.Title</h4>
         <h5>@Model.AuthorOrDirector</h5>
         <img src="~/Covers/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;">
     </div>
-    <div class="col-md-4">
+</div>
+
+<div class="row">
+        <div class="col-md-4 offset-md-4">
         <form asp-controller="Asset" asp-action="EditCover" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="@Model.Image" class="col-sm-2 col-form-label"></label>

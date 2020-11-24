@@ -3,13 +3,12 @@
     ViewBag.Title = "Add Book";
 }
 
-<div class="col-md-9">
+<div class="col-md-10 offset-md-1">
     <div class="card mb-4">
         <div class="card-header text-primary">
             @ViewBag.Title
         </div>
         <div class="card-body">
-            <div asp-validation-summary="All" class="text-danger"></div>
             <form asp-controller="Book" asp-action="SaveBook" method="POST">
                 <div class="form-group row">
                     <div class="col-sm-6">
