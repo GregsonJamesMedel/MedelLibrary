@@ -59,6 +59,7 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult EditBook(int id)
         {
             var book = this._libraryAsset.GetAsset(id);
@@ -85,5 +86,15 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+
+        public IActionResult EditBook(EditBookVM model)
+        {
+            model.Categories = this._category.GetAllCategories();
+
+            if(!ModelState.IsValid)
+                return View(model);
+
+            return View(model);
+        }
     }
 }

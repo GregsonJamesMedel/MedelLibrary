@@ -9,6 +9,7 @@
             @ViewBag.Title
         </div>
         <div class="card-body">
+            <div asp-validation-summary="All" class="text-danger"></div>
             <form asp-controller="Book" asp-action="SaveBook" method="POST">
                 <div class="form-group row">
                     <div class="col-sm-6">

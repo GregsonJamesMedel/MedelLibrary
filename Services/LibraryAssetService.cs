@@ -77,5 +77,12 @@ namespace MedelLibrary.Services
         {
             return this._context.Books.Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";  
         }
+
+        public bool UpdateAsset(LibraryAsset asset)
+        {
+            this._context.LibraryAsset.Update(asset);
+            var result = this._context.SaveChanges();
+            return result > 0 ? true : false;
+        }
     }
 }

@@ -11,11 +11,11 @@ namespace MedelLibrary.ViewModels
         public string Title { get; set; }
         [Required]
         public string Year { get; set; }
-        [Required]
         public string Status { get; set; }
         [Required]
         public decimal Cost { get; set; }
         public string ImageUrl { get; set; }
+        [Display(Name = "Number of Copies")]
         public int NumberOfCopies { get; set; }
         public string Shelf { get; set; }
         public string Condition { get; set; }
