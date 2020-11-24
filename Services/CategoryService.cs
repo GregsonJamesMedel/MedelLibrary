@@ -44,7 +44,7 @@ namespace MedelLibrary.Services
         public bool UpdateCategory(int id, Category category)
         {
             var categoryToUpdate = this._context.Categories.Find(id);
-
+    
             categoryToUpdate.Name = category.Name;
 
             this._context.Update(categoryToUpdate);

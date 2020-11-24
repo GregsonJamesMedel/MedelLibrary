@@ -23,7 +23,7 @@ namespace MedelLibrary.ViewModels
         public string ISBN { get; set; }
         [Required]
         public string Author { get; set; }
-        public Category Category { get; set; }
+        public int Category { get; set; }
         public IEnumerable<Category> Categories { get; set; }
     }
 }

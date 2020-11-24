@@ -79,20 +79,43 @@ namespace MedelLibrary.Controllers
                 Condition = book.Condition,
                 ISBN = this._libraryAsset.GetISBN(book.Id),
                 Author = this._libraryAsset.GetAuthorOrDirector(book.Id),
-                Category = book.Category,
+                Category = this._category.GetCategoryById(book.Category.id).id,
                 Categories = this._category.GetAllCategories()
             };
 
             return View(model);
         }
 
-
+        [HttpPost]
         public IActionResult EditBook(EditBookVM model)
         {
             model.Categories = this._category.GetAllCategories();
 
             if(!ModelState.IsValid)
                 return View(model);
+
+            var category = this._category.GetCategoryById(model.Category);
+
+            var book = new Book()
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Year = model.Year,
+                Status = model.Status,
+                Cost = model.Cost,
+                ImageUrl = model.ImageUrl,
+                NumberOfCopies = model.NumberOfCopies,
+                Shelf = model.Shelf,
+                Condition = model.Condition,
+                ISBN = model.ISBN,
+                Author = model.Author,
+                Category = category
+            };
+
+            var result = this._libraryAsset.UpdateAsset(book);
+
+            if(result)
+                return RedirectToAction("AssetCatalog","Asset");
 
             return View(model);
         }
