@@ -1927,6 +1927,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/_Layout.cshtml",
+      "TargetPath": "Views\\Account\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -1944,11 +1949,6 @@
     {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Category/Categories.cshtml",
       "TargetPath": "Views\\Category\\Categories.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Signin.cshtml",
-      "TargetPath": "Views\\Account\\Signin.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -1984,6 +1984,11 @@
     {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Footer.cshtml",
       "TargetPath": "Views\\Shared\\_Footer.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/SignIn.cshtml",
+      "TargetPath": "Views\\Account\\SignIn.cshtml",
       "FileKind": "mvc"
     }
   ],
