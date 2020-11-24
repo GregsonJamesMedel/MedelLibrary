@@ -7,7 +7,7 @@
     <div class="col-md-3 text-center">
         <h4>@Model.Title</h4>
         <h5>@Model.AuthorOrDirector</h5>
-        <img src="~/img/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;">
+        <img src="~/Covers/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;">
     </div>
     <div class="col-md-4">
         <form asp-controller="Asset" asp-action="EditCover" method="post" enctype="multipart/form-data">

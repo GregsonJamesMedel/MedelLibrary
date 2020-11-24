@@ -9,10 +9,12 @@ namespace MedelLibrary.Controllers
     public class AssetController : Controller
     {
         private readonly ILibraryAsset _asset;
+        private readonly IImage _imageProcessor;
 
-        public AssetController(ILibraryAsset asset)
+        public AssetController(ILibraryAsset asset, IImage imageProcessor)
         {
             this._asset = asset;
+            this._imageProcessor = imageProcessor;
         }
 
         [HttpGet]
@@ -89,6 +91,27 @@ namespace MedelLibrary.Controllers
                 ImageUrl = asset.ImageUrl,
                 AuthorOrDirector = this._asset.GetAuthorOrDirector(asset.Id)
             };
+
+            return View(model);
+        }
+
+        public IActionResult EditCover(EditCoverVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var asset = this._asset.GetAsset(model.Id);
+
+            var saveImage = this._imageProcessor.SaveImage(model.Image);
+
+            if (saveImage != null)
+            {
+                asset.ImageUrl = saveImage;
+                var result = this._asset.UpdateAsset(asset);
+
+                if (result)
+                    return RedirectToAction("Details", new { id = asset.Id });
+            }
 
             return View(model);
         }
