@@ -17,18 +17,18 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddVideo() 
+        public IActionResult AddVideo()
         {
-            var model = new NewVideoVM(){ Categories = this._category.GetAllCategories() };
-            return View("SaveVideo",model);
+            var model = new NewVideoVM() { Categories = this._category.GetAllCategories() };
+            return View("SaveVideo", model);
         }
 
         [HttpPost]
         public IActionResult SaveVideo(NewVideoVM model)
         {
             model.Categories = this._category.GetAllCategories();
-            
-            if(!ModelState.IsValid)
+
+            if (!ModelState.IsValid)
                 return View(model);
 
             var category = this._category.GetCategoryById(model.Category);
@@ -47,9 +47,9 @@ namespace MedelLibrary.Controllers
             };
 
             var result = this._asset.AddLibraryAsset(video);
-            
-            if(result)
-                return RedirectToAction("AssetCatalog","Asset");
+
+            if (result)
+                return RedirectToAction("AssetCatalog", "Asset");
 
             return View(model);
 
@@ -60,7 +60,7 @@ namespace MedelLibrary.Controllers
         {
             //NOTE: add error if video didn't exist
             var video = this._asset.GetAsset(id);
-            
+
             var model = new EditVideoVM()
             {
                 Id = video.Id,
@@ -79,6 +79,37 @@ namespace MedelLibrary.Controllers
 
             return View(model);
         }
-    
+
+        [HttpPost]
+        public IActionResult EditVideo(EditVideoVM model)
+        {
+            model.Categories = this._category.GetAllCategories();
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var video = new Video()
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Year = model.Year,
+                Cost = model.Cost,
+                ImageUrl = model.ImageUrl,
+                NumberOfCopies = model.NumberOfCopies,
+                Shelf = model.Shelf,
+                Director = model.Director,
+                Condition = model.Condition,
+                Status = model.Status,
+                Category = this._category.GetCategoryById(model.Category)
+            };
+
+            var result = this._asset.UpdateAsset(video);
+
+            if (result)
+                return RedirectToAction("Details", "Asset", new { id = video.Id });
+
+            return View(model);
+        }
+
     }
 }

@@ -5,11 +5,12 @@
 
 <div class="col-md-9">
     <div class="card mb-4">
+        <div asp-validation-summary="All"></div>
         <div class="card-header text-primary">
             @ViewBag.Title
         </div>
         <div class="card-body">
-            <form asp-controller="Video" asp-action="SaveVideo" method="POST">
+            <form asp-controller="Video" asp-action="EditVideo" method="POST">
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <label asp-for="@Model.Title"></label>
@@ -82,10 +83,11 @@
                             <span asp-validation-for="@Model.Condition" class="text-danger"></span>
                         </div>
                         <input type="hidden" asp-for="@Model.Status">
-                        
+                        <input type="hidden" asp-for="@Model.ImageUrl">
                     </div>
 
                     <button class="btn btn-primary float-right" type="submit">Save</button>
+                    <a asp-controller="Asset" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary mr-1 float-right">Cancel</a>
                 </form>
             </div>
         </div>
