@@ -3,9 +3,11 @@ using MedelLibrary.ViewModels;
 using MedelLibrary.Services;
 using MedelLibrary.Models;
 using MedelLibrary.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MedelLibrary.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategory _category;
