@@ -1,3 +1,4 @@
+using MedelLibrary.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedelLibrary.Controllers
@@ -7,7 +8,14 @@ namespace MedelLibrary.Controllers
         [HttpGet]
         public IActionResult SignIn() => View();
 
+        [HttpGet]
         public IActionResult SignUp() => View();
+
+        [HttpPost]
+        public IActionResult SignUp(SignUpVM model)
+        {
+            return View(model);
+        }
     
     }
 }

@@ -1,80 +1,59 @@
 @model MedelLibrary.ViewModels.SignUpVM
+@{
+    ViewBag.Title = "Sign Up";
+}
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">New User</h4>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="card-body register-card-body">
+                <h3 class="login-box-msg text-center mb-3">Sign Up</h3><hr>
+
+                <form method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Firstname"></label>
+                                <input asp-for="@Model.Firstname" class="form-control">
+                                <span asp-validation-for="@Model.Firstname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Lastname"></label>
+                                <input asp-for="@Model.Lastname" class="form-control">
+                                <span asp-validation-for="@Model.Lastname" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Address"></label>
+                                <input asp-for="@Model.Address" class="form-control">
+                                <span asp-validation-for="@Model.Address" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Email"></label>
+                                <input asp-for="@Model.Email" class="form-control">
+                                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.ContactNumber"></label>
+                                <input asp-for="@Model.ContactNumber" class="form-control">
+                                <span asp-validation-for="@Model.ContactNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Password"></label>
+                                <input asp-for="@Model.Password" class="form-control">
+                                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.ConfirmPassword"></label>
+                                <input asp-for="@Model.ConfirmPassword" class="form-control">
+                                <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <form asp-controller="Account" asp-action="SignUp" method="POST">
-                            <div class="row">
-                                <div class="col-md-12 pr-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.Email"></label>
-                                        <input asp-for="@Model.Email" class="form-control" placeholder="Email Address">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4 pr-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.Firstname"></label>
-                                        <input asp-for="@Model.Firstname" class="form-control" placeholder="Firstname">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 pl-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.Middlename"></label>
-                                        <input asp-for="@Model.Middlename" class="form-control" placeholder="MiddleName">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 pl-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.Lastname"></label>
-                                        <input asp-for="@Model.Lastname" class="form-control" placeholder="LastName">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 pr-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.Address"></label>
-                                        <input asp-for="@Model.Address" class="form-control" placeholder="Address">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pr-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.ContactNumber"></label>
-                                        <input asp-for="@Model.ContactNumber" class="form-control"
-                                            placeholder="Address">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-6 pr-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.Password"></label>
-                                        <input asp-for="@Model.Password" class="form-control" placeholder="Passowrd">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 pr-1">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.ConfirmPassword"></label>
-                                        <input asp-for="@Model.ConfirmPassword" class="form-control"
-                                            placeholder="Confirm Passowrd">
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Save</button>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
+                    <button class="btn btn-primary float-right" type="submit">Submit</button>
+                </form>
+                <a href="login.html" class="text-center">I already have a membership</a>
             </div>
         </div>
     </div>

@@ -21,6 +21,7 @@ namespace MedelLibrary.ViewModels
         [MinLength(5)]
         [MaxLength(20)]
         [Compare(nameof(Password))]
+        [Display(Name="Confirm Password")]
         public string ConfirmPassword { get; set; }
 
         [Required]
