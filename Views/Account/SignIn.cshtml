@@ -3,33 +3,83 @@
   ViewBag.Title = "SignIn";
 }
 
-<div class="p-5">
+@* <div class="p-5">
   <div class="text-center">
-    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+  <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
   </div>
   <form method="post" class="user">
-    <div class="form-group">
-      <input type="email" asp-for="@Model.Email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp"
-        placeholder="Enter Email Address...">
-    </div>
-    <div class="form-group">
-      <input type="password" asp-for="@Model.Password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <div class="custom-control custom-checkbox small">
-        <input asp-for="@Model.RememberMe" type="checkbox" class="custom-control-input" id="customCheck">
-        <label class="custom-control-label" for="customCheck">Remember Me</label>
-      </div>
-    </div>
-    <button class="btn btn-primary btn-user btn-block">
-      Login
-    </button>
+  <div class="form-group">
+  <input type="email" asp-for="@Model.Email" class="form-control form-control-user" id="exampleInputEmail"
+  aria-describedby="emailHelp"
+  placeholder="Enter Email Address...">
+  </div>
+  <div class="form-group">
+  <input type="password" asp-for="@Model.Password" class="form-control form-control-user" id="exampleInputPassword"
+  placeholder="Password">
+  </div>
+  <div class="form-group">
+  <div class="custom-control custom-checkbox small">
+  <input asp-for="@Model.RememberMe" type="checkbox" class="custom-control-input" id="customCheck">
+  <label class="custom-control-label" for="customCheck">Remember Me</label>
+  </div>
+  </div>
+  <button class="btn btn-primary btn-user btn-block">
+  Login
+  </button>
   </form>
   <hr>
   <div class="text-center">
-    <a class="small" href="forgot-password.html">Forgot Password?</a>
+  <a class="small" href="forgot-password.html">Forgot Password?</a>
   </div>
   <div class="text-center">
-    <a class="small" href="register.html">Create an Account!</a>
+  <a class="small" href="register.html">Create an Account!</a>
+  </div>
+  </div> *@
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body login-card-body">
+        <h3 class="login-box-msg text-center mb-3 text-primary">Sign In</h3>
+        <hr>
+
+        <form method="post">
+          <div class="form-group">
+            <label asp-for="@Model.Email"></label>
+            <input asp-for="@Model.Email" class="form-control">
+            <span asp-validation-for="@Model.Email" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="@Model.Password"></label>
+            <input asp-for="@Model.Password" class="form-control">
+            <span asp-validation-for="@Model.Password" class="text-danger"></span>
+          </div>
+
+          <div class="row">
+            <div class="col-8">
+              <div class="icheck-primary">
+                <input type="checkbox" asp-for="@Model.RememberMe" id="remember">
+                <label for="remember">
+                  Remember Me
+                </label>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <p class="mb-1">
+          <a href="forgot-password.html">I forgot my password</a>
+        </p>
+        <p class="mb-0">
+          <a asp-action="SignUp" class="text-center">Register a new membership</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
   </div>
 </div>
