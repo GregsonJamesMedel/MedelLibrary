@@ -76,5 +76,11 @@ namespace MedelLibrary.Controllers
             }
             return View(model);
         }
+
+        public async Task<IActionResult> SignOut()
+        {
+            await this._signInManager.SignOutAsync();
+            return RedirectToAction("AssetCatalog","Asset");
+        }
     }
 }
