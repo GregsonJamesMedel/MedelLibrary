@@ -55,5 +55,26 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInVM model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var result =
+                await this._signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+
+                    return RedirectToAction("AssetCatalog", "Asset");
+                }
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+            }
+            return View(model);
+        }
     }
 }
