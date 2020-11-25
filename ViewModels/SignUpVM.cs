@@ -32,11 +32,6 @@ namespace MedelLibrary.ViewModels
         [Required]
         [MinLength(2)]
         [MaxLength(15)]
-        public string Middlename { get; set; }
-
-        [Required]
-        [MinLength(2)]
-        [MaxLength(15)]
         public string Lastname { get; set; }
 
         [Required]

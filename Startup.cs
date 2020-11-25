@@ -1,8 +1,10 @@
 ﻿using MedelLibrary.Data;
+using MedelLibrary.Models;
 using MedelLibrary.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,8 @@ namespace MedelLibrary
                 options.UseMySql(this.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddIdentity<Patron,IdentityRole>().AddEntityFrameworkStores<DataContext>();
+
             services.AddScoped<ICategory,CategoryService>();
             services.AddScoped<ILibraryAsset,LibraryAssetService>();
             services.AddScoped<IImage,ImageProcessor>();
@@ -57,6 +61,7 @@ namespace MedelLibrary
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

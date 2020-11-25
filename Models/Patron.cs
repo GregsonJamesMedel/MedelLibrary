@@ -9,7 +9,7 @@ namespace MedelLibrary.Models
         [MinLength(2)]
         [MaxLength(15)]
         public string Firstname { get; set; }
-        [Required]
+
         [MinLength(2)]
         [MaxLength(15)]
         public string Middlename { get; set; }

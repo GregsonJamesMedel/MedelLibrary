@@ -49,11 +49,14 @@
                                 <input asp-for="@Model.ConfirmPassword" class="form-control">
                                 <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
                             </div>
+                            <div asp-validation-summary="All" class="text-danger">
+
+                            </div>
                         </div>
                     </div>
                     <button class="btn btn-primary float-right" type="submit">Submit</button>
                 </form>
-                <a href="login.html" class="text-center">I already have a membership</a>
+                <a asp-action="SignIn" class="text-center">I already have a membership</a>
             </div>
         </div>
     </div>
