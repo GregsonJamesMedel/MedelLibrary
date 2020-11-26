@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using MedelLibrary.Models;
 using MedelLibrary.ViewModels;
@@ -82,5 +83,19 @@ namespace MedelLibrary.Controllers
             await this._signInManager.SignOutAsync();
             return RedirectToAction("AssetCatalog","Asset");
         }
+
+        public IActionResult Patrons()
+        {
+            var model = this._userManager.Users.Select(result => new PatronsVM(){
+                Id = result.Id,
+                Email = result.Email,
+                Firstname = result.Firstname,
+                Lastname = result.Lastname,
+                Address = result.Address
+            });
+
+            return View(model);
+        }
+
     }
 }
