@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using MedelLibrary.Models;
+using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,11 +11,15 @@ namespace MedelLibrary.Controllers
     {
         private readonly UserManager<Patron> _userManager;
         private readonly SignInManager<Patron> _signInManager;
+        private readonly IPersonalDetails _personalDetails;
 
-        public AccountController(UserManager<Patron> userManager, SignInManager<Patron> signInManager)
+        public AccountController(UserManager<Patron> userManager, 
+                                SignInManager<Patron> signInManager,
+                                IPersonalDetails personalDetails)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._personalDetails = personalDetails;
         }
 
         [HttpGet]
@@ -23,38 +28,42 @@ namespace MedelLibrary.Controllers
         [HttpGet]
         public IActionResult SignUp() => View();
 
-        // [HttpPost]
-        // public async Task<IActionResult> SignUp(SignUpVM model)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         var patron = new Patron()
-        //         {
-        //             UserName = model.Email,
-        //             Firstname = model.Firstname,
-        //             Lastname = model.Lastname,
-        //             Email = model.Email,
-        //             Address = model.Address,
-        //             PhoneNumber = model.ContactNumber
-        //         };
+        [HttpPost]
+        public async Task<IActionResult> SignUp(SignUpVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var pDetails = new PersonalDetails()
+                {
+                    Firstname = model.Firstname,
+                    Lastname = model.Lastname,
+                    Address = model.Address
+                };
 
-        //         var result = await this._userManager.CreateAsync(patron, model.Password);
+                var patron = new Patron()
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.ContactNumber,
+                    PersonalDetails = this._personalDetails.AddPersonalDetails(pDetails)
+                };
 
-        //         if (result.Succeeded)
-        //         {
-        //             await _signInManager.SignInAsync(patron, isPersistent: false);
-        //             return RedirectToAction("AssetCatalog", "Asset");
-        //         }
+                var result = await this._userManager.CreateAsync(patron, model.Password);
 
-        //         foreach (var error in result.Errors)
-        //         {
-        //             ModelState.AddModelError("", error.Description);
-        //         }
-        //     }
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(patron, isPersistent: false);
+                    return RedirectToAction("AssetCatalog", "Asset");
+                }
 
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
 
-        //     return View(model);
-        // }
+            return View(model);
+        }
 
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInVM model, string returnUrl)

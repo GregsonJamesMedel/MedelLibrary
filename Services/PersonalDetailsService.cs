@@ -12,11 +12,11 @@ namespace MedelLibrary.Services
             this._context = context;
         }
 
-        public int AddPersonalDetails(PersonalDetails model)
+        public PersonalDetails AddPersonalDetails(PersonalDetails model)
         {
             this._context.PersonalDetails.Add(model);
             var result = this._context.SaveChanges();
-            return model.Id;
+            return model;
         }
     }
 }

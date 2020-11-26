@@ -4,6 +4,6 @@ namespace MedelLibrary.Services
 {
     public interface IPersonalDetails
     {
-        int AddPersonalDetails(PersonalDetails model);
+        PersonalDetails AddPersonalDetails(PersonalDetails model);
     }
 }
