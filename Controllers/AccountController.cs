@@ -23,38 +23,38 @@ namespace MedelLibrary.Controllers
         [HttpGet]
         public IActionResult SignUp() => View();
 
-        [HttpPost]
-        public async Task<IActionResult> SignUp(SignUpVM model)
-        {
-            if (ModelState.IsValid)
-            {
-                var patron = new Patron()
-                {
-                    UserName = model.Email,
-                    Firstname = model.Firstname,
-                    Lastname = model.Lastname,
-                    Email = model.Email,
-                    Address = model.Address,
-                    PhoneNumber = model.ContactNumber
-                };
+        // [HttpPost]
+        // public async Task<IActionResult> SignUp(SignUpVM model)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         var patron = new Patron()
+        //         {
+        //             UserName = model.Email,
+        //             Firstname = model.Firstname,
+        //             Lastname = model.Lastname,
+        //             Email = model.Email,
+        //             Address = model.Address,
+        //             PhoneNumber = model.ContactNumber
+        //         };
 
-                var result = await this._userManager.CreateAsync(patron, model.Password);
+        //         var result = await this._userManager.CreateAsync(patron, model.Password);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(patron, isPersistent: false);
-                    return RedirectToAction("AssetCatalog", "Asset");
-                }
+        //         if (result.Succeeded)
+        //         {
+        //             await _signInManager.SignInAsync(patron, isPersistent: false);
+        //             return RedirectToAction("AssetCatalog", "Asset");
+        //         }
 
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-            }
+        //         foreach (var error in result.Errors)
+        //         {
+        //             ModelState.AddModelError("", error.Description);
+        //         }
+        //     }
 
 
-            return View(model);
-        }
+        //     return View(model);
+        // }
 
         [HttpPost]
         public async Task<IActionResult> SignIn(SignInVM model, string returnUrl)
@@ -84,20 +84,20 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("AssetCatalog", "Asset");
         }
 
-        [HttpGet]
-        public IActionResult Patrons()
-        {
-            var model = this._userManager.Users.Select(result => new PatronsVM()
-            {
-                Id = result.Id,
-                Email = result.Email,
-                Firstname = result.Firstname,
-                Lastname = result.Lastname,
-                Address = result.Address
-            });
+        // [HttpGet]
+        // public IActionResult Patrons()
+        // {
+        //     var model = this._userManager.Users.Select(result => new PatronsVM()
+        //     {
+        //         Id = result.Id,
+        //         Email = result.Email,
+        //         Firstname = result.Firstname,
+        //         Lastname = result.Lastname,
+        //         Address = result.Address
+        //     });
 
-            return View(model);
-        }
+        //     return View(model);
+        // }
 
     }
 }

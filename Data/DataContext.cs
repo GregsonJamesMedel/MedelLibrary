@@ -12,5 +12,6 @@ namespace MedelLibrary.Data
         public DbSet<LibraryAsset> LibraryAsset { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Video> Videos { get; set; }
+        public DbSet<PersonalDetails> PersonalDetails { get; set; }
     }
 }
