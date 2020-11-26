@@ -7,7 +7,7 @@
     <div class="col-md-4 offset-md-4 text-center">
         <h4>@Model.Title</h4>
         <h5>@Model.AuthorOrDirector</h5>
-        <img src="~/Covers/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;">
+        <img src="~/Covers/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;" asp-append-version="true">
     </div>
 </div>
 
@@ -15,18 +15,24 @@
         <div class="col-md-4 offset-md-4">
         <form asp-controller="Asset" asp-action="EditCover" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label asp-for="@Model.Image" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                    <div class="custom-file">
+                    <div class="custom-file mt-3 block">
                         <input asp-for="@Model.Image" class="form-control custom-file-input">
                         <label class="custom-file-label">Choose File...</label>
                     </div>
+                    <span asp-validation-for="@Model.Image" class="text-danger"></span>
                 </div>
             </div>
             <div class="btn-group float-right">
                 <a asp-controller="Asset" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary mr-1">Cancel</a>
                 <button class="btn btn-primary float-right">Save</button>
             </div>
+            <input type="hidden" asp-for="@Model.Title">
+            <input type="hidden" asp-for="@Model.AuthorOrDirector">
+            <input type="hidden" asp-for="@Model.Id">
+            <input type="hidden" asp-for="@Model.ImageUrl">
+
+
         </form>
     </div>
 </div>
