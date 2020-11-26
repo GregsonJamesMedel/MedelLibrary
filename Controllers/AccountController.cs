@@ -81,12 +81,14 @@ namespace MedelLibrary.Controllers
         public async Task<IActionResult> SignOut()
         {
             await this._signInManager.SignOutAsync();
-            return RedirectToAction("AssetCatalog","Asset");
+            return RedirectToAction("AssetCatalog", "Asset");
         }
 
+        [HttpGet]
         public IActionResult Patrons()
         {
-            var model = this._userManager.Users.Select(result => new PatronsVM(){
+            var model = this._userManager.Users.Select(result => new PatronsVM()
+            {
                 Id = result.Id,
                 Email = result.Email,
                 Firstname = result.Firstname,
