@@ -13,7 +13,7 @@ namespace MedelLibrary.Controllers
         private readonly SignInManager<Patron> _signInManager;
         private readonly IPersonalDetails _personalDetails;
 
-        public AccountController(UserManager<Patron> userManager, 
+        public AccountController(UserManager<Patron> userManager,
                                 SignInManager<Patron> signInManager,
                                 IPersonalDetails personalDetails)
         {
