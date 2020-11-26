@@ -64,7 +64,8 @@ namespace MedelLibrary.Controllers
         {
             var book = this._libraryAsset.GetAsset(id);
 
-            //Write error if book didn't exists
+            if(book == null)
+                return RedirectToAction("NotFound","Error");
 
             var model = new EditBookVM()
             {

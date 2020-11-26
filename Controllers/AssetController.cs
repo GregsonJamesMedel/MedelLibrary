@@ -21,6 +21,10 @@ namespace MedelLibrary.Controllers
         public IActionResult Details(int id)
         {
             var asset = this._asset.GetAsset(id);
+
+            if(asset == null)
+                return RedirectToAction("NotFound","Error");
+
             var model = new AssetVM()
             {
                 Id = asset.Id,
@@ -68,6 +72,7 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult DeleteAsset(int id)
         {
             var result = this._asset.DeleteAsset(id);
@@ -82,7 +87,9 @@ namespace MedelLibrary.Controllers
         public IActionResult EditCover(int id)
         {
             var asset = this._asset.GetAsset(id);
-            //NOTE: ADD ERROR IF ASSET DIDN'T EXIST
+            
+            if(asset == null)
+                return RedirectToAction("NotFound","Error");
 
             var model = new EditCoverVM()
             {
