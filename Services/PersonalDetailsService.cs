@@ -18,5 +18,10 @@ namespace MedelLibrary.Services
             var result = this._context.SaveChanges();
             return model;
         }
+
+        public PersonalDetails GetPersonalDetailsById(int id)
+        {
+            return this._context.PersonalDetails.Find(id);
+        }
     }
 }

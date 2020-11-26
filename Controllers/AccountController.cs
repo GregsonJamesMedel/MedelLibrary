@@ -93,20 +93,26 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("AssetCatalog", "Asset");
         }
 
-        // [HttpGet]
-        // public IActionResult Patrons()
-        // {
-        //     var model = this._userManager.Users.Select(result => new PatronsVM()
-        //     {
-        //         Id = result.Id,
-        //         Email = result.Email,
-        //         Firstname = result.Firstname,
-        //         Lastname = result.Lastname,
-        //         Address = result.Address
-        //     });
+        [HttpGet]
+        public IActionResult Patrons()
+        {
+            var model = this._userManager.Users.Select(result => new PatronsVM()
+            {
+                Id = result.Id,
+                Email = result.Email,
+                PersonalDetailsVM = new PersonalDetailsVM()
+                {
+                    Id = result.PersonalDetails.Id,
+                    Firstname = result.PersonalDetails.Firstname,
+                    Middlename = result.PersonalDetails.Middlename,
+                    Lastname = result.PersonalDetails.Lastname,
+                    Address = result.PersonalDetails.Address,
+                    ImageUrl = result.PersonalDetails.ImageUrl
+                }
+            });
 
-        //     return View(model);
-        // }
+            return View(model);
+        }
 
     }
 }
