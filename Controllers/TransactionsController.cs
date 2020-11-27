@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using MedelLibrary.Models;
@@ -39,7 +40,20 @@ namespace MedelLibrary.Controllers
             if(ModelState.IsValid)
             {
                 var asset = this._libraryAsset.GetAsset(model.AssetId);
-                
+                var libraryCard = this._transactions.GetLibraryCardById(model.LibraryCardId);
+
+                var checkout = new Checkout()
+                {
+                    LibraryAsset = asset,
+                    LibraryCard = libraryCard,
+                    Since = DateTime.Now,
+                    Untill = DateTime.Now.AddDays(7)
+                };
+
+                var result = this._transactions.AddCheckout(checkout);
+
+                if(result)
+                    return RedirectToAction("AssetCatalog","Asset");
             }
 
             return View(model);
