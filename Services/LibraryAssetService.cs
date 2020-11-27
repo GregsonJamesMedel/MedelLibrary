@@ -18,7 +18,7 @@ namespace MedelLibrary.Services
 
         public bool AddLibraryAsset(LibraryAsset asset)
         {
-            this._context.LibraryAsset.Add(asset);
+            this._context.LibraryAssets.Add(asset);
             var result = this._context.SaveChanges();
 
             return result > 0 ? true : false;
@@ -26,12 +26,12 @@ namespace MedelLibrary.Services
 
         public bool DeleteAsset(int id)
         {
-            var asset = this._context.LibraryAsset.Find(id);
+            var asset = this._context.LibraryAssets.Find(id);
 
             if(asset == null)
                 return false;
             
-            this._context.LibraryAsset.Remove(asset);
+            this._context.LibraryAssets.Remove(asset);
             var result = this._context.SaveChanges();
 
             return result > 0 ? true : false;
@@ -39,12 +39,12 @@ namespace MedelLibrary.Services
 
         public IEnumerable<LibraryAsset> GetAllAssets()
         {
-            return this._context.LibraryAsset.Include(asset => asset.Category);
+            return this._context.LibraryAssets.Include(asset => asset.Category);
         }
 
         public IEnumerable<Book> GetAllBooks()
         {
-            return this._context.LibraryAsset.OfType<Book>().Include(asset => asset.Category);
+            return this._context.LibraryAssets.OfType<Book>().Include(asset => asset.Category);
 
         }
 
@@ -58,7 +58,7 @@ namespace MedelLibrary.Services
 
         public string GetAuthorOrDirector(int id)
         {
-            var isBook = this._context.LibraryAsset.OfType<Book>().Where(asset => asset.Id == id).Any();
+            var isBook = this._context.LibraryAssets.OfType<Book>().Where(asset => asset.Id == id).Any();
 
             return isBook ? 
                 this._context.Books.FirstOrDefault(b => b.Id == id).Author : 
@@ -80,7 +80,7 @@ namespace MedelLibrary.Services
 
         public bool UpdateAsset(LibraryAsset asset)
         {
-            this._context.LibraryAsset.Update(asset);
+            this._context.LibraryAssets.Update(asset);
             var result = this._context.SaveChanges();
             return result > 0 ? true : false;
         }
