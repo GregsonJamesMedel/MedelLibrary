@@ -13,13 +13,17 @@ namespace MedelLibrary.Controllers
         private readonly SignInManager<Patron> _signInManager;
         private readonly IPersonalDetails _personalDetails;
 
+        private readonly ITransaction _transactions;
+
         public AccountController(UserManager<Patron> userManager,
                                 SignInManager<Patron> signInManager,
-                                IPersonalDetails personalDetails)
+                                IPersonalDetails personalDetails,
+                                ITransaction transactions)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._personalDetails = personalDetails;
+            this._transactions = transactions;
         }
 
         [HttpGet]
@@ -45,6 +49,7 @@ namespace MedelLibrary.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     PhoneNumber = model.ContactNumber,
+                    LibraryCard = this._transactions.CreateLibraryCard(),
                     PersonalDetails = this._personalDetails.AddPersonalDetails(pDetails)
                 };
 

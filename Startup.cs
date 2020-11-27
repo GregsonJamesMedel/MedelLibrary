@@ -50,6 +50,7 @@ namespace MedelLibrary
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
             services.AddScoped<IImage, ImageProcessor>();
             services.AddScoped<IPersonalDetails,PersonalDetailsService>();
+            services.AddScoped<ITransaction,TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
