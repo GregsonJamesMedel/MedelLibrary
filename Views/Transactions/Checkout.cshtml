@@ -1,0 +1,11 @@
+@model MedelLibrary.ViewModels.CheckoutVM
+@{
+    ViewBag.Title = "Checkout Asset";
+}
+
+@foreach (var patron in Model.Patrons)
+{
+    <h2>@patron.PatronId</h2>
+    <h2>@patron.PatronFullname</h2>
+    <h2>@patron.LibraryCardId</h2>
+}

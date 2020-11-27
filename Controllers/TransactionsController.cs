@@ -1,5 +1,8 @@
+using System.Linq;
+using MedelLibrary.Models;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedelLibrary.Controllers
@@ -8,12 +11,15 @@ namespace MedelLibrary.Controllers
     {
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAsset;
+        private readonly UserManager<Patron> _userManager;
 
         public TransactionsController(ITransaction transactions,
-                                        ILibraryAsset libraryAsset)
+                                        ILibraryAsset libraryAsset,
+                                        UserManager<Patron> userManager)
         {
             this._transactions = transactions;
             this._libraryAsset = libraryAsset;
+            this._userManager = userManager;
         }
 
         [HttpGet]
@@ -24,9 +30,18 @@ namespace MedelLibrary.Controllers
             if (asset == null)
                 return RedirectToAction("NotFound", "Error");
 
+            var patrons = this._userManager.Users.Select(result => new PatronLibraryCardVM(){
+                PatronId = result.Id,
+                PatronFullname = result.PersonalDetails.Firstname + " " + result.PersonalDetails.Lastname,
+                LibraryCardId = result.LibraryCard.Id
+            });
+
             var model = new CheckoutVM()
             {
-                AssetId = asset.Id
+                AssetId = asset.Id,
+                Title = asset.Title,
+                Patrons = patrons,
+                AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(asset.Id)
             };
 
             return View(model);
