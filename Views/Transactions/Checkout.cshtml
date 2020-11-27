@@ -3,9 +3,29 @@
     ViewBag.Title = "Checkout Asset";
 }
 
-@foreach (var patron in Model.Patrons)
-{
-    <h2>@patron.PatronId</h2>
-    <h2>@patron.PatronFullname</h2>
-    <h2>@patron.LibraryCardId</h2>
-}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h4>@Model.Title</h4>
+            <h5>@Model.AuthorOrDirector</h5>
+            <img src="~/Covers/@Model.AssetCover" alt="@Model.Title" style="width: 100%;">
+        </div>
+        <div class="col-md-4">
+            <form method="post">
+                <div class="form-group">
+                    <label>Checkout for</label>
+                    <select class="form-control select2bs4" style="width: 100%;">
+                        <option value="0">Select Patron</option>
+                        @foreach (var patron in Model.Patrons)
+                        {
+                            <option value="@patron.LibraryCardId">@patron.PatronFullname</option>
+                        }
+                        </select>
+                    </div>
+                    <input type="hidden" asp-for="@Model.PatronId">
+                    <input type="hidden" asp-for="@Model.LibraryCardId">
+                    <button class="btn btn-primary float-right" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>

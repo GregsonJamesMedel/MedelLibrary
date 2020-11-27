@@ -30,9 +30,10 @@ namespace MedelLibrary.Controllers
             if (asset == null)
                 return RedirectToAction("NotFound", "Error");
 
-            var patrons = this._userManager.Users.Select(result => new PatronLibraryCardVM(){
+            var patrons = this._userManager.Users.Select(result => new PatronLibraryCardVM()
+            {
                 PatronId = result.Id,
-                PatronFullname = result.PersonalDetails.Firstname + " " + result.PersonalDetails.Lastname,
+                PatronFullname = result.PersonalDetails.Lastname + " " + result.PersonalDetails.Firstname,
                 LibraryCardId = result.LibraryCard.Id
             });
 
@@ -40,6 +41,7 @@ namespace MedelLibrary.Controllers
             {
                 AssetId = asset.Id,
                 Title = asset.Title,
+                AssetCover = asset.ImageUrl,
                 Patrons = patrons,
                 AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(asset.Id)
             };
