@@ -12,7 +12,6 @@ namespace MedelLibrary.Controllers
         private readonly UserManager<Patron> _userManager;
         private readonly SignInManager<Patron> _signInManager;
         private readonly IPersonalDetails _personalDetails;
-
         private readonly ITransaction _transactions;
 
         public AccountController(UserManager<Patron> userManager,
