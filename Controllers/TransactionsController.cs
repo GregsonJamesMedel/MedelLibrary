@@ -53,7 +53,10 @@ namespace MedelLibrary.Controllers
                 var result = this._transactions.AddCheckout(checkout);
 
                 if(result)
+                {
+                    this._transactions.UpdateStatus(asset.Id,"Checked out");
                     return RedirectToAction("AssetCatalog","Asset");
+                }
             }
 
             return View(model);
