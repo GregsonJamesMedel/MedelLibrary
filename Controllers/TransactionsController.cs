@@ -25,7 +25,15 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Checkout(int id) => View(BuildCheckoutVM(id));
+        public IActionResult Checkout(int id) 
+        {
+            var model = BuildCheckoutVM(id);
+
+            if(model == null)
+                return RedirectToAction("NotFound","Error");
+            
+            return View(model);
+        }
 
         [HttpPost]
         public IActionResult Checkout(CheckoutVM model)
@@ -67,7 +75,7 @@ namespace MedelLibrary.Controllers
             var asset = this._libraryAsset.GetAsset(assetId);
 
             if (asset == null)
-                RedirectToAction("NotFound", "Error");
+                return null;
 
             var patrons = GetPatronsWithLibraryCard();
 
