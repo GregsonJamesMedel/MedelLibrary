@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using MedelLibrary.Models;
 using MedelLibrary.Services;
@@ -23,19 +24,29 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Checkout(int id)
+        public IActionResult Checkout(int id) => View(BuildCheckoutVM(id));
+
+        [HttpPost]
+        public IActionResult Checkout(CheckoutVM model)
         {
-            var asset = this._libraryAsset.GetAsset(id);
+            model.Patrons = GetPatronsWithLibraryCard();
+
+            if (model.LibraryCardId == 0)
+            {
+                ModelState.AddModelError("", "Please select a Patron");
+            }
+
+            return View(model);
+        }
+
+        private CheckoutVM BuildCheckoutVM(int assetId)
+        {
+            var asset = this._libraryAsset.GetAsset(assetId);
 
             if (asset == null)
-                return RedirectToAction("NotFound", "Error");
+                RedirectToAction("NotFound", "Error");
 
-            var patrons = this._userManager.Users.Select(result => new PatronLibraryCardVM()
-            {
-                PatronId = result.Id,
-                PatronFullname = result.PersonalDetails.Lastname + " " + result.PersonalDetails.Firstname,
-                LibraryCardId = result.LibraryCard.Id
-            });
+            var patrons = GetPatronsWithLibraryCard();
 
             var model = new CheckoutVM()
             {
@@ -46,7 +57,17 @@ namespace MedelLibrary.Controllers
                 AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(asset.Id)
             };
 
-            return View(model);
+            return model;
+        }
+
+        private IEnumerable<PatronLibraryCardVM> GetPatronsWithLibraryCard()
+        {
+            return this._userManager.Users.Select(result => new PatronLibraryCardVM()
+            {
+                PatronId = result.Id,
+                PatronFullname = result.PersonalDetails.Lastname + " " + result.PersonalDetails.Firstname,
+                LibraryCardId = result.LibraryCard.Id
+            });
         }
     }
 }

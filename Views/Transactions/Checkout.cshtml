@@ -12,9 +12,10 @@
         </div>
         <div class="col-md-4">
             <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label>Checkout for</label>
-                    <select class="form-control select2bs4" style="width: 100%;">
+                    <select asp-for="@Model.LibraryCardId" class="form-control select2bs4" style="width: 100%;">
                         <option value="0">Select Patron</option>
                         @foreach (var patron in Model.Patrons)
                         {
@@ -24,6 +25,9 @@
                     </div>
                     <input type="hidden" asp-for="@Model.PatronId">
                     <input type="hidden" asp-for="@Model.LibraryCardId">
+                    <input type="hidden" asp-for="@Model.Title">
+                    <input type="hidden" asp-for="@Model.AuthorOrDirector">
+                    <input type="hidden" asp-for="@Model.AssetCover">
                     <button class="btn btn-primary float-right" type="submit">Submit</button>
                 </form>
             </div>
