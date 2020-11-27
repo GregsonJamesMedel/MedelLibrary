@@ -35,6 +35,12 @@ namespace MedelLibrary.Controllers
             {
                 ModelState.AddModelError("", "Please select a Patron");
             }
+            
+            if(ModelState.IsValid)
+            {
+                var asset = this._libraryAsset.GetAsset(model.AssetId);
+                
+            }
 
             return View(model);
         }

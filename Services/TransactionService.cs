@@ -31,5 +31,10 @@ namespace MedelLibrary.Services
             this._context.SaveChanges();
             return libraryCard;
         }
+
+        public LibraryCard GetLibraryCardById(int id)
+        {
+            return this._context.LibraryCards.Find(id);
+        }
     }
 }
