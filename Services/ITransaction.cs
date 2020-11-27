@@ -4,6 +4,7 @@ namespace MedelLibrary.Services
 {
     public interface ITransaction
     {
-        LibraryCard CreateLibraryCard(); 
+        LibraryCard CreateLibraryCard();
+        bool AddCheckout(Checkout checkout); 
     }
 }

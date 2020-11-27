@@ -13,6 +13,13 @@ namespace MedelLibrary.Services
             this._context = context;
         }
 
+        public bool AddCheckout(Checkout checkout)
+        {
+            this._context.Checkouts.Add(checkout);
+            var result = this._context.SaveChanges();
+            return result > 0 ? true : false;
+        }
+
         public LibraryCard CreateLibraryCard()
         {
             var libraryCard = new LibraryCard()
