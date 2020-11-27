@@ -6,6 +6,7 @@ namespace MedelLibrary.Services
     {
         LibraryCard CreateLibraryCard();
         LibraryCard GetLibraryCardById(int id);
-        bool AddCheckout(Checkout checkout); 
+        bool AddCheckout(Checkout checkout);
+        bool UpdateStatus(int id,string status); 
     }
 }

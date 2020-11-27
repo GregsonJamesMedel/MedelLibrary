@@ -36,5 +36,14 @@ namespace MedelLibrary.Services
         {
             return this._context.LibraryCards.Find(id);
         }
+
+        public bool UpdateStatus(int id, string status)
+        {
+            var asset = this._context.LibraryAssets.Find(id);
+            asset.Status = status;
+            var result = this._context.SaveChanges();
+
+            return result > 0 ? true : false;
+        }
     }
 }
