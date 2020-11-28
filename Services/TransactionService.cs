@@ -33,6 +33,7 @@ namespace MedelLibrary.Services
             if(result > 0)
             {
                 AddCheckoutHistory(checkout);
+                UpdateStatus(AssetId, "Checked out");
                 return true;
             }
 
