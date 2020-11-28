@@ -41,9 +41,7 @@ namespace MedelLibrary.Controllers
             model.Patrons = GetPatronsWithLibraryCard();
 
             if (model.LibraryCardId == 0)
-            {
                 ModelState.AddModelError("", "Please select a Patron");
-            }
             
             if(ModelState.IsValid)
             {
@@ -99,6 +97,12 @@ namespace MedelLibrary.Controllers
                 PatronFullname = result.PersonalDetails.Lastname + " " + result.PersonalDetails.Firstname,
                 LibraryCardId = result.LibraryCard.Id
             });
+        }
+
+        public IActionResult CheckoutList()
+        {
+            
+            return View();
         }
     }
 }
