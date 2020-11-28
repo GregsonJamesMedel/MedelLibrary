@@ -10,8 +10,8 @@ namespace MedelLibrary.Models
         public LibraryAsset LibraryAsset { get; set; }
         [Required]
         public LibraryCard LibraryCard { get; set; }
-        [Required]
         public DateTime? Checkin { get; set; }
+        [Required]
         public DateTime Checkout { get; set; }
     }
 }

@@ -99,7 +99,7 @@ namespace MedelLibrary.Controllers
                     AssetType = this._libraryAsset.GetType(result.LibraryAsset.Id),
                     LibraryCardId = result.LibraryCard.Id,
                     Since = result.Since,
-                    Until = result.Untill
+                    Until = result.Until
                 });
 
             return View(model);

@@ -25,11 +25,32 @@ namespace MedelLibrary.Services
                     LibraryAsset = asset,
                     LibraryCard = libraryCard,
                     Since = DateTime.Now,
-                    Untill = DateTime.Now.AddDays(5)
+                    Until = DateTime.Now.AddDays(5)
                 };
 
             this._context.Checkouts.Add(checkout);
             var result = this._context.SaveChanges();
+            if(result > 0)
+            {
+                AddCheckoutHistory(checkout);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool AddCheckoutHistory(Checkout checkout)
+        {
+            var checkOutHistory = new CheckoutHistory()
+            {
+                LibraryAsset = checkout.LibraryAsset,
+                LibraryCard = checkout.LibraryCard,
+                Checkout = checkout.Since
+            };
+
+            this._context.CheckoutHistories.Add(checkOutHistory);
+            var result = this._context.SaveChanges();
+            
             return result > 0 ? true : false;
         }
 
