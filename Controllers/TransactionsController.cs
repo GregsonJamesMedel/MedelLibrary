@@ -45,22 +45,11 @@ namespace MedelLibrary.Controllers
 
             if (ModelState.IsValid)
             {
-                var asset = this._libraryAsset.GetAsset(model.AssetId);
-                var libraryCard = this._transactions.GetLibraryCardById(model.LibraryCardId);
-
-                var checkout = new Checkout()
-                {
-                    LibraryAsset = asset,
-                    LibraryCard = libraryCard,
-                    Since = DateTime.Now,
-                    Untill = DateTime.Now.AddDays(7)
-                };
-
-                var result = this._transactions.AddCheckout(checkout);
+                var result = this._transactions.AddCheckout(model.AssetId,model.LibraryCardId);
 
                 if (result)
                 {
-                    this._transactions.UpdateStatus(asset.Id, "Checked out");
+                    this._transactions.UpdateStatus(model.AssetId, "Checked out");
                     return RedirectToAction("AssetCatalog", "Asset");
                 }
             }
@@ -102,16 +91,16 @@ namespace MedelLibrary.Controllers
         public IActionResult CheckoutList()
         {
             var model = this._transactions.GetAllCheckouts()
-            .Select(result => new CheckoutListVM()
-            {
-                CheckoutId = result.Id,
-                AssetTitle = result.LibraryAsset.Title,
-                AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(result.LibraryAsset.Id),
-                AssetType = this._libraryAsset.GetType(result.LibraryAsset.Id),
-                LibraryCardId = result.LibraryCard.Id,
-                Since = result.Since,
-                Until = result.Untill
-            });
+                .Select(result => new CheckoutListVM()
+                {
+                    CheckoutId = result.Id,
+                    AssetTitle = result.LibraryAsset.Title,
+                    AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(result.LibraryAsset.Id),
+                    AssetType = this._libraryAsset.GetType(result.LibraryAsset.Id),
+                    LibraryCardId = result.LibraryCard.Id,
+                    Since = result.Since,
+                    Until = result.Untill
+                });
 
             return View(model);
         }

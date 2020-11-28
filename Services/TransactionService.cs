@@ -15,8 +15,19 @@ namespace MedelLibrary.Services
             this._context = context;
         }
 
-        public bool AddCheckout(Checkout checkout)
+        public bool AddCheckout(int AssetId, int LibraryCardId)
         {
+            var asset = this._context.LibraryAssets.Find(AssetId);
+            var libraryCard = GetLibraryCardById(LibraryCardId);
+
+            var checkout = new Checkout()
+                {
+                    LibraryAsset = asset,
+                    LibraryCard = libraryCard,
+                    Since = DateTime.Now,
+                    Untill = DateTime.Now.AddDays(5)
+                };
+
             this._context.Checkouts.Add(checkout);
             var result = this._context.SaveChanges();
             return result > 0 ? true : false;
@@ -28,7 +39,7 @@ namespace MedelLibrary.Services
             {
                 Created = DateTime.Now
             };
-            
+
             this._context.LibraryCards.Add(libraryCard);
             this._context.SaveChanges();
             return libraryCard;
