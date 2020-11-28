@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MedelLibrary.Models;
 
 namespace MedelLibrary.Services
@@ -8,5 +9,6 @@ namespace MedelLibrary.Services
         LibraryCard GetLibraryCardById(int id);
         bool AddCheckout(Checkout checkout);
         bool UpdateStatus(int id,string status); 
+        IEnumerable<Checkout> GetAllCheckouts();
     }
 }

@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using MedelLibrary.Data;
 using MedelLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedelLibrary.Services
 {
@@ -30,6 +32,11 @@ namespace MedelLibrary.Services
             this._context.LibraryCards.Add(libraryCard);
             this._context.SaveChanges();
             return libraryCard;
+        }
+
+        public IEnumerable<Checkout> GetAllCheckouts()
+        {
+            return this._context.Checkouts.Include(a => a.LibraryAsset).Include(c => c.LibraryCard);
         }
 
         public LibraryCard GetLibraryCardById(int id)
