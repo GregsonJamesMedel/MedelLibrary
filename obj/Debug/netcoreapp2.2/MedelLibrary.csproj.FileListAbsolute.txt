@@ -47,3 +47,4 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Patrons.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Error/NotFound.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/Checkout.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/CheckoutList.g.cshtml.cs

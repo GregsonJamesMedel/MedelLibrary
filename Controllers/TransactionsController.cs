@@ -25,13 +25,13 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Checkout(int id) 
+        public IActionResult Checkout(int id)
         {
             var model = BuildCheckoutVM(id);
 
-            if(model == null)
-                return RedirectToAction("NotFound","Error");
-            
+            if (model == null)
+                return RedirectToAction("NotFound", "Error");
+
             return View(model);
         }
 
@@ -42,8 +42,8 @@ namespace MedelLibrary.Controllers
 
             if (model.LibraryCardId == 0)
                 ModelState.AddModelError("", "Please select a Patron");
-            
-            if(ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 var asset = this._libraryAsset.GetAsset(model.AssetId);
                 var libraryCard = this._transactions.GetLibraryCardById(model.LibraryCardId);
@@ -58,10 +58,10 @@ namespace MedelLibrary.Controllers
 
                 var result = this._transactions.AddCheckout(checkout);
 
-                if(result)
+                if (result)
                 {
-                    this._transactions.UpdateStatus(asset.Id,"Checked out");
-                    return RedirectToAction("AssetCatalog","Asset");
+                    this._transactions.UpdateStatus(asset.Id, "Checked out");
+                    return RedirectToAction("AssetCatalog", "Asset");
                 }
             }
 
@@ -101,8 +101,19 @@ namespace MedelLibrary.Controllers
 
         public IActionResult CheckoutList()
         {
-            
-            return View();
+            var model = this._transactions.GetAllCheckouts()
+            .Select(result => new CheckoutListVM()
+            {
+                CheckoutId = result.Id,
+                AssetTitle = result.LibraryAsset.Title,
+                AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(result.LibraryAsset.Id),
+                AssetType = this._libraryAsset.GetType(result.LibraryAsset.Id),
+                LibraryCardId = result.LibraryCard.Id,
+                Since = result.Since,
+                Until = result.Untill
+            });
+
+            return View(model);
         }
     }
 }

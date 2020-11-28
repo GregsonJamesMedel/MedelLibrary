@@ -1877,6 +1877,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/CheckoutList.cshtml",
+      "TargetPath": "Views\\Transactions\\CheckoutList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/AssetCatalog.cshtml",
       "TargetPath": "Views\\Asset\\AssetCatalog.cshtml",
       "FileKind": "mvc"

@@ -1,0 +1,33 @@
+@model IEnumerable<MedelLibrary.ViewModels.CheckoutListVM>
+@{
+    ViewBag.Title = "Checkout List";
+}
+
+<div class="col-md-12">
+    <table class="table table-hover table-striped">
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author/Director</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Until</th>
+            <th>Library Card Id</th>
+
+        </thead>
+        <tbody>
+            @foreach (var checkout in Model)
+            {
+                <tr>
+                    <td>@checkout.CheckoutId</td>
+                    <td>@checkout.AssetTitle</td>
+                    <td>@checkout.AuthorOrDirector</td>
+                    <td>@checkout.AssetType</td>
+                    <td>@checkout.Since</td>
+                    <td>@checkout.Since</td>
+                    <td>@checkout.LibraryCardId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
