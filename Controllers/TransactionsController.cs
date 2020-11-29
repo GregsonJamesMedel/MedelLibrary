@@ -70,13 +70,14 @@ namespace MedelLibrary.Controllers
 
                 if (result)
                     return RedirectToAction("Details", "Asset", new { id = model.AssetId });
-                
+
                 ModelState.AddModelError("", "Please select the Patron who checked out this asset");
-                
+
             }
             return View("Check", model);
         }
 
+        [HttpGet]
         public IActionResult CheckoutList()
         {
             var model = this._transactions.GetAllCheckouts()
@@ -92,6 +93,13 @@ namespace MedelLibrary.Controllers
                 });
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult MarkLost(int id)
+        {
+            this._transactions.UpdateStatus(id, "Lost");
+            return RedirectToAction("Details", "Asset", new { id = id });
         }
 
         private CheckVM BuildCheckVM(int assetId)
