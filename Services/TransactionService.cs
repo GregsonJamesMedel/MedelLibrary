@@ -29,12 +29,12 @@ namespace MedelLibrary.Services
                 };
 
             this._context.Checkouts.Add(checkout);
-            var result = this._context.SaveChanges();
-            if(result > 0)
+            var result = this._context.SaveChanges() > 0 ? true : false;
+            if(result)
             {
-                AddCheckoutHistory(checkout);
-                UpdateStatus(AssetId, "Checked out");
-                return true;
+                result = AddCheckoutHistory(checkout);
+                result = UpdateStatus(AssetId, "Checked out");
+                return result;
             }
 
             return false;

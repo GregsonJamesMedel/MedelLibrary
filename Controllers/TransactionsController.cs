@@ -48,7 +48,7 @@ namespace MedelLibrary.Controllers
                 var result = this._transactions.AddCheckout(model.AssetId,model.LibraryCardId);
 
                 if (result)
-                    return RedirectToAction("AssetCatalog", "Asset");
+                    return RedirectToAction("Details", "Asset",new { id = model.AssetId });
                 
             }
 
