@@ -110,6 +110,8 @@ namespace MedelLibrary.Controllers
         [HttpPost]
         public IActionResult CheckIn(CheckVM model)
         {
+            model.Patrons = GetPatronsWithLibraryCard();
+            
             if (ModelState.IsValid)
             {
                 var result = this._transactions.AddCheckIn(model.AssetId, model.LibraryCardId);

@@ -21,6 +21,9 @@ namespace MedelLibrary.Services
             var checkOutHistory = this._context.CheckoutHistories
             .FirstOrDefault(c => c.LibraryAsset.Id == AssetId && c.LibraryCard.Id == LibraryCardId);
 
+            if(checkOutHistory == null)
+                return false;
+
             checkOutHistory.Checkin = DateTime.Now;
             this._context.CheckoutHistories.Update(checkOutHistory);
 
