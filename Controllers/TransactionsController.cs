@@ -96,9 +96,21 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpPost]
-        public IActionResult MarkLost(int id)
+        public IActionResult Mark(int id)
         {
-            this._transactions.UpdateStatus(id, "Lost");
+            var asset = this._libraryAsset.GetAsset(id);
+
+            if (asset != null)
+            {
+                if (asset.Status == "Lost")
+                {
+                    this._transactions.UpdateStatus(asset.Id, "Available");
+                    return RedirectToAction("Details", "Asset", new { id = id });
+                }
+
+                this._transactions.UpdateStatus(asset.Id, "Lost");
+            }
+
             return RedirectToAction("Details", "Asset", new { id = id });
         }
 

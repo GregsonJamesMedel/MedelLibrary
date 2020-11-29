@@ -32,19 +32,22 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-group mb-1">
-                        @if (Model.Status == "Checked out")
+                        @if(Model.Status != "Lost")
                         {
-                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckIn"
-                                asp-route-id="@Model.Id">
-                                Check in
-                            </a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckOut"
-                                asp-route-id="@Model.Id">
-                                Check out
-                            </a>
+                            @if (Model.Status == "Checked out")
+                            {
+                                <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckIn"
+                                    asp-route-id="@Model.Id">
+                                    Check in
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckOut"
+                                    asp-route-id="@Model.Id">
+                                    Check out
+                                </a>
+                            }
                         }
                             <button class="btn btn-primary mr-1">Hold</button>
                         
@@ -62,11 +65,21 @@
                                 data-target="#DeleteModal">Delete</button>
                             <a asp-controller="Asset" asp-action="EditCover" asp-route-id="@Model.Id"
                                 class="btn btn-primary mr-1">Edit Cover</a>
-
-                            <form asp-controller="Transactions" asp-action="MarkLost" asp-route-id="@Model.Id"
+                        
+                            <form asp-controller="Transactions" asp-action="Mark" asp-route-id="@Model.Id"
                                 method="post">
-                                <button class="btn btn-primary" type="submit">Mark Lost</button>
+                                
+                                @if(Model.Status == "Lost")
+                                {
+                                    <button class="btn btn-primary" type="submit">Mark Found</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-primary" type="submit">Mark Lost</button>
+                                }
+                          
                             </form>
+                           
                         </div>
                     </div>
                 </div>
