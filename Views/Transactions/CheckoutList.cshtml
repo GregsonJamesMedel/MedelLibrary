@@ -23,8 +23,8 @@
                     <td>@checkout.AssetTitle</td>
                     <td>@checkout.AuthorOrDirector</td>
                     <td>@checkout.AssetType</td>
-                    <td>@checkout.Since</td>
-                    <td>@checkout.Until</td>
+                    <td>@String.Format("{0:MMMM d, yyyy}",checkout.Since)</td>
+                    <td>@String.Format("{0:MMMM d, yyyy}",checkout.Until)</td>
                     <td>@checkout.LibraryCardId</td>
                 </tr>
             }

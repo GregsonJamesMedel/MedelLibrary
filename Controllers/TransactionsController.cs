@@ -71,7 +71,8 @@ namespace MedelLibrary.Controllers
                 if (result)
                     return RedirectToAction("Details", "Asset", new { id = model.AssetId });
                 
-                ModelState.AddModelError("","Please select the Patron who checked out this book");
+                ModelState.AddModelError("", "Please select the Patron who checked out this asset");
+                
             }
             return View("Check", model);
         }

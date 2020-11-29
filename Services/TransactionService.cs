@@ -19,7 +19,7 @@ namespace MedelLibrary.Services
         public bool AddCheckIn(int AssetId, int LibraryCardId)
         {
             var checkOutHistory = this._context.CheckoutHistories
-            .FirstOrDefault(c => c.LibraryAsset.Id == AssetId && c.LibraryCard.Id == LibraryCardId);
+            .FirstOrDefault(c => c.LibraryAsset.Id == AssetId && c.LibraryCard.Id == LibraryCardId && c.Checkin == null);
 
             if(checkOutHistory == null)
                 return false;
