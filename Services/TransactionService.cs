@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MedelLibrary.Data;
 using MedelLibrary.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace MedelLibrary.Services
 {
@@ -15,22 +16,38 @@ namespace MedelLibrary.Services
             this._context = context;
         }
 
+        public bool AddCheckIn(int AssetId, int LibraryCardId)
+        {
+            var checkOutHistory = this._context.CheckoutHistories
+            .FirstOrDefault(c => c.LibraryAsset.Id == AssetId && c.LibraryCard.Id == LibraryCardId);
+
+            checkOutHistory.Checkin = DateTime.Now;
+            this._context.CheckoutHistories.Update(checkOutHistory);
+
+            var result = this._context.SaveChanges() > 0 ? true : false;
+
+            if (result)
+                UpdateStatus(AssetId, "Available");
+
+            return result;
+        }
+
         public bool AddCheckout(int AssetId, int LibraryCardId)
         {
             var asset = this._context.LibraryAssets.Find(AssetId);
             var libraryCard = GetLibraryCardById(LibraryCardId);
 
             var checkout = new Checkout()
-                {
-                    LibraryAsset = asset,
-                    LibraryCard = libraryCard,
-                    Since = DateTime.Now,
-                    Until = DateTime.Now.AddDays(5)
-                };
+            {
+                LibraryAsset = asset,
+                LibraryCard = libraryCard,
+                Since = DateTime.Now,
+                Until = DateTime.Now.AddDays(5)
+            };
 
             this._context.Checkouts.Add(checkout);
             var result = this._context.SaveChanges() > 0 ? true : false;
-            if(result)
+            if (result)
             {
                 result = AddCheckoutHistory(checkout);
                 result = UpdateStatus(AssetId, "Checked out");
@@ -51,7 +68,7 @@ namespace MedelLibrary.Services
 
             this._context.CheckoutHistories.Add(checkOutHistory);
             var result = this._context.SaveChanges();
-            
+
             return result > 0 ? true : false;
         }
 
