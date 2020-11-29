@@ -27,16 +27,11 @@ namespace MedelLibrary.Controllers
         [HttpGet]
         public IActionResult Checkout(int id)
         {
-            var model = BuildCheckoutVM(id);
-
-            if (model == null)
-                return RedirectToAction("NotFound", "Error");
-
-            return View(model);
+            return BuildCheckGetRequest(id);
         }
 
         [HttpPost]
-        public IActionResult Checkout(CheckoutVM model)
+        public IActionResult Checkout(CheckVM model)
         {
             model.Patrons = GetPatronsWithLibraryCard();
 
@@ -45,17 +40,17 @@ namespace MedelLibrary.Controllers
 
             if (ModelState.IsValid)
             {
-                var result = this._transactions.AddCheckout(model.AssetId,model.LibraryCardId);
+                var result = this._transactions.AddCheckout(model.AssetId, model.LibraryCardId);
 
                 if (result)
-                    return RedirectToAction("Details", "Asset",new { id = model.AssetId });
-                
+                    return RedirectToAction("Details", "Asset", new { id = model.AssetId });
+
             }
 
-            return View(model);
+            return View("Check", model);
         }
 
-        private CheckoutVM BuildCheckoutVM(int assetId)
+        private CheckVM BuildCheckVM(int assetId)
         {
             var asset = this._libraryAsset.GetAsset(assetId);
 
@@ -64,7 +59,7 @@ namespace MedelLibrary.Controllers
 
             var patrons = GetPatronsWithLibraryCard();
 
-            var model = new CheckoutVM()
+            var model = new CheckVM()
             {
                 AssetId = asset.Id,
                 Title = asset.Title,
@@ -101,6 +96,21 @@ namespace MedelLibrary.Controllers
                 });
 
             return View(model);
+        }
+
+        public IActionResult CheckIn(int id)
+        {
+            return BuildCheckGetRequest(id);
+        }
+
+        private IActionResult BuildCheckGetRequest(int id)
+        {
+            var model = BuildCheckVM(id);
+
+            if (model == null)
+                return RedirectToAction("NotFound", "Error");
+
+            return View("Check", model);
         }
     }
 }

@@ -32,7 +32,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-group">
-                        <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="Checkout" asp-route-id="@Model.Id">Check out</a>
+                        @if(Model.Status == "Checked out")
+                        {
+                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="Checkin" asp-route-id="@Model.Id">
+                                Check in
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="Checkout" asp-route-id="@Model.Id">
+                                Check out
+                            </a>
+                        }
                         <button class="btn btn-primary mr-1">Hold</button>
                         @if (Model.Type == "Book")
                         {
