@@ -1,6 +1,13 @@
 @model MedelLibrary.ViewModels.CheckVM
 @{
-    ViewBag.Title = "Checkout Asset";
+    if(ViewBag.Action == "CheckOut")
+    {
+        ViewBag.Title = "CheckOut Asset";
+    }
+    else
+    {
+        ViewBag.Title = "CheckIn Asset";
+    }
 }
 
 <div class="jumbotron">
@@ -11,7 +18,7 @@
             <img src="~/Covers/@Model.AssetCover" alt="@Model.Title" style="width: 100%;">
         </div>
         <div class="col-md-4">
-            <form method="post">
+            <form asp-action="@ViewBag.Action" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label>Checkout for</label>

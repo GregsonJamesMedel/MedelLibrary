@@ -25,13 +25,14 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Checkout(int id)
+        public IActionResult CheckOut(int id)
         {
+            ViewBag.Action = "CheckOut";
             return BuildCheckGetRequest(id);
         }
 
         [HttpPost]
-        public IActionResult Checkout(CheckVM model)
+        public IActionResult CheckOut(CheckVM model)
         {
             model.Patrons = GetPatronsWithLibraryCard();
 
@@ -98,9 +99,25 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult CheckIn(int id)
         {
+            ViewBag.Action = "CheckIn";
+
             return BuildCheckGetRequest(id);
+        }
+
+        [HttpPost]
+        public IActionResult CheckIn(CheckVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = this._transactions.AddCheckIn(model.AssetId, model.LibraryCardId);
+
+                if (result)
+                    return RedirectToAction("Details", "Asset", new { id = model.AssetId });
+            }
+            return View("Check", model);
         }
 
         private IActionResult BuildCheckGetRequest(int id)

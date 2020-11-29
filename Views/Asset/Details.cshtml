@@ -34,13 +34,13 @@
                     <div class="btn-group">
                         @if(Model.Status == "Checked out")
                         {
-                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="Checkin" asp-route-id="@Model.Id">
+                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckIn" asp-route-id="@Model.Id">
                                 Check in
                             </a>
                         }
                         else
                         {
-                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="Checkout" asp-route-id="@Model.Id">
+                            <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckOut" asp-route-id="@Model.Id">
                                 Check out
                             </a>
                         }
