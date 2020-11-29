@@ -51,6 +51,48 @@ namespace MedelLibrary.Controllers
             return View("Check", model);
         }
 
+        [HttpGet]
+        public IActionResult CheckIn(int id)
+        {
+            ViewBag.Action = "CheckIn";
+
+            return BuildCheckGetRequest(id);
+        }
+
+        [HttpPost]
+        public IActionResult CheckIn(CheckVM model)
+        {
+            model.Patrons = GetPatronsWithLibraryCard();
+
+            if (ModelState.IsValid)
+            {
+                var result = this._transactions.AddCheckIn(model.AssetId, model.LibraryCardId);
+
+                if (result)
+                    return RedirectToAction("Details", "Asset", new { id = model.AssetId });
+                
+                ModelState.AddModelError("","Please select the Patron who checked out this book");
+            }
+            return View("Check", model);
+        }
+
+        public IActionResult CheckoutList()
+        {
+            var model = this._transactions.GetAllCheckouts()
+                .Select(result => new CheckoutListVM()
+                {
+                    CheckoutId = result.Id,
+                    AssetTitle = result.LibraryAsset.Title,
+                    AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(result.LibraryAsset.Id),
+                    AssetType = this._libraryAsset.GetType(result.LibraryAsset.Id),
+                    LibraryCardId = result.LibraryCard.Id,
+                    Since = result.Since,
+                    Until = result.Until
+                });
+
+            return View(model);
+        }
+
         private CheckVM BuildCheckVM(int assetId)
         {
             var asset = this._libraryAsset.GetAsset(assetId);
@@ -80,46 +122,6 @@ namespace MedelLibrary.Controllers
                 PatronFullname = result.PersonalDetails.Lastname + " " + result.PersonalDetails.Firstname,
                 LibraryCardId = result.LibraryCard.Id
             });
-        }
-
-        public IActionResult CheckoutList()
-        {
-            var model = this._transactions.GetAllCheckouts()
-                .Select(result => new CheckoutListVM()
-                {
-                    CheckoutId = result.Id,
-                    AssetTitle = result.LibraryAsset.Title,
-                    AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(result.LibraryAsset.Id),
-                    AssetType = this._libraryAsset.GetType(result.LibraryAsset.Id),
-                    LibraryCardId = result.LibraryCard.Id,
-                    Since = result.Since,
-                    Until = result.Until
-                });
-
-            return View(model);
-        }
-
-        [HttpGet]
-        public IActionResult CheckIn(int id)
-        {
-            ViewBag.Action = "CheckIn";
-
-            return BuildCheckGetRequest(id);
-        }
-
-        [HttpPost]
-        public IActionResult CheckIn(CheckVM model)
-        {
-            model.Patrons = GetPatronsWithLibraryCard();
-            
-            if (ModelState.IsValid)
-            {
-                var result = this._transactions.AddCheckIn(model.AssetId, model.LibraryCardId);
-
-                if (result)
-                    return RedirectToAction("Details", "Asset", new { id = model.AssetId });
-            }
-            return View("Check", model);
         }
 
         private IActionResult BuildCheckGetRequest(int id)
