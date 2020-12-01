@@ -3,7 +3,13 @@
     ViewBag.Title = Model.Title;
 }
 
-<div class="jumbotron">
+<style>
+    .bold{
+        font-weight: bold;
+    }
+</style>
+
+<div class="jumbotron p-4">
     <div class="row">
         <div class="col-md-4">
             <img src="~/Covers/@Model.ImageUrl" alt="@Model.Title" style="width: 100%;" asp-append-version="true">
@@ -13,21 +19,21 @@
             @{
                 if (Model.Type == "Book")
                 {
-                    <p>Author: @Model.AuthorOrDirector</p>
+                    <p class="mb-0"><span class="bold">Author:</span> @Model.AuthorOrDirector</p>
                 }
                 else
                 {
-                    <p>Director: @Model.AuthorOrDirector</p>
+                    <p class="mb-0"><span class="bold">Director:</span> @Model.AuthorOrDirector</p>
                 }
             }
-            <p>Year: @Model.Year</p>
-            <p>Copies: @Model.NumberOfCopies</p>
-            <p>Cost: @Model.Cost.ToString("0.##")</p>
-            <p>Location: @Model.Shelf</p>
-            <p>Condition: @Model.Condition</p>
-            <p>Status: @Model.Status</p>
-            <p>Type: @Model.Type</p>
-            <p>Category: @Model.Category.Name</p>
+            <p class="mb-0"><span class="bold">Year:</span> @Model.Year</p>
+            <p class="mb-0"><span class="bold">Copies:</span> @Model.NumberOfCopies</p>
+            <p class="mb-0"><span class="bold">Cost:</span> @Model.Cost.ToString("0.##")</p>
+            <p class="mb-0"><span class="bold">Location:</span> @Model.Shelf</p>
+            <p class="mb-0"><span class="bold">Condition:</span> @Model.Condition</p>
+            <p class="mb-0"><span class="bold">Status:</span> @Model.Status</p>
+            <p class="mb-0"><span class="bold">Type:</span> @Model.Type</p>
+            <p><span class="bold">Category:</span> @Model.Category.Name</p>
 
             <div class="row">
                 <div class="col-md-12">
