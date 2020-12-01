@@ -16,6 +16,34 @@
         <h1>@Model.Birthday</h1>
         <h1>@Model.Address</h1>
         <h1>@Model.LibraryCardId</h1>
-
     </div>
+</div>
+
+<div class="col-md-12">
+    <table class="table table-hover table-striped">
+        <thead>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author/Director</th>
+            <th>Type</th>
+            <th>Since</th>
+            <th>Until</th>
+            <th>Library Card Id</th>
+
+        </thead>
+        <tbody>
+            @foreach (var checkout in Model.Checkouts)
+            {
+                <tr>
+                    <td>@checkout.Id</td>
+                    <td>@checkout.Title</td>
+                    <td>@checkout.AuthorOrDirector</td>
+                    <td>@checkout.Type</td>
+                    <td>@String.Format("{0:MMMM d, yyyy}",checkout.Checkout)</td>
+                    <td>@String.Format("{0:MMMM d, yyyy}",checkout.Checkin)</td>
+                    <td>@checkout.LibraryCardId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

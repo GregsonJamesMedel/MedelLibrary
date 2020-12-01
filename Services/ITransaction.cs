@@ -12,5 +12,6 @@ namespace MedelLibrary.Services
         bool AddCheckoutHistory(Checkout checkout);
         bool UpdateStatus(int id,string status); 
         IEnumerable<Checkout> GetAllCheckouts();
+        IEnumerable<CheckoutHistory> GetAllCheckoutHistoryByLibraryCardId(int id);
     }
 }

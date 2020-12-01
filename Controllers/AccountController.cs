@@ -13,16 +13,19 @@ namespace MedelLibrary.Controllers
         private readonly SignInManager<Patron> _signInManager;
         private readonly IPersonalDetails _personalDetails;
         private readonly ITransaction _transactions;
+        private readonly ILibraryAsset _libraryAssets;
 
         public AccountController(UserManager<Patron> userManager,
                                 SignInManager<Patron> signInManager,
                                 IPersonalDetails personalDetails,
-                                ITransaction transactions)
+                                ITransaction transactions,
+                                ILibraryAsset libraryAssets)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._personalDetails = personalDetails;
             this._transactions = transactions;
+            this._libraryAssets = libraryAssets;
         }
 
         [HttpGet]
@@ -131,7 +134,19 @@ namespace MedelLibrary.Controllers
                 ImageUrl = res.PersonalDetails.ImageUrl,
                 LibraryCardId = res.LibraryCard.Id
             }).FirstOrDefault(p => p.Id == id);
-            
+
+            model.Checkouts = this._transactions
+            .GetAllCheckoutHistoryByLibraryCardId(model.LibraryCardId).Select(res => new CheckoutHistoryVM()
+            {
+                Id = res.Id,
+                AssetId = res.LibraryAsset.Id.ToString(),
+                Title = res.LibraryAsset.Title,
+                AuthorOrDirector = this._libraryAssets.GetAuthorOrDirector(res.LibraryAsset.Id),
+                Type = this._libraryAssets.GetType(res.LibraryAsset.Id),
+                LibraryCardId = res.LibraryCard.Id,
+                Checkin = res.Checkin,
+                Checkout = res.Checkout
+            });
             return View(model);
         }
 

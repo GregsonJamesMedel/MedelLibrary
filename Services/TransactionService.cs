@@ -87,6 +87,14 @@ namespace MedelLibrary.Services
             return libraryCard;
         }
 
+        public IEnumerable<CheckoutHistory> GetAllCheckoutHistoryByLibraryCardId(int id)
+        {
+            return this._context.CheckoutHistories
+                    .Include(X => X.LibraryAsset)
+                    .Include(X => X.LibraryCard)
+                    .Where(ch => ch.LibraryCard.Id == id);
+        }
+
         public IEnumerable<Checkout> GetAllCheckouts()
         {
             return this._context.Checkouts
