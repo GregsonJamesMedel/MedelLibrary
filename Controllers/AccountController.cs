@@ -132,6 +132,9 @@ namespace MedelLibrary.Controllers
                 Birthday = res.PersonalDetails.Birthday,
                 Address = res.PersonalDetails.Address,
                 ImageUrl = res.PersonalDetails.ImageUrl,
+                Email = res.Email,
+                CurrentFees = res.LibraryCard.Fees,
+                ContactNumber = res.PhoneNumber,
                 LibraryCardId = res.LibraryCard.Id
             }).FirstOrDefault(p => p.Id == id);
 

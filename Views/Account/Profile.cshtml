@@ -1,49 +1,54 @@
 @model MedelLibrary.ViewModels.ProfileVM
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = @Model.Firstname + " " + Model.Lastname;
 }
 
-<div class="jumbotron row">
-    <div col-md-3>
-        <img src="@Model.ImageUrl" alt="">
-    </div>
-    <div col-md-9>
-        <h1>@Model.Id</h1>
-        <h1>@Model.Firstname</h1>
-        <h1>@Model.Middlename</h1>
-        <h1>@Model.Lastname</h1>
-        <h1>@Model.Gender</h1>
-        <h1>@Model.Birthday</h1>
-        <h1>@Model.Address</h1>
-        <h1>@Model.LibraryCardId</h1>
+<div class="jumbotron p-4">
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/img/lalisa.jpg" style="width: 100%;">
+        </div>
+        <div class="col-md-10">
+            <h3>@Model.Firstname @Model.Middlename @Model.Lastname</h3>
+            <p class="mb-0"><span style="font-weight: bold;">Address:</span> @Model.Address</p>
+            <p class="mb-0"><span style="font-weight: bold;">Email:</span> @Model.Email</p>
+            <p class="mb-0"><span style="font-weight: bold;">Contact Number:</span> @Model.ContactNumber</p>
+            <p class="mb-0"><span style="font-weight: bold;">Gender:</span> @Model.Gender</p>
+            <p class="mb-0"><span style="font-weight: bold;">Birthday:</span> @Model.Birthday</p>
+            <p class="mb-0"><span style="font-weight: bold;">Current Fees:</span> @Model.CurrentFees</p>
+        </div>
     </div>
 </div>
 
-<div class="col-md-12">
-    <table class="table table-hover table-striped">
-        <thead>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Author/Director</th>
-            <th>Type</th>
-            <th>Since</th>
-            <th>Until</th>
-            <th>Library Card Id</th>
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="text-center">Checkout History</h3><hr>
+        <table class="table table-hover table-striped">
+            <thead>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Author/Director</th>
+                <th>Type</th>
+                <th>Checkout</th>
+                <th>Checkin</th>
+                <th>Library Card Id</th>
 
-        </thead>
-        <tbody>
-            @foreach (var checkout in Model.Checkouts)
-            {
-                <tr>
-                    <td>@checkout.Id</td>
-                    <td>@checkout.Title</td>
-                    <td>@checkout.AuthorOrDirector</td>
-                    <td>@checkout.Type</td>
-                    <td>@String.Format("{0:MMMM d, yyyy}",checkout.Checkout)</td>
-                    <td>@String.Format("{0:MMMM d, yyyy}",checkout.Checkin)</td>
-                    <td>@checkout.LibraryCardId</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var checkout in Model.Checkouts)
+                {
+                    <tr>
+                        <td>@checkout.Id</td>
+                        <td>@checkout.Title</td>
+                        <td>@checkout.AuthorOrDirector</td>
+                        <td>@checkout.Type</td>
+                        <td>@String.Format("{0:MMMM d, yyyy}",checkout.Checkout)</td>
+                        <td>@String.Format("{0:MMMM d, yyyy}",checkout.Checkin)</td>
+                        <td>@checkout.LibraryCardId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
