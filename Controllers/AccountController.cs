@@ -120,7 +120,19 @@ namespace MedelLibrary.Controllers
 
         public IActionResult Profile(string id)
         {
-            return View();
+            var model = this._userManager.Users.Select(res => new ProfileVM(){
+                Id = res.Id,
+                Firstname = res.PersonalDetails.Firstname,
+                Middlename = res.PersonalDetails.Middlename,
+                Lastname = res.PersonalDetails.Lastname,
+                Gender = res.PersonalDetails.Gender,
+                Birthday = res.PersonalDetails.Birthday,
+                Address = res.PersonalDetails.Address,
+                ImageUrl = res.PersonalDetails.ImageUrl,
+                LibraryCardId = res.LibraryCard.Id
+            }).FirstOrDefault(p => p.Id == id);
+            
+            return View(model);
         }
 
     }

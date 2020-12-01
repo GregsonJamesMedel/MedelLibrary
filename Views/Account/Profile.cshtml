@@ -1,12 +1,21 @@
+@model MedelLibrary.ViewModels.ProfileVM
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="jumbotron row">
     <div col-md-3>
-        <img src="" alt="">
+        <img src="@Model.ImageUrl" alt="">
     </div>
     <div col-md-9>
+        <h1>@Model.Id</h1>
+        <h1>@Model.Firstname</h1>
+        <h1>@Model.Middlename</h1>
+        <h1>@Model.Lastname</h1>
+        <h1>@Model.Gender</h1>
+        <h1>@Model.Birthday</h1>
+        <h1>@Model.Address</h1>
+        <h1>@Model.LibraryCardId</h1>
 
     </div>
 </div>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace MedelLibrary.ViewModels
 {
@@ -12,5 +13,7 @@ namespace MedelLibrary.ViewModels
         public DateTime Birthday { get; set; }
         public string Address { get; set; }
         public string ImageUrl { get; set; }
+        public int LibraryCardId { get; set; }
+        public IEnumerable<CheckoutHistoryVM> Checkouts { get; set; }
     }
 }
