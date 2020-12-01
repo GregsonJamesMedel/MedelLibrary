@@ -118,5 +118,10 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        public IActionResult Profile(string id)
+        {
+            return View();
+        }
+
     }
 }

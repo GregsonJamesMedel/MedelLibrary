@@ -89,7 +89,8 @@ namespace MedelLibrary.Services
 
         public IEnumerable<Checkout> GetAllCheckouts()
         {
-            return this._context.Checkouts.Include(a => a.LibraryAsset).Include(c => c.LibraryCard);
+            return this._context.Checkouts
+            .Include(a => a.LibraryAsset).Include(c => c.LibraryCard).OrderByDescending(a => a.Since);
         }
 
         public LibraryCard GetLibraryCardById(int id)
