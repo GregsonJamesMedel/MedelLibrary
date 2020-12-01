@@ -11,19 +11,16 @@ namespace MedelLibrary.Controllers
     {
         private readonly UserManager<Patron> _userManager;
         private readonly SignInManager<Patron> _signInManager;
-        private readonly IPersonalDetails _personalDetails;
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAssets;
 
         public AccountController(UserManager<Patron> userManager,
                                 SignInManager<Patron> signInManager,
-                                IPersonalDetails personalDetails,
                                 ITransaction transactions,
                                 ILibraryAsset libraryAssets)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
-            this._personalDetails = personalDetails;
             this._transactions = transactions;
             this._libraryAssets = libraryAssets;
         }
@@ -52,7 +49,7 @@ namespace MedelLibrary.Controllers
                     Email = model.Email,
                     PhoneNumber = model.ContactNumber,
                     LibraryCard = this._transactions.CreateLibraryCard(),
-                    PersonalDetails = this._personalDetails.AddPersonalDetails(pDetails)
+                    PersonalDetails = pDetails
                 };
 
                 var result = await this._userManager.CreateAsync(patron, model.Password);
