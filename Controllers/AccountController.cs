@@ -115,7 +115,22 @@ namespace MedelLibrary.Controllers
 
         public IActionResult Settings(string id)
         {
-            return View();
+            var patron = this._patronService.GetPatronById(id);
+            var pdetails = new SettingsPersonalDetailsVM(){
+                Id = patron.PersonalDetailsId,
+                Firstname = patron.Firstname,
+                Middlename = patron.Middlename,
+                Lastname = patron.Lastname,
+                Gender = patron.Gender,
+                Address = patron.Address,
+                Birthday = patron.Birthday,
+                ContactNumber = patron.PhoneNumber
+            };
+
+            var model = new SettingsVM(){
+                PersonalDetails = pdetails
+            };
+            return View(model);
         }
 
     }
