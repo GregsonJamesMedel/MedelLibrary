@@ -32,29 +32,30 @@ namespace MedelLibrary.Controllers
         {
             model.Categories = this._category.GetAllCategories();
 
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var category = this._category.GetCategoryById(model.Category);
-
-            var book = new Book()
+            if (ModelState.IsValid)
             {
-                ISBN = model.ISBN,
-                Title = model.Title,
-                Author = model.Author,
-                Year = model.Year,
-                Cost = model.Cost,
-                NumberOfCopies = model.NumberOfCopies,
-                Shelf = model.Shelf,
-                Category = category,
-                Condition = "New",
-                Status = "Checked in"
-            };
+                var category = this._category.GetCategoryById(model.Category);
 
-            var result = this._libraryAsset.AddLibraryAsset(book);
+                var book = new Book()
+                {
+                    ISBN = model.ISBN,
+                    Title = model.Title,
+                    Author = model.Author,
+                    Year = model.Year,
+                    Cost = model.Cost,
+                    NumberOfCopies = model.NumberOfCopies,
+                    Shelf = model.Shelf,
+                    Category = category,
+                    Condition = "New",
+                    Status = "Available"
+                };
 
-            if (result)
-                return RedirectToAction("AssetCatalog", "Asset");
+                var result = this._libraryAsset.AddLibraryAsset(book);
+
+                if (result)
+                    return RedirectToAction("AssetCatalog", "Asset");
+
+            }
 
             return View(model);
         }
@@ -64,8 +65,8 @@ namespace MedelLibrary.Controllers
         {
             var book = this._libraryAsset.GetAsset(id);
 
-            if(book == null)
-                return RedirectToAction("NotFound","Error");
+            if (book == null)
+                return RedirectToAction("NotFound", "Error");
 
             var model = new EditBookVM()
             {
@@ -92,31 +93,31 @@ namespace MedelLibrary.Controllers
         {
             model.Categories = this._category.GetAllCategories();
 
-            if(!ModelState.IsValid)
-                return View(model);
-
-            var category = this._category.GetCategoryById(model.Category);
-
-            var book = new Book()
+            if (ModelState.IsValid)
             {
-                Id = model.Id,
-                Title = model.Title,
-                Year = model.Year,
-                Status = model.Status,
-                Cost = model.Cost,
-                ImageUrl = model.ImageUrl,
-                NumberOfCopies = model.NumberOfCopies,
-                Shelf = model.Shelf,
-                Condition = model.Condition,
-                ISBN = model.ISBN,
-                Author = model.Author,
-                Category = category
-            };
+                var category = this._category.GetCategoryById(model.Category);
 
-            var result = this._libraryAsset.UpdateAsset(book);
+                var book = new Book()
+                {
+                    Id = model.Id,
+                    Title = model.Title,
+                    Year = model.Year,
+                    Status = model.Status,
+                    Cost = model.Cost,
+                    ImageUrl = model.ImageUrl,
+                    NumberOfCopies = model.NumberOfCopies,
+                    Shelf = model.Shelf,
+                    Condition = model.Condition,
+                    ISBN = model.ISBN,
+                    Author = model.Author,
+                    Category = category
+                };
 
-            if(result)
-                return RedirectToAction("AssetCatalog","Asset");
+                var result = this._libraryAsset.UpdateAsset(book);
+
+                if (result)
+                    return RedirectToAction("AssetCatalog", "Asset");
+            }
 
             return View(model);
         }

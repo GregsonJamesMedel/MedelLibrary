@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
@@ -22,8 +21,8 @@ namespace MedelLibrary.Controllers
         {
             var asset = this._asset.GetAsset(id);
 
-            if(asset == null)
-                return RedirectToAction("NotFound","Error");
+            if (asset == null)
+                return RedirectToAction("NotFound", "Error");
 
             var model = new AssetVM()
             {
@@ -87,9 +86,9 @@ namespace MedelLibrary.Controllers
         public IActionResult EditCover(int id)
         {
             var asset = this._asset.GetAsset(id);
-            
-            if(asset == null)
-                return RedirectToAction("NotFound","Error");
+
+            if (asset == null)
+                return RedirectToAction("NotFound", "Error");
 
             var model = new EditCoverVM()
             {
@@ -104,20 +103,20 @@ namespace MedelLibrary.Controllers
 
         public IActionResult EditCover(EditCoverVM model)
         {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var asset = this._asset.GetAsset(model.Id);
-
-            var saveImage = this._imageProcessor.SaveImage(model.Image);
-
-            if (saveImage != null)
+            if (ModelState.IsValid)
             {
-                asset.ImageUrl = saveImage;
-                var result = this._asset.UpdateAsset(asset);
+                var asset = this._asset.GetAsset(model.Id);
 
-                if (result)
-                    return RedirectToAction("Details", new { id = asset.Id });
+                var saveImage = this._imageProcessor.SaveImage(model.Image);
+
+                if (saveImage != null)
+                {
+                    asset.ImageUrl = saveImage;
+                    var result = this._asset.UpdateAsset(asset);
+
+                    if (result)
+                        return RedirectToAction("Details", new { id = asset.Id });
+                }
             }
 
             return View(model);
