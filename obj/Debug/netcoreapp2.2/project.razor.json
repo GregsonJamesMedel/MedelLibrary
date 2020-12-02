@@ -1897,6 +1897,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/_ViewImports.cshtml",
+      "TargetPath": "Views\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/EditBook.cshtml",
       "TargetPath": "Views\\Book\\EditBook.cshtml",
       "FileKind": "mvc"

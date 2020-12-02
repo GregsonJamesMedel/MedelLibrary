@@ -14,16 +14,19 @@ namespace MedelLibrary.Controllers
         private readonly SignInManager<Patron> _signInManager;
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAssets;
+        private readonly IPersonalDetails _personalDetails;
 
         public AccountController(UserManager<Patron> userManager,
                                 SignInManager<Patron> signInManager,
                                 ITransaction transactions,
-                                ILibraryAsset libraryAssets)
+                                ILibraryAsset libraryAssets,
+                                IPersonalDetails personalDetails)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._transactions = transactions;
             this._libraryAssets = libraryAssets;
+            this._personalDetails = personalDetails;
         }
 
         [HttpGet]
@@ -153,7 +156,7 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
-        public IActionResult Settings(string Id)
+        public IActionResult Settings(string id)
         {
             return View();
         }
