@@ -10,19 +10,16 @@ namespace MedelLibrary.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<Patron> _userManager;
         private readonly SignInManager<Patron> _signInManager;
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAssets;
         private readonly IPatron _patronService;
 
-        public AccountController(UserManager<Patron> userManager,
-                                SignInManager<Patron> signInManager,
+        public AccountController(SignInManager<Patron> signInManager,
                                 ITransaction transactions,
                                 ILibraryAsset libraryAssets,
                                 IPatron patronService)
         {
-            this._userManager = userManager;
             this._signInManager = signInManager;
             this._transactions = transactions;
             this._libraryAssets = libraryAssets;
@@ -40,33 +37,12 @@ namespace MedelLibrary.Controllers
         {
             if (ModelState.IsValid)
             {
-                var pDetails = new PersonalDetails()
-                {
-                    Firstname = model.Firstname,
-                    Lastname = model.Lastname,
-                    Address = model.Address
-                };
+                var result = this._patronService.SignUp(model);
 
-                var patron = new Patron()
+                if (result != null)
                 {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    PhoneNumber = model.ContactNumber,
-                    LibraryCard = this._transactions.CreateLibraryCard(),
-                    PersonalDetails = pDetails
-                };
-
-                var result = await this._userManager.CreateAsync(patron, model.Password);
-
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(patron, isPersistent: false);
+                    await _signInManager.SignInAsync( await result, isPersistent: false);
                     return RedirectToAction("AssetCatalog", "Asset");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
                 }
             }
 
