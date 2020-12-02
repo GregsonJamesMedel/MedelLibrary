@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using MedelLibrary.Models;
 using MedelLibrary.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -39,6 +40,11 @@ namespace MedelLibrary.Services
         public PatronModel GetPatronById(string id)
         {
             return this.GetAllPatrons().FirstOrDefault(p => p.Id == id);
+        }
+
+        public async Task<SignInResult> SignIn(SignInVM model)
+        {
+            return await this._signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
         }
     }
 }

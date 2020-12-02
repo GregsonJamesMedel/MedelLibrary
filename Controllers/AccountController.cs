@@ -78,8 +78,7 @@ namespace MedelLibrary.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result =
-                await this._signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                var result = await this._patronService.SignIn(model);
 
                 if (result.Succeeded)
                 {

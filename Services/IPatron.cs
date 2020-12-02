@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MedelLibrary.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace MedelLibrary.Services
 {
@@ -7,5 +9,6 @@ namespace MedelLibrary.Services
     {
         IEnumerable<PatronModel> GetAllPatrons();
         PatronModel GetPatronById(string id);
+        Task<SignInResult> SignIn(SignInVM model);
     }
 }
