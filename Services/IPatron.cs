@@ -6,5 +6,6 @@ namespace MedelLibrary.Services
     public interface IPatron
     {
         IEnumerable<PatronModel> GetAllPatrons();
+        PatronModel GetPatronById(string id);
     }
 }

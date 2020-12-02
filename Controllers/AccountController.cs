@@ -14,19 +14,19 @@ namespace MedelLibrary.Controllers
         private readonly SignInManager<Patron> _signInManager;
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAssets;
-        private readonly IPersonalDetails _personalDetails;
+        private readonly IPatron _patronService;
 
         public AccountController(UserManager<Patron> userManager,
                                 SignInManager<Patron> signInManager,
                                 ITransaction transactions,
                                 ILibraryAsset libraryAssets,
-                                IPersonalDetails personalDetails)
+                                IPatron patronService)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._transactions = transactions;
             this._libraryAssets = libraryAssets;
-            this._personalDetails = personalDetails;
+            this._patronService = patronService;
         }
 
         [HttpGet]
@@ -102,46 +102,28 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Patrons()
-        {
-            var model = this._userManager.Users.Select(result => new PatronsVM()
-            {
-                Id = result.Id,
-                Email = result.Email,
-                PersonalDetailsVM = new PersonalDetailsVM()
-                {
-                    Id = result.PersonalDetails.Id,
-                    Firstname = result.PersonalDetails.Firstname,
-                    Middlename = result.PersonalDetails.Middlename,
-                    Lastname = result.PersonalDetails.Lastname,
-                    Address = result.PersonalDetails.Address,
-                    ImageUrl = result.PersonalDetails.ImageUrl
-                }
-            });
-
-            return View(model);
-        }
+        public IActionResult Patrons() => View(this._patronService.GetAllPatrons());
 
         public IActionResult Profile(string id)
         {
-            var model = this._userManager.Users.Select(res => new ProfileVM()
-            {
-                Id = res.Id,
-                Firstname = res.PersonalDetails.Firstname,
-                Middlename = res.PersonalDetails.Middlename,
-                Lastname = res.PersonalDetails.Lastname,
-                Gender = res.PersonalDetails.Gender,
-                Birthday = res.PersonalDetails.Birthday,
-                Address = res.PersonalDetails.Address,
-                ImageUrl = res.PersonalDetails.ImageUrl,
-                Email = res.Email,
-                CurrentFees = res.LibraryCard.Fees,
-                ContactNumber = res.PhoneNumber,
-                LibraryCardId = res.LibraryCard.Id
-            }).FirstOrDefault(p => p.Id == id);
+            var patron = this._patronService.GetPatronById(id);
+
+            var model = new ProfileVM(){
+                Id = patron.Id,
+                Firstname = patron.Firstname,
+                Middlename = patron.Middlename,
+                Lastname = patron.Lastname,
+                Gender = patron.Gender,
+                Birthday = patron.Birthday,
+                Address = patron.Address,
+                ImageUrl = patron.ImageUrl,
+                Email = patron.Email,
+                ContactNumber = patron.PhoneNumber,
+                CurrentFees = this._transactions.GetLibraryCardById(patron.LibraryCardId).Fees,
+            };
 
             model.Checkouts = this._transactions
-            .GetAllCheckoutHistoryByLibraryCardId(model.LibraryCardId).Select(res => new CheckoutHistoryVM()
+            .GetAllCheckoutHistoryByLibraryCardId(patron.LibraryCardId).Select(res => new CheckoutHistoryVM()
             {
                 Id = res.Id,
                 AssetId = res.LibraryAsset.Id.ToString(),

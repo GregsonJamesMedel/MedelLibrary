@@ -28,11 +28,17 @@ namespace MedelLibrary.Services
                 Gender = res.PersonalDetails.Gender,
                 Address = res.PersonalDetails.Address,
                 Birthday = res.PersonalDetails.Birthday,
+                ImageUrl = res.PersonalDetails.ImageUrl,
                 PhoneNumber = res.PhoneNumber,
                 Email = res.Email,
                 LibraryCardId = res.LibraryCard.Id,
                 PersonalDetailsId = res.PersonalDetails.Id
             });
+        }
+
+        public PatronModel GetPatronById(string id)
+        {
+            return this.GetAllPatrons().FirstOrDefault(p => p.Id == id);
         }
     }
 }
