@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using MedelLibrary.Models;
@@ -120,7 +121,8 @@ namespace MedelLibrary.Controllers
 
         public IActionResult Profile(string id)
         {
-            var model = this._userManager.Users.Select(res => new ProfileVM(){
+            var model = this._userManager.Users.Select(res => new ProfileVM()
+            {
                 Id = res.Id,
                 Firstname = res.PersonalDetails.Firstname,
                 Middlename = res.PersonalDetails.Middlename,
@@ -147,7 +149,13 @@ namespace MedelLibrary.Controllers
                 Checkin = res.Checkin,
                 Checkout = res.Checkout
             });
+
             return View(model);
+        }
+
+        public IActionResult Settings(string Id)
+        {
+            return View();
         }
 
     }

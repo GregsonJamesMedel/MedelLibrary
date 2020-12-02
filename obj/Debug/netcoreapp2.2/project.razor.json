@@ -1952,6 +1952,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Settings.cshtml",
+      "TargetPath": "Views\\Account\\Settings.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -1989,6 +1994,11 @@
     {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/Check.cshtml",
       "TargetPath": "Views\\Transactions\\Check.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_SettingsPersonalDetails.cshtml",
+      "TargetPath": "Views\\Shared\\_SettingsPersonalDetails.cshtml",
       "FileKind": "mvc"
     },
     {
