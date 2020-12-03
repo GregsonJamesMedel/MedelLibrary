@@ -100,6 +100,14 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("Details", "Asset", new { id = id });
         }
 
+        [HttpPost]
+        public IActionResult MarkLost(int id)
+        {
+            var res = this._libraryAsset.MarkLost(id);
+            return RedirectToAction("Details", "Asset", new { id = id });
+        }
+
+
         [HttpGet]
         public IActionResult Hold(int id)
         {
