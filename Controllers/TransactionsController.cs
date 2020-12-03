@@ -51,30 +51,12 @@ namespace MedelLibrary.Controllers
             return View("Check", model);
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult CheckIn(int id)
         {
-            ViewBag.Action = "CheckIn";
-
-            return BuildCheckGetRequest(id);
-        }
-
-        [HttpPost]
-        public IActionResult CheckIn(CheckVM model)
-        {
-            model.Patrons = GetPatronsWithLibraryCard();
-
-            if (ModelState.IsValid)
-            {
-                var result = this._transactions.AddCheckIn(model.AssetId, model.LibraryCardId);
-
-                if (result)
-                    return RedirectToAction("Details", "Asset", new { id = model.AssetId });
-
-                ModelState.AddModelError("", "Please select the Patron who checked out this asset");
-
-            }
-            return View("Check", model);
+            var recentCheckOut = this._transactions.GetRecentCheckOut(id);
+            this._transactions.AddCheckIn(recentCheckOut.LibraryAsset.Id,recentCheckOut.LibraryCard.Id);
+            return RedirectToAction("Details", "Asset", new { id = recentCheckOut.LibraryAsset.Id });
         }
 
         [HttpGet]
@@ -138,7 +120,7 @@ namespace MedelLibrary.Controllers
         public IActionResult PlaceHold(HoldVM model)
         {
             var result = this._transactions.AddHold(model.AssetId,model.LibraryCardId);
-            
+
             if(result)
                 return RedirectToAction("Details","Asset",new { id = model.AssetId });
             

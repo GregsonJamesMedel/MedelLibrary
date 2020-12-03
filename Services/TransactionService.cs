@@ -38,13 +38,23 @@ namespace MedelLibrary.Services
                 var latestHold = GetMostRecentHold(AssetId);
                 var res = AddCheckout(latestHold.LibraryAsset.Id,latestHold.LibraryCard.Id);
                 RemoveHold(latestHold);
+                RemoveCheckOut(AssetId,LibraryCardId);
                 return res;
             }
 
             if (result)
                 UpdateStatus(AssetId, "Available");
+                RemoveCheckOut(AssetId,LibraryCardId);
 
             return result;
+        }
+
+        private void RemoveCheckOut(int assetId, int libraryCardId)
+        {
+            var checkOut =  this._context.Checkouts
+                .FirstOrDefault(a => a.LibraryAsset.Id == assetId && a.LibraryCard.Id == libraryCardId);
+            this._context.Remove(checkOut);
+            this._context.SaveChanges();
         }
 
         private void RemoveHold(Hold hold)
@@ -170,10 +180,10 @@ namespace MedelLibrary.Services
         public Checkout GetRecentCheckOut(int assetId)
         {
             return this._context.Checkouts
-            .OrderBy(c => c.Since)
-            .Include(a => a.LibraryAsset)
-            .Include(l => l.LibraryCard)
-            .FirstOrDefault(a => a.LibraryAsset.Id == assetId);
+                .OrderBy(c => c.Since)
+                .Include(a => a.LibraryAsset)
+                .Include(l => l.LibraryCard)
+                .FirstOrDefault(a => a.LibraryAsset.Id == assetId);
         }
     }
 }

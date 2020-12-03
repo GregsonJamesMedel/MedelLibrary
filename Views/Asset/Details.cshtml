@@ -42,10 +42,10 @@
                         {
                             @if (Model.Status == "Checked out")
                             {
-                                <a class="btn btn-primary mr-1" asp-controller="Transactions" asp-action="CheckIn"
-                                    asp-route-id="@Model.Id">
-                                    Check in
-                                </a>
+                                <form asp-controller="Transactions" asp-action="CheckIn" asp-route-id="@Model.Id" method="POST" style="display: inline;"> 
+                                    <button class="btn btn-primary mr-1" type="submit">CheckIn</button>
+                                </form>
+                                
                             }
                             else
                             {

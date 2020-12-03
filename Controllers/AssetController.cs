@@ -9,11 +9,13 @@ namespace MedelLibrary.Controllers
     {
         private readonly ILibraryAsset _asset;
         private readonly IImage _imageProcessor;
+        private readonly ITransaction _transactions;
 
-        public AssetController(ILibraryAsset asset, IImage imageProcessor)
+        public AssetController(ILibraryAsset asset, IImage imageProcessor, ITransaction transactions)
         {
             this._asset = asset;
             this._imageProcessor = imageProcessor;
+            this._transactions = transactions;
         }
 
         [HttpGet]
