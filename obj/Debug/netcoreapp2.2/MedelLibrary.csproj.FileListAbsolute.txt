@@ -40,7 +40,6 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SettingsPersonalDetails.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Sidebar.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
-/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/Check.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/CheckoutList.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Video/EditVideo.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Video/SaveVideo.g.cshtml.cs
@@ -53,3 +52,4 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.pdb
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.csproj.CopyComplete
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/Hold.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/CheckOut.g.cshtml.cs

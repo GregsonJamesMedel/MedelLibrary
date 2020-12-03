@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace MedelLibrary.ViewModels
 {
-    public class CheckVM
+    public class CheckoutVM
     {
         public int AssetId { get; set; }
         public string Title { get; set; }

@@ -1907,6 +1907,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/CheckOut.cshtml",
+      "TargetPath": "Views\\Transactions\\CheckOut.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_DeleteModal.cshtml",
       "TargetPath": "Views\\Shared\\_DeleteModal.cshtml",
       "FileKind": "mvc"
@@ -1994,11 +1999,6 @@
     {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/Books.cshtml",
       "TargetPath": "Views\\Book\\Books.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/Check.cshtml",
-      "TargetPath": "Views\\Transactions\\Check.cshtml",
       "FileKind": "mvc"
     },
     {

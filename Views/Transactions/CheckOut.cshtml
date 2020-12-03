@@ -1,13 +1,6 @@
-@model MedelLibrary.ViewModels.CheckVM
+@model MedelLibrary.ViewModels.CheckoutVM
 @{
-    if(ViewBag.Action == "CheckOut")
-    {
-        ViewBag.Title = "CheckOut Asset";
-    }
-    else
-    {
-        ViewBag.Title = "CheckIn Asset";
-    }
+    ViewBag.Title = "CheckOut Asset";
 }
 
 <div class="jumbotron p-4">
@@ -18,10 +11,10 @@
             <img src="~/Covers/@Model.AssetCover" alt="@Model.Title" style="width: 100%;">
         </div>
         <div class="col-md-4">
-            <form asp-action="@ViewBag.Action" method="post">
+            <form asp-action="CheckOut" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label>@ViewBag.Action for</label>
+                    <label>Checkout for</label>
                     <select asp-for="@Model.LibraryCardId" class="form-control select2bs4" style="width: 100%;">
                         <option value="0">Select Patron</option>
                         @foreach (var patron in Model.Patrons)

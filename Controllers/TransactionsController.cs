@@ -27,12 +27,16 @@ namespace MedelLibrary.Controllers
         [HttpGet]
         public IActionResult CheckOut(int id)
         {
-            ViewBag.Action = "CheckOut";
-            return BuildCheckGetRequest(id);
+            var model = BuildCheckVM(id);
+
+            if (model == null)
+                return RedirectToAction("NotFound", "Error");
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult CheckOut(CheckVM model)
+        public IActionResult CheckOut(CheckoutVM model)
         {
             model.Patrons = GetPatronsWithLibraryCard();
 
@@ -48,7 +52,7 @@ namespace MedelLibrary.Controllers
 
             }
 
-            return View("Check", model);
+            return View(model);
         }
 
         [HttpPost]
@@ -127,7 +131,7 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
-        private CheckVM BuildCheckVM(int assetId)
+        private CheckoutVM BuildCheckVM(int assetId)
         {
             var asset = this._libraryAsset.GetAsset(assetId);
 
@@ -136,7 +140,7 @@ namespace MedelLibrary.Controllers
 
             var patrons = GetPatronsWithLibraryCard();
 
-            var model = new CheckVM()
+            var model = new CheckoutVM()
             {
                 AssetId = asset.Id,
                 Title = asset.Title,
@@ -157,17 +161,6 @@ namespace MedelLibrary.Controllers
                 LibraryCardId = result.LibraryCard.Id
             });
         }
-
-        private IActionResult BuildCheckGetRequest(int id)
-        {
-            var model = BuildCheckVM(id);
-
-            if (model == null)
-                return RedirectToAction("NotFound", "Error");
-
-            return View("Check", model);
-        }
-
 
     }
 }
