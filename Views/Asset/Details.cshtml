@@ -45,6 +45,8 @@
                                 <form asp-controller="Transactions" asp-action="CheckIn" asp-route-id="@Model.Id" method="POST" style="display: inline;"> 
                                     <button class="btn btn-primary mr-1" type="submit">CheckIn</button>
                                 </form>
+
+                                <a asp-controller="Transactions" asp-action="Hold" asp-route-id="@Model.Id" class="btn btn-primary mr-1">Hold</a>
                                 
                             }
                             else
@@ -55,7 +57,6 @@
                                 </a>
                             }
                         }
-                            <a asp-controller="Transactions" asp-action="Hold" asp-route-id="@Model.Id" class="btn btn-primary mr-1">Hold</a>
                         
                         @if (Model.Type == "Book")
                         {

@@ -93,7 +93,7 @@ namespace MedelLibrary.Services
                 this._context.Checkouts.Remove(checkOut);
             
             var checkOutHistory = this._context.CheckoutHistories
-                .FirstOrDefault(ch => ch.LibraryAsset.Id == asset.Id);
+                .FirstOrDefault(ch => ch.LibraryAsset.Id == asset.Id && ch.Checkin == null);
 
             if(checkOutHistory != null)
             {
@@ -111,6 +111,18 @@ namespace MedelLibrary.Services
         {
             var asset = GetAsset(assetId);
             asset.Status = "Lost";
+
+            var checkout = this._context.Checkouts
+            .Include(a => a.LibraryAsset)
+            .Include(l => l.LibraryCard)
+            .FirstOrDefault(c => c.LibraryAsset.Id == asset.Id);
+
+            if(checkout != null)
+            {
+                var LibraryCard = checkout.LibraryCard;
+                LibraryCard.Fees += asset.Cost;
+                this._context.LibraryCards.Update(LibraryCard);
+            }
 
             this._context.LibraryAssets.Update(asset);
             var res = this._context.SaveChanges();
