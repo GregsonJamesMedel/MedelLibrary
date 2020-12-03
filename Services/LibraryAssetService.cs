@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +59,9 @@ namespace MedelLibrary.Services
 
         public string GetAuthorOrDirector(int id)
         {
-            var isBook = this._context.LibraryAssets.OfType<Book>().Where(asset => asset.Id == id).Any();
+            var isBook = this._context.LibraryAssets
+                .OfType<Book>()
+                .Where(asset => asset.Id == id).Any();
 
             return isBook ? 
                 this._context.Books.FirstOrDefault(b => b.Id == id).Author : 
@@ -75,7 +78,35 @@ namespace MedelLibrary.Services
 
         public string GetType(int id)
         {
-            return this._context.Books.Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";  
+            return this._context.Books
+                .Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";  
+        }
+
+        public bool MarkFound(int assetId)
+        {
+            var asset = GetAsset(assetId);
+
+            var checkOut = this._context.Checkouts
+                .FirstOrDefault(c => c.LibraryAsset.Id == asset.Id);
+
+            if(checkOut != null)
+                this._context.Checkouts.Remove(checkOut);
+            
+            var checkOutHistory = this._context.CheckoutHistories
+                .FirstOrDefault(ch => ch.LibraryAsset.Id == asset.Id);
+
+            var dateNow = DateTime.Now;
+        
+            if(checkOutHistory != null)
+            {
+                checkOutHistory.Checkin = dateNow;
+                this._context.CheckoutHistories.Update(checkOutHistory);
+            }
+
+            asset.Status = "Available";
+            this._context.LibraryAssets.Update(asset);
+
+            return this._context.SaveChanges() > 0;
         }
 
         public bool MarkLost(int assetId)
@@ -88,6 +119,8 @@ namespace MedelLibrary.Services
 
             return res > 0 ? true : false;
         }
+
+        
 
         public bool UpdateAsset(LibraryAsset asset)
         {

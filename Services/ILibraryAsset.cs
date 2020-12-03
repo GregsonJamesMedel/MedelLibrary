@@ -10,6 +10,7 @@ namespace MedelLibrary.Services
         bool DeleteAsset(int id);
         bool UpdateAsset(LibraryAsset asset);
         bool MarkLost(int assetId);
+        bool MarkFound(int assetId);
         IEnumerable<LibraryAsset> GetAllAssets();
         IEnumerable<Book> GetAllBooks();
         string GetAuthorOrDirector(int id);
