@@ -114,9 +114,9 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("Details", "Asset", new { id = id });
         }
 
-        public IActionResult Hold(int assetId)
+        public IActionResult Hold(int id)
         {
-            var asset = this._libraryAsset.GetAsset(assetId);
+            var asset = this._libraryAsset.GetAsset(id);
 
             if(asset == null)
                 return RedirectToAction("NotFound","Error");

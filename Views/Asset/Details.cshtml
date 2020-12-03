@@ -55,7 +55,7 @@
                                 </a>
                             }
                         }
-                            <button class="btn btn-primary mr-1">Hold</button>
+                            <a asp-controller="Transactions" asp-action="Hold" asp-route-id="@Model.Id" class="btn btn-primary mr-1">Hold</a>
                         
                         @if (Model.Type == "Book")
                         {
