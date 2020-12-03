@@ -114,6 +114,7 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("Details", "Asset", new { id = id });
         }
 
+        [HttpGet]
         public IActionResult Hold(int id)
         {
             var asset = this._libraryAsset.GetAsset(id);
@@ -130,6 +131,17 @@ namespace MedelLibrary.Controllers
                 Patrons = GetPatronsWithLibraryCard()
             };
 
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult PlaceHold(HoldVM model)
+        {
+            var result = this._transactions.AddHold(model.AssetId,model.LibraryCardId);
+            
+            if(result)
+                return RedirectToAction("Details","Asset",new { id = model.AssetId });
+            
             return View(model);
         }
 
