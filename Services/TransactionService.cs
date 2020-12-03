@@ -21,18 +21,36 @@ namespace MedelLibrary.Services
             var checkOutHistory = this._context.CheckoutHistories
             .FirstOrDefault(c => c.LibraryAsset.Id == AssetId && c.LibraryCard.Id == LibraryCardId && c.Checkin == null);
 
+            var dateNow = DateTime.Now;
+
             if(checkOutHistory == null)
                 return false;
 
-            checkOutHistory.Checkin = DateTime.Now;
+
+            checkOutHistory.Checkin = dateNow;
             this._context.CheckoutHistories.Update(checkOutHistory);
 
+
             var result = this._context.SaveChanges() > 0 ? true : false;
+
+            if(GetHoldsForAsset(AssetId).Any())
+            {
+                var latestHold = GetMostRecentHold(AssetId);
+                var res = AddCheckout(latestHold.LibraryAsset.Id,latestHold.LibraryCard.Id);
+                RemoveHold(latestHold);
+                return res;
+            }
 
             if (result)
                 UpdateStatus(AssetId, "Available");
 
             return result;
+        }
+
+        private void RemoveHold(Hold hold)
+        {
+            this._context.Holds.Remove(hold);
+            this._context.SaveChanges();
         }
 
         public bool AddCheckout(int AssetId, int LibraryCardId)
@@ -68,7 +86,11 @@ namespace MedelLibrary.Services
 
         private Hold GetMostRecentHold(int assetId)
         {
-            return GetHoldsForAsset(assetId).OrderBy(h => h.HoldPlace).FirstOrDefault();
+            return this._context.Holds
+                    .Include(a => a.LibraryAsset)
+                    .Include(l => l.LibraryCard)
+                    .OrderBy(h => h.HoldPlace)
+                    .FirstOrDefault(a => a.LibraryAsset.Id == assetId);
         }
 
         public bool AddCheckoutHistory(Checkout checkout)
@@ -143,6 +165,15 @@ namespace MedelLibrary.Services
             var result = this._context.SaveChanges();
 
             return result > 0 ? true : false;
+        }
+
+        public Checkout GetRecentCheckOut(int assetId)
+        {
+            return this._context.Checkouts
+            .OrderBy(c => c.Since)
+            .Include(a => a.LibraryAsset)
+            .Include(l => l.LibraryCard)
+            .FirstOrDefault(a => a.LibraryAsset.Id == assetId);
         }
     }
 }
