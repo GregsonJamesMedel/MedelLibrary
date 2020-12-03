@@ -82,21 +82,9 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpPost]
-        public IActionResult Mark(int id)
+        public IActionResult MarkFound(int id)
         {
-            var asset = this._libraryAsset.GetAsset(id);
-
-            if (asset != null)
-            {
-                if (asset.Status == "Lost")
-                {
-                    this._transactions.UpdateStatus(asset.Id, "Available");
-                    return RedirectToAction("Details", "Asset", new { id = id });
-                }
-
-                this._transactions.UpdateStatus(asset.Id, "Lost");
-            }
-
+            this._libraryAsset.MarkFound(id);
             return RedirectToAction("Details", "Asset", new { id = id });
         }
 
@@ -106,7 +94,6 @@ namespace MedelLibrary.Controllers
             var res = this._libraryAsset.MarkLost(id);
             return RedirectToAction("Details", "Asset", new { id = id });
         }
-
 
         [HttpGet]
         public IActionResult Hold(int id)

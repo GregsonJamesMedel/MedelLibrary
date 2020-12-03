@@ -95,11 +95,9 @@ namespace MedelLibrary.Services
             var checkOutHistory = this._context.CheckoutHistories
                 .FirstOrDefault(ch => ch.LibraryAsset.Id == asset.Id);
 
-            var dateNow = DateTime.Now;
-        
             if(checkOutHistory != null)
             {
-                checkOutHistory.Checkin = dateNow;
+                checkOutHistory.Checkin = DateTime.Now;
                 this._context.CheckoutHistories.Update(checkOutHistory);
             }
 
