@@ -114,6 +114,25 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("Details", "Asset", new { id = id });
         }
 
+        public IActionResult Hold(int assetId)
+        {
+            var asset = this._libraryAsset.GetAsset(assetId);
+
+            if(asset == null)
+                return RedirectToAction("NotFound","Error");
+
+            var model = new HoldVM()
+            {
+                AssetId = asset.Id,
+                Title = asset.Title,
+                AuthorOrDirector = this._libraryAsset.GetAuthorOrDirector(asset.Id),
+                AssetCover = asset.ImageUrl,
+                Patrons = GetPatronsWithLibraryCard()
+            };
+
+            return View(model);
+        }
+
         private CheckVM BuildCheckVM(int assetId)
         {
             var asset = this._libraryAsset.GetAsset(assetId);
@@ -154,5 +173,7 @@ namespace MedelLibrary.Controllers
 
             return View("Check", model);
         }
+
+
     }
 }
