@@ -78,6 +78,17 @@ namespace MedelLibrary.Services
             return this._context.Books.Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";  
         }
 
+        public bool MarkLost(int assetId)
+        {
+            var asset = GetAsset(assetId);
+            asset.Status = "Lost";
+
+            this._context.LibraryAssets.Update(asset);
+            var res = this._context.SaveChanges();
+
+            return res > 0 ? true : false;
+        }
+
         public bool UpdateAsset(LibraryAsset asset)
         {
             this._context.LibraryAssets.Update(asset);
