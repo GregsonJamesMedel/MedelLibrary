@@ -39,13 +39,14 @@ namespace MedelLibrary.Services
         {
             var asset = this._context.LibraryAssets.Find(AssetId);
             var libraryCard = GetLibraryCardById(LibraryCardId);
+            var dateNow = DateTime.Now;
 
             var checkout = new Checkout()
             {
                 LibraryAsset = asset,
                 LibraryCard = libraryCard,
-                Since = DateTime.Now,
-                Until = DateTime.Now.AddDays(5)
+                Since = dateNow,
+                Until = dateNow.AddDays(5)
             };
 
             this._context.Checkouts.Add(checkout);
@@ -58,6 +59,16 @@ namespace MedelLibrary.Services
             }
 
             return false;
+        }
+
+        private IEnumerable<Hold> GetHoldsForAsset(int assetId)
+        {
+            return this._context.Holds.Where(h => h.LibraryAsset.Id == assetId);
+        }
+
+        private Hold GetMostRecentHold(int assetId)
+        {
+            return GetHoldsForAsset(assetId).OrderBy(h => h.HoldPlace).FirstOrDefault();
         }
 
         public bool AddCheckoutHistory(Checkout checkout)
