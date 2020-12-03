@@ -10,6 +10,7 @@ namespace MedelLibrary.Services
         bool AddCheckout(int AssetId, int LibraryCardId);
         bool AddCheckIn(int AssetId, int LibraryCardId);
         bool AddCheckoutHistory(Checkout checkout);
+        bool AddHold(int assetId, int libraryCardId);
         bool UpdateStatus(int id,string status); 
         IEnumerable<Checkout> GetAllCheckouts();
         IEnumerable<CheckoutHistory> GetAllCheckoutHistoryByLibraryCardId(int id);

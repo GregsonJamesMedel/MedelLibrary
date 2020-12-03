@@ -75,6 +75,25 @@ namespace MedelLibrary.Services
             return result > 0 ? true : false;
         }
 
+        public bool AddHold(int assetId, int libraryCardId)
+        {
+            var asset = this._context.LibraryAssets.FirstOrDefault(a => a.Id == assetId);
+            var libraryCard = this._context.LibraryCards.FirstOrDefault(lc => lc.Id == libraryCardId);
+            var dateNow = DateTime.Now;
+
+            var hold = new Hold()
+            {
+                LibraryAsset = asset,
+                LibraryCard = libraryCard,
+                HoldPlace = dateNow
+            };
+
+            this._context.Holds.Add(hold);
+            var result = this._context.SaveChanges();
+
+            return result > 0;
+        }
+
         public LibraryCard CreateLibraryCard()
         {
             var libraryCard = new LibraryCard()
