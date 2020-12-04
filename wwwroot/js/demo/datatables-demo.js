@@ -8,5 +8,6 @@ $(document).ready(function() {
     "info": true,
     "autoWidth": false,
     "responsive": true,
+    "pageLength": 10
   });
 });

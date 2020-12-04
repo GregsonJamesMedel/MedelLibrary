@@ -101,6 +101,11 @@ namespace MedelLibrary.Services
                 this._context.CheckoutHistories.Update(checkOutHistory);
             }
 
+            var holds = this._context.Holds.Where(a => a.LibraryAsset.Id == asset.Id);
+
+            if(holds.Any())
+                this._context.Holds.RemoveRange(holds);
+
             asset.Status = "Available";
             this._context.LibraryAssets.Update(asset);
 
