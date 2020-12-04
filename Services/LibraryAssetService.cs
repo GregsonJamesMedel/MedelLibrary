@@ -92,14 +92,9 @@ namespace MedelLibrary.Services
             if(checkOut != null)
                 this._context.Checkouts.Remove(checkOut);
             
-            var checkOutHistory = this._context.CheckoutHistories
-                .FirstOrDefault(ch => ch.LibraryAsset.Id == asset.Id && ch.Checkin == null);
+            UpdateCheckOutHistory(asset.Id);
 
-            if(checkOutHistory != null)
-            {
-                checkOutHistory.Checkin = DateTime.Now;
-                this._context.CheckoutHistories.Update(checkOutHistory);
-            }
+            
 
             var holds = this._context.Holds.Where(a => a.LibraryAsset.Id == asset.Id);
 
@@ -110,6 +105,18 @@ namespace MedelLibrary.Services
             this._context.LibraryAssets.Update(asset);
 
             return this._context.SaveChanges() > 0;
+        }
+
+        private void UpdateCheckOutHistory(int assetId)
+        {
+            var checkOutHistory = this._context.CheckoutHistories
+                .FirstOrDefault(ch => ch.LibraryAsset.Id == assetId && ch.Checkin == null);
+
+            if(checkOutHistory != null)
+            {
+                checkOutHistory.Checkin = DateTime.Now;
+                this._context.CheckoutHistories.Update(checkOutHistory);
+            }
         }
 
         public bool MarkLost(int assetId)
