@@ -5,13 +5,12 @@
 
 
 <div class="col-md-12">
-    <table class="table">
+    <table class="table table-hover" id="dataTable">
         <thead>
             <th>Cover</th>
             <th>Title</th>
             <th>Author/Director</th>
             <th>Status</th>
-            <th>Cost</th>
             <th>Condition</th>
             <th>Category</th>
             <th>Type</th>
@@ -28,7 +27,6 @@
                     <td>@asset.Title</td>
                     <td>@asset.AuthorOrDirector</td>
                     <td>@asset.Status</td>
-                    <td>P @asset.Cost.ToString("0.##")</td>
                     <td>@asset.Condition</td>
                     <td>@asset.Category.Name</td>
                     <td>@asset.Type</td>

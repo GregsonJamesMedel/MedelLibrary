@@ -10,7 +10,7 @@
             <img src="~/img/lalisa.jpg" style="width: 100%;" asp-append-version="true">
         </div>
         <div class="col-md-10">
-            <h3>@Model.Firstname @Model.Middlename @Model.Lastname</h3>
+            <h3 class="text-primary">@Model.Firstname @Model.Middlename @Model.Lastname</h3>
             <p class="mb-0"><span style="font-weight: bold;">Address:</span> @Model.Address</p>
             <p class="mb-0"><span style="font-weight: bold;">Email:</span> @Model.Email</p>
             <p class="mb-0"><span style="font-weight: bold;">Contact Number:</span> @Model.ContactNumber</p>
@@ -23,8 +23,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3 class="text-center">Checkout History</h3><hr>
-        <table class="table table-hover">
+        <h3 class="text-center text-primary">Checkout History</h3><hr>
+        <table class="table table-hover" id="dataTable">
             <thead>
                 <th>Id</th>
                 <th>Title</th>
