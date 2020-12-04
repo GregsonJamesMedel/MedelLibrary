@@ -29,9 +29,9 @@ namespace MedelLibrary.Services
         {
             var asset = this._context.LibraryAssets.Find(id);
 
-            if(asset == null)
+            if (asset == null)
                 return false;
-            
+
             this._context.LibraryAssets.Remove(asset);
             var result = this._context.SaveChanges();
 
@@ -51,9 +51,9 @@ namespace MedelLibrary.Services
 
         public LibraryAsset GetAsset(int id)
         {
-            if(this.GetType(id) == "Book")
+            if (this.GetType(id) == "Book")
                 return this._context.Books.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
-            
+
             return this._context.Videos.Include(a => a.Category).FirstOrDefault(a => a.Id == id);
         }
 
@@ -63,14 +63,14 @@ namespace MedelLibrary.Services
                 .OfType<Book>()
                 .Where(asset => asset.Id == id).Any();
 
-            return isBook ? 
-                this._context.Books.FirstOrDefault(b => b.Id == id).Author : 
+            return isBook ?
+                this._context.Books.FirstOrDefault(b => b.Id == id).Author :
                 this._context.Videos.FirstOrDefault(v => v.Id == id).Director;
         }
 
         public string GetISBN(int id)
         {
-            if(this._context.Books.Any(b => b.Id == id))
+            if (this._context.Books.Any(b => b.Id == id))
                 return this._context.Books.FirstOrDefault(b => b.Id == id).ISBN;
 
             return "";
@@ -79,27 +79,18 @@ namespace MedelLibrary.Services
         public string GetType(int id)
         {
             return this._context.Books
-                .Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";  
+                .Any(b => b.Id == id) ? "Book" : "Video" ?? "Unknown";
         }
 
         public bool MarkFound(int assetId)
         {
             var asset = GetAsset(assetId);
 
-            var checkOut = this._context.Checkouts
-                .FirstOrDefault(c => c.LibraryAsset.Id == asset.Id);
+            RemoveCheckout(asset.Id);
 
-            if(checkOut != null)
-                this._context.Checkouts.Remove(checkOut);
-            
             UpdateCheckOutHistory(asset.Id);
 
-            
-
-            var holds = this._context.Holds.Where(a => a.LibraryAsset.Id == asset.Id);
-
-            if(holds.Any())
-                this._context.Holds.RemoveRange(holds);
+            RemoveAssetHolds(asset.Id);
 
             asset.Status = "Available";
             this._context.LibraryAssets.Update(asset);
@@ -107,12 +98,29 @@ namespace MedelLibrary.Services
             return this._context.SaveChanges() > 0;
         }
 
+        private void RemoveCheckout(int assetId)
+        {
+            var checkOut = this._context.Checkouts
+                .FirstOrDefault(c => c.LibraryAsset.Id == assetId);
+
+            if (checkOut != null)
+                this._context.Checkouts.Remove(checkOut);
+        }
+
+        private void RemoveAssetHolds(int assetId)
+        {
+            var holds = this._context.Holds.Where(a => a.LibraryAsset.Id == assetId);
+
+            if (holds.Any())
+                this._context.Holds.RemoveRange(holds);
+        }
+
         private void UpdateCheckOutHistory(int assetId)
         {
             var checkOutHistory = this._context.CheckoutHistories
                 .FirstOrDefault(ch => ch.LibraryAsset.Id == assetId && ch.Checkin == null);
 
-            if(checkOutHistory != null)
+            if (checkOutHistory != null)
             {
                 checkOutHistory.Checkin = DateTime.Now;
                 this._context.CheckoutHistories.Update(checkOutHistory);
@@ -129,7 +137,7 @@ namespace MedelLibrary.Services
             .Include(l => l.LibraryCard)
             .FirstOrDefault(c => c.LibraryAsset.Id == asset.Id);
 
-            if(checkout != null)
+            if (checkout != null)
             {
                 var LibraryCard = checkout.LibraryCard;
                 LibraryCard.Fees += asset.Cost;
@@ -141,8 +149,6 @@ namespace MedelLibrary.Services
 
             return res > 0 ? true : false;
         }
-
-        
 
         public bool UpdateAsset(LibraryAsset asset)
         {
