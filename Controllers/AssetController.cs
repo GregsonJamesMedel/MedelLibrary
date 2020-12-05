@@ -41,7 +41,8 @@ namespace MedelLibrary.Controllers
                 Category = asset.Category,
                 ISBN = this._asset.GetISBN(id),
                 Type = this._asset.GetType(id),
-                Holds = this._transactions.GetAssetHolds(asset.Id)
+                Holds = this._transactions.GetAssetHolds(asset.Id),
+                CheckoutHistories = this._transactions.GetCheckoutHistoriesByAssetId(asset.Id)
             };
 
             return View(model);
