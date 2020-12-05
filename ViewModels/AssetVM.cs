@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MedelLibrary.Models;
 
 namespace MedelLibrary.ViewModels
@@ -17,5 +18,7 @@ namespace MedelLibrary.ViewModels
         public string ISBN { get; set; }
         public string AuthorOrDirector { get; set; }
         public string Type { get; set; }
+        public IEnumerable<Hold> Holds { get; set; }
+        public IEnumerable<CheckoutHistory> CheckoutHistories { get; set; }
     }
 }

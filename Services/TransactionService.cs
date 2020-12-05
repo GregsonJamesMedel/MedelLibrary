@@ -185,5 +185,10 @@ namespace MedelLibrary.Services
                 .Include(l => l.LibraryCard)
                 .FirstOrDefault(a => a.LibraryAsset.Id == assetId);
         }
+
+        public IEnumerable<Hold> GetAssetHolds(int assetId)
+        {
+            return this._context.Holds.Where(h => h.LibraryAsset.Id == assetId);
+        }
     }
 }
