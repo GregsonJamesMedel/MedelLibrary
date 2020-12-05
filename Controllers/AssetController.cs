@@ -40,7 +40,8 @@ namespace MedelLibrary.Controllers
                 Condition = asset.Condition,
                 Category = asset.Category,
                 ISBN = this._asset.GetISBN(id),
-                Type = this._asset.GetType(id)
+                Type = this._asset.GetType(id),
+                Holds = this._transactions.GetAssetHolds(asset.Id)
             };
 
             return View(model);

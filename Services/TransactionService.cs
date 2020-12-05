@@ -188,7 +188,10 @@ namespace MedelLibrary.Services
 
         public IEnumerable<Hold> GetAssetHolds(int assetId)
         {
-            return this._context.Holds.Where(h => h.LibraryAsset.Id == assetId);
+            return this._context.Holds
+                    .Include(a => a.LibraryAsset)
+                    .Include(l => l.LibraryCard)
+                    .Where(h => h.LibraryAsset.Id == assetId);
         }
     }
 }
