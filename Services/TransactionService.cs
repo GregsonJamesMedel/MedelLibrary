@@ -193,5 +193,13 @@ namespace MedelLibrary.Services
                     .Include(l => l.LibraryCard)
                     .Where(h => h.LibraryAsset.Id == assetId);
         }
+
+        public IEnumerable<CheckoutHistory> GetCheckoutHistoriesByAssetId(int assetId)
+        {
+            return this._context.CheckoutHistories
+                .Include(a => a.LibraryAsset)
+                .Include(l => l.LibraryCard)
+                .Where(c => c.LibraryAsset.Id == assetId);
+        }
     }
 }
