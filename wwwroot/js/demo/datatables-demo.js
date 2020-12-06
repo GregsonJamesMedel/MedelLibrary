@@ -10,4 +10,5 @@ $(document).ready(function() {
     "responsive": true,
     "pageLength": 10
   });
+
 });

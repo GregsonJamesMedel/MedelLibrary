@@ -159,7 +159,8 @@ namespace MedelLibrary.Services
 
         public IEnumerable<LibraryAsset> GetAssetsByTitle(string title)
         {
-            return GetAllAssets().Where(asset => asset.Title.ToLower().Contains(title));
+            return GetAllAssets()
+            .Where(asset => asset.Title.ToLower().Contains(title.ToLower()));
         }
     }
 }
