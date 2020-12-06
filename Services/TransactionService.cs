@@ -35,9 +35,7 @@ namespace MedelLibrary.Services
 
             if (GetHoldsForAsset(AssetId).Any())
             {
-                var latestHold = GetMostRecentHold(AssetId);
-                var res = AddCheckout(latestHold.LibraryAsset.Id, latestHold.LibraryCard.Id);
-                RemoveHold(latestHold);
+                var res = UpdateStatus(AssetId,"On Hold");
                 RemoveCheckOut(AssetId, LibraryCardId);
                 return res;
             }
