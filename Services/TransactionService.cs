@@ -55,12 +55,6 @@ namespace MedelLibrary.Services
             this._context.SaveChanges();
         }
 
-        private void RemoveHold(Hold hold)
-        {
-            this._context.Holds.Remove(hold);
-            this._context.SaveChanges();
-        }
-
         public bool AddCheckout(int AssetId, int LibraryCardId)
         {
             var asset = this._context.LibraryAssets.Find(AssetId);
