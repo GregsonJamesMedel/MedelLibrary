@@ -94,7 +94,7 @@ namespace MedelLibrary.Services
             return this._context.Holds.Where(h => h.LibraryAsset.Id == assetId);
         }
 
-        private Hold GetMostRecentHold(int assetId)
+        public Hold GetMostRecentHold(int assetId)
         {
             return this._context.Holds
                     .Include(a => a.LibraryAsset)
@@ -189,9 +189,9 @@ namespace MedelLibrary.Services
         public IEnumerable<Hold> GetAssetHolds(int assetId)
         {
             return this._context.Holds
-                    .Include(a => a.LibraryAsset)
-                    .Include(l => l.LibraryCard)
-                    .Where(h => h.LibraryAsset.Id == assetId);
+                .Include(a => a.LibraryAsset)
+                .Include(l => l.LibraryCard)
+                .Where(h => h.LibraryAsset.Id == assetId).OrderBy(h => h.HoldPlace);
         }
 
         public IEnumerable<CheckoutHistory> GetCheckoutHistoriesByAssetId(int assetId)
@@ -199,7 +199,7 @@ namespace MedelLibrary.Services
             return this._context.CheckoutHistories
                 .Include(a => a.LibraryAsset)
                 .Include(l => l.LibraryCard)
-                .Where(c => c.LibraryAsset.Id == assetId);
+                .Where(c => c.LibraryAsset.Id == assetId).OrderBy(c => c.Checkout);
         }
     }
 }

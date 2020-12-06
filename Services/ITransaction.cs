@@ -14,6 +14,7 @@ namespace MedelLibrary.Services
         IEnumerable<Hold> GetAssetHolds(int assetId);
         Checkout GetRecentCheckOut(int assetId);
         bool UpdateStatus(int id,string status); 
+        Hold GetMostRecentHold(int assetId);
         IEnumerable<Checkout> GetAllCheckouts();
         IEnumerable<CheckoutHistory> GetAllCheckoutHistoryByLibraryCardId(int id);
         IEnumerable<CheckoutHistory> GetCheckoutHistoriesByAssetId(int assetId);
