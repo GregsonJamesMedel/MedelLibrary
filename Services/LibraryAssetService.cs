@@ -156,5 +156,10 @@ namespace MedelLibrary.Services
             var result = this._context.SaveChanges();
             return result > 0 ? true : false;
         }
+
+        public IEnumerable<LibraryAsset> GetAssetsByTitle(string title)
+        {
+            return GetAllAssets().Where(asset => asset.Title.Contains(title));
+        }
     }
 }

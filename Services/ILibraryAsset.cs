@@ -12,6 +12,7 @@ namespace MedelLibrary.Services
         bool MarkLost(int assetId);
         bool MarkFound(int assetId);
         IEnumerable<LibraryAsset> GetAllAssets();
+        IEnumerable<LibraryAsset> GetAssetsByTitle(string title);
         IEnumerable<Book> GetAllBooks();
         string GetAuthorOrDirector(int id);
         string GetISBN(int id);
