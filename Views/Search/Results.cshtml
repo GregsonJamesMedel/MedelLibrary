@@ -1,0 +1,39 @@
+@model MedelLibrary.ViewModels.AssetCatalogVM
+@{
+    ViewBag.Title = "Search Results";
+}
+
+
+<div class="col-md-12">
+    <table class="table table-hover" id="dataTable">
+        <thead>
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author/Director</th>
+                <th>Status</th>
+                <th>Condition</th>
+                <th>Category</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var asset in Model.Assets)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Asset" asp-action="Details" asp-route-id="@asset.Id">
+                            <img src="~/Covers/@asset.ImageUrl" style="width: 60px; height: 80px" asp-append-version="true">
+                        </a>
+                    </td>
+                    <td>@asset.Title</td>
+                    <td>@asset.AuthorOrDirector</td>
+                    <td>@asset.Status</td>
+                    <td>@asset.Condition</td>
+                    <td>@asset.Category.Name</td>
+                    <td>@asset.Type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

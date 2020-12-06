@@ -1977,6 +1977,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Search/Results.cshtml",
+      "TargetPath": "Views\\Search\\Results.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Profile.cshtml",
       "TargetPath": "Views\\Account\\Profile.cshtml",
       "FileKind": "mvc"
