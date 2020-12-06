@@ -2017,6 +2017,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_AssetCatalog.cshtml",
+      "TargetPath": "Views\\Shared\\_AssetCatalog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/EditVideo.cshtml",
       "TargetPath": "Views\\Video\\EditVideo.cshtml",
       "FileKind": "mvc"
