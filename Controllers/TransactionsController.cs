@@ -56,10 +56,22 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpPost]
+        public IActionResult CheckOutForHold(int id)
+        {
+            var hold = this._transactions.GetMostRecentHold(id);
+            var result = this._transactions.AddCheckout(hold.LibraryAsset.Id, hold.LibraryCard.Id);
+
+            if (result)
+                this._transactions.RemoveHold(hold.Id);
+
+            return RedirectToAction("Details", "Asset", new { id = hold.LibraryAsset.Id });
+        }
+
+        [HttpPost]
         public IActionResult CheckIn(int id)
         {
             var recentCheckOut = this._transactions.GetRecentCheckOut(id);
-            this._transactions.AddCheckIn(recentCheckOut.LibraryAsset.Id,recentCheckOut.LibraryCard.Id);
+            this._transactions.AddCheckIn(recentCheckOut.LibraryAsset.Id, recentCheckOut.LibraryCard.Id);
             return RedirectToAction("Details", "Asset", new { id = recentCheckOut.LibraryAsset.Id });
         }
 
@@ -100,8 +112,8 @@ namespace MedelLibrary.Controllers
         {
             var asset = this._libraryAsset.GetAsset(id);
 
-            if(asset == null)
-                return RedirectToAction("NotFound","Error");
+            if (asset == null)
+                return RedirectToAction("NotFound", "Error");
 
             var model = new HoldVM()
             {
@@ -118,11 +130,11 @@ namespace MedelLibrary.Controllers
         [HttpPost]
         public IActionResult PlaceHold(HoldVM model)
         {
-            var result = this._transactions.AddHold(model.AssetId,model.LibraryCardId);
+            var result = this._transactions.AddHold(model.AssetId, model.LibraryCardId);
 
-            if(result)
-                return RedirectToAction("Details","Asset",new { id = model.AssetId });
-            
+            if (result)
+                return RedirectToAction("Details", "Asset", new { id = model.AssetId });
+
             return View(model);
         }
 
