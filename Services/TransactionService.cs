@@ -23,7 +23,7 @@ namespace MedelLibrary.Services
 
             var dateNow = DateTime.Now;
 
-            if(checkOutHistory == null)
+            if (checkOutHistory == null)
                 return false;
 
 
@@ -33,25 +33,25 @@ namespace MedelLibrary.Services
 
             var result = this._context.SaveChanges() > 0 ? true : false;
 
-            if(GetHoldsForAsset(AssetId).Any())
+            if (GetHoldsForAsset(AssetId).Any())
             {
                 var latestHold = GetMostRecentHold(AssetId);
-                var res = AddCheckout(latestHold.LibraryAsset.Id,latestHold.LibraryCard.Id);
+                var res = AddCheckout(latestHold.LibraryAsset.Id, latestHold.LibraryCard.Id);
                 RemoveHold(latestHold);
-                RemoveCheckOut(AssetId,LibraryCardId);
+                RemoveCheckOut(AssetId, LibraryCardId);
                 return res;
             }
 
             if (result)
                 UpdateStatus(AssetId, "Available");
-                RemoveCheckOut(AssetId,LibraryCardId);
+            RemoveCheckOut(AssetId, LibraryCardId);
 
             return result;
         }
 
         private void RemoveCheckOut(int assetId, int libraryCardId)
         {
-            var checkOut =  this._context.Checkouts
+            var checkOut = this._context.Checkouts
                 .FirstOrDefault(a => a.LibraryAsset.Id == assetId && a.LibraryCard.Id == libraryCardId);
             this._context.Remove(checkOut);
             this._context.SaveChanges();
@@ -200,6 +200,13 @@ namespace MedelLibrary.Services
                 .Include(a => a.LibraryAsset)
                 .Include(l => l.LibraryCard)
                 .Where(c => c.LibraryAsset.Id == assetId).OrderBy(c => c.Checkout);
+        }
+
+        public bool RemoveHold(int holdId)
+        {
+            var hold = this._context.Holds.Find(holdId);
+            this._context.Holds.Remove(hold);
+            return this._context.SaveChanges() > 0;
         }
     }
 }
