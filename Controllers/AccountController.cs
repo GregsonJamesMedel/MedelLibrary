@@ -14,7 +14,6 @@ namespace MedelLibrary.Controllers
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAssets;
         private readonly IPatron _patronService;
-
         private readonly IImage _imageProcessor;
 
         public AccountController(SignInManager<Patron> signInManager,
@@ -81,7 +80,20 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
-        public IActionResult Patrons() => View(this._patronService.GetAllPatrons());
+        public IActionResult Patrons()
+        {
+            var model = this._patronService.GetAllPatrons()
+            .Select(res => new PatronModel()
+            {
+                Id = res.Id,
+                Firstname = res.PersonalDetails.Firstname,
+                Lastname = res.PersonalDetails.Lastname,
+                Email = res.Email,
+                Address = res.PersonalDetails.Address
+            });
+
+            return View(model);
+        }
 
         public IActionResult Profile(string id)
         {
