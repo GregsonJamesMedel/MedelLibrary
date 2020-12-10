@@ -85,20 +85,20 @@ namespace MedelLibrary.Controllers
 
             var model = new ProfileVM(){
                 Id = patron.Id,
-                Firstname = patron.Firstname,
-                Middlename = patron.Middlename,
-                Lastname = patron.Lastname,
-                Gender = patron.Gender,
-                Birthday = patron.Birthday,
-                Address = patron.Address,
-                ImageUrl = patron.ImageUrl,
+                Firstname = patron.PersonalDetails.Firstname,
+                Middlename = patron.PersonalDetails.Middlename,
+                Lastname = patron.PersonalDetails.Lastname,
+                Gender = patron.PersonalDetails.Gender,
+                Birthday = patron.PersonalDetails.Birthday,
+                Address = patron.PersonalDetails.Address,
+                ImageUrl = patron.PersonalDetails.ImageUrl,
                 Email = patron.Email,
                 ContactNumber = patron.PhoneNumber,
-                CurrentFees = this._transactions.GetLibraryCardById(patron.LibraryCardId).Fees,
+                CurrentFees = this._transactions.GetLibraryCardById(patron.LibraryCard.Id).Fees,
             };
 
             model.Checkouts = this._transactions
-            .GetAllCheckoutHistoryByLibraryCardId(patron.LibraryCardId).Select(res => new CheckoutHistoryVM()
+            .GetAllCheckoutHistoryByLibraryCardId(patron.LibraryCard.Id).Select(res => new CheckoutHistoryVM()
             {
                 Id = res.Id,
                 AssetId = res.LibraryAsset.Id.ToString(),
@@ -117,13 +117,13 @@ namespace MedelLibrary.Controllers
         {
             var patron = this._patronService.GetPatronById(id);
             var pdetails = new SettingsPersonalDetailsVM(){
-                Id = patron.PersonalDetailsId,
-                Firstname = patron.Firstname,
-                Middlename = patron.Middlename,
-                Lastname = patron.Lastname,
-                Gender = patron.Gender,
-                Address = patron.Address,
-                Birthday = patron.Birthday,
+                Id = patron.PersonalDetails.Id,
+                Firstname = patron.PersonalDetails.Firstname,
+                Middlename = patron.PersonalDetails.Middlename,
+                Lastname = patron.PersonalDetails.Lastname,
+                Gender = patron.PersonalDetails.Gender,
+                Address = patron.PersonalDetails.Address,
+                Birthday = patron.PersonalDetails.Birthday,
                 ContactNumber = patron.PhoneNumber
             };
 

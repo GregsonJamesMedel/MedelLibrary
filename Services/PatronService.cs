@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedelLibrary.Data;
 using MedelLibrary.Models;
 using MedelLibrary.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedelLibrary.Services
 {
@@ -12,34 +14,26 @@ namespace MedelLibrary.Services
         private readonly SignInManager<Patron> _signInManager;
         private readonly UserManager<Patron> _userManager;
         private readonly ITransaction _transactions;
+        private readonly DataContext _context;
 
 
-        public PatronService(SignInManager<Patron> signInManager, UserManager<Patron> userManager, ITransaction transactions)
+        public PatronService(SignInManager<Patron> signInManager, 
+                            UserManager<Patron> userManager, 
+                            ITransaction transactions, 
+                            DataContext context)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
             this._transactions = transactions;
+            _context = context;
         }
 
-        public IEnumerable<PatronModel> GetAllPatrons()
+        public IEnumerable<Patron> GetAllPatrons()
         {
-            return this._userManager.Users.Select(res => new PatronModel(){
-                Id = res.Id,
-                Firstname = res.PersonalDetails.Firstname,
-                Middlename = res.PersonalDetails.Middlename,
-                Lastname = res.PersonalDetails.Lastname,
-                Gender = res.PersonalDetails.Gender,
-                Address = res.PersonalDetails.Address,
-                Birthday = res.PersonalDetails.Birthday,
-                ImageUrl = res.PersonalDetails.ImageUrl,
-                PhoneNumber = res.PhoneNumber,
-                Email = res.Email,
-                LibraryCardId = res.LibraryCard.Id,
-                PersonalDetailsId = res.PersonalDetails.Id
-            });
+            return this._context.Users.Include(pd => pd.PersonalDetails).Include(lc => lc.LibraryCard);
         }
 
-        public PatronModel GetPatronById(string id)
+        public Patron GetPatronById(string id)
         {
             return this.GetAllPatrons().FirstOrDefault(p => p.Id == id);
         }
