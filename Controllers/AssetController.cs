@@ -111,7 +111,7 @@ namespace MedelLibrary.Controllers
             {
                 var asset = this._asset.GetAsset(model.Id);
 
-                var saveImage = this._imageProcessor.SaveImage(model.Image);
+                var saveImage = this._imageProcessor.SaveImage(model.Image, "Covers");
 
                 if (saveImage != null)
                 {

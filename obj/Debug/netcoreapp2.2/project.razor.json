@@ -1947,6 +1947,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_SettingsProfilePhoto.cshtml",
+      "TargetPath": "Views\\Shared\\_SettingsProfilePhoto.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/_Layout.cshtml",
       "TargetPath": "Views\\Account\\_Layout.cshtml",
       "FileKind": "mvc"

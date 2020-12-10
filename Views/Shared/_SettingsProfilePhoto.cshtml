@@ -1,0 +1,19 @@
+@model MedelLibrary.ViewModels.SettingsProfilePhotoVM
+
+
+<div class="row">
+    <div class="col-md-5">
+        <img src="~/img/lalisa.jpg" alt="" style="width: 100%">
+    </div>
+    <div class="col-md-5">
+        <form asp-controller="Account" asp-action="UpdatePicture" method="POST" enctype="multipart/form-data">
+            <div class="custom-file">
+                <input asp-for="@Model.Image" class="form-control custom-file-input">
+                <label class="custom-file-label">Choose File...</label>
+            </div>
+            <span asp-validation-for="@Model.Image" class="text-danger"></span>
+            <input type="hidden" asp-for="@Model.Id">
+            <button type="submit" class="btn btn-primary float-right mt-2">Save</button>
+        </form>
+    </div>
+</div>

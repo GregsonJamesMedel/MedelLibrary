@@ -4,6 +4,6 @@ namespace MedelLibrary.Services
 {
     public interface IImage
     {
-        string SaveImage(IFormFile image);
+        string SaveImage(IFormFile image, string saveto);
     }
 }

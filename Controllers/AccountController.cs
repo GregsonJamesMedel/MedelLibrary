@@ -15,15 +15,19 @@ namespace MedelLibrary.Controllers
         private readonly ILibraryAsset _libraryAssets;
         private readonly IPatron _patronService;
 
+        private readonly IImage _imageProcessor;
+
         public AccountController(SignInManager<Patron> signInManager,
                                 ITransaction transactions,
                                 ILibraryAsset libraryAssets,
-                                IPatron patronService)
+                                IPatron patronService,
+                                IImage imageProcessor)
         {
             this._signInManager = signInManager;
             this._transactions = transactions;
             this._libraryAssets = libraryAssets;
             this._patronService = patronService;
+            this._imageProcessor = imageProcessor;
         }
 
         [HttpGet]
@@ -133,7 +137,9 @@ namespace MedelLibrary.Controllers
 
             var model = new SettingsVM()
             {
-                PersonalDetails = pdetails
+                PersonalDetails = pdetails,
+                ProfilePhoto = new SettingsProfilePhotoVM()
+                { Id = patron.Id, ImagePath = patron.PersonalDetails.ImageUrl }
             };
             return View(model);
         }
@@ -160,6 +166,21 @@ namespace MedelLibrary.Controllers
                 return RedirectToAction("Profile", "Account", new { id = patron.Id });
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePicture(SettingsProfilePhotoVM model)
+        {
+            var patron = this._patronService.GetPatronById(model.Id);
+
+            if (patron == null)
+                return RedirectToAction("NotFound", "Error");
+
+            patron.PersonalDetails.ImageUrl = this._imageProcessor.SaveImage(model.Image, "ProfilePhotos");
+
+            this._patronService.UpdatePatron(patron);
+
+            return RedirectToAction("Profile", "Account", new { id = patron.Id });
         }
 
     }

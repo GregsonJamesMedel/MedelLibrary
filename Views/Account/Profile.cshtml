@@ -7,7 +7,7 @@
 <div class="jumbotron p-4">
     <div class="row">
         <div class="col-md-2">
-            <img src="~/img/lalisa.jpg" style="width: 100%;" asp-append-version="true">
+            <img src="~/ProfilePhotos/@Model.ImageUrl" style="width: 100%;" asp-append-version="true">
         </div>
         <div class="col-md-10">
             <h3 class="text-primary">@Model.Firstname @Model.Middlename @Model.Lastname</h3>
@@ -16,7 +16,7 @@
             <p class="mb-0"><span style="font-weight: bold;">Contact Number:</span> @Model.ContactNumber</p>
             <p class="mb-0"><span style="font-weight: bold;">Gender:</span> @Model.Gender</p>
             <p class="mb-0"><span style="font-weight: bold;">Birthday:</span> @String.Format("{0:MMMM d, yyyy}",Model.Birthday)</p>
-            <p class="mb-0"><span style="font-weight: bold;">Current Fees:</span> @Model.CurrentFees</p>
+            <p class="mb-0"><span style="font-weight: bold;">Current Fees:</span> @String.Format("{0:0.00}", Model.CurrentFees) </p>
         </div>
     </div>
 </div>
