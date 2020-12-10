@@ -49,7 +49,8 @@ namespace MedelLibrary.Services
             {
                 Firstname = model.Firstname,
                 Lastname = model.Lastname,
-                Address = model.Address
+                Address = model.Address,
+                ImageUrl = "NoProfilePhoto.jpeg"
             };
 
             var patron = new Patron()

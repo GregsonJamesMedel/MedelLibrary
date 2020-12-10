@@ -47,7 +47,8 @@ namespace MedelLibrary.Controllers
                     Shelf = model.Shelf,
                     Category = category,
                     Condition = "New",
-                    Status = "Available"
+                    Status = "Available",
+                    ImageUrl = "NoCover.png"
                 };
 
                 var result = this._libraryAsset.AddLibraryAsset(book);

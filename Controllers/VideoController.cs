@@ -43,7 +43,8 @@ namespace MedelLibrary.Controllers
                 NumberOfCopies = model.NumberOfCopies,
                 Cost = model.Cost,
                 Condition = "New",
-                Status = "Check out"
+                Status = "Check out",
+                ImageUrl = "NoCover.png"
             };
 
             var result = this._asset.AddLibraryAsset(video);
