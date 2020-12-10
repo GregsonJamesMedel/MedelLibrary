@@ -150,6 +150,7 @@ namespace MedelLibrary.Controllers
             var model = new SettingsVM()
             {
                 PersonalDetails = pdetails,
+                ChangePassword = new SettingsChangePasswordVM(){ Id = patron.Id },
                 ProfilePhoto = new SettingsProfilePhotoVM()
                 { Id = patron.Id, ImagePath = patron.PersonalDetails.ImageUrl }
             };
@@ -193,6 +194,22 @@ namespace MedelLibrary.Controllers
             this._patronService.UpdatePatron(patron);
 
             return RedirectToAction("Profile", "Account", new { id = patron.Id });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(SettingsChangePasswordVM model)
+        {
+            var patron = this._patronService.GetPatronById(model.Id);
+            
+            if(patron == null)
+                return RedirectToAction("NotFound", "Error");
+
+            var IsUpdated = this._patronService.ChangePassword(patron,model.CurrentPassword,model.Password);
+            
+            if( await IsUpdated)
+                return RedirectToAction("Profile", "Account", new { id = patron.Id });
+
+            return View(model);
         }
 
     }

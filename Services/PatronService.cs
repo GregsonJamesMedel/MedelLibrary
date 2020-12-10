@@ -28,6 +28,21 @@ namespace MedelLibrary.Services
             this._context = context;
         }
 
+        public async Task<bool> ChangePassword(Patron patron, string currentPassword, string newPassword)
+        {
+            var patronToUpdate = GetPatronById(patron.Id);
+
+            if (patronToUpdate == null)
+                return false;
+
+            var isUpdated = await this._userManager.ChangePasswordAsync(patronToUpdate, currentPassword, newPassword);
+
+            if(isUpdated.Succeeded)
+                return true;
+            
+            return false;
+        }
+
         public IEnumerable<Patron> GetAllPatrons()
         {
             return this._context.Users.Include(pd => pd.PersonalDetails).Include(lc => lc.LibraryCard);

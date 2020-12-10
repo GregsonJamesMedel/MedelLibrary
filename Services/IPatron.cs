@@ -13,5 +13,6 @@ namespace MedelLibrary.Services
         Task<SignInResult> SignIn(SignInVM model);
         Task<Patron> SignUp(SignUpVM model);
         bool UpdatePatron(Patron patron);
+        Task<bool> ChangePassword(Patron patron, string currentPassword, string newPassword);
     }
 }
