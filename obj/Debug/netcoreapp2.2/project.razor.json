@@ -1887,6 +1887,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_SettingsChangePassword.cshtml",
+      "TargetPath": "Views\\Shared\\_SettingsChangePassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/SaveVideo.cshtml",
       "TargetPath": "Views\\Video\\SaveVideo.cshtml",
       "FileKind": "mvc"

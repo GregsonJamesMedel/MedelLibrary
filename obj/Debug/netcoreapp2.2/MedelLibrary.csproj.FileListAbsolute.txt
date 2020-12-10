@@ -56,3 +56,4 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.pdb
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.csproj.CopyComplete
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SettingsProfilePhoto.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SettingsChangePassword.g.cshtml.cs

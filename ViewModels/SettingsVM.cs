@@ -4,5 +4,6 @@ namespace MedelLibrary.ViewModels
     {
         public SettingsPersonalDetailsVM PersonalDetails { get; set; }
         public SettingsProfilePhotoVM ProfilePhoto { get; set; }
+        public SettingsChangePasswordVM ChangePassword { get; set; }
     }
 }
