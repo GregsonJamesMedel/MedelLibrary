@@ -41,7 +41,7 @@ namespace MedelLibrary.Controllers
 
                 if (result != null)
                 {
-                    await _signInManager.SignInAsync( await result, isPersistent: false);
+                    await _signInManager.SignInAsync(await result, isPersistent: false);
                     return RedirectToAction("AssetCatalog", "Asset");
                 }
             }
@@ -83,7 +83,8 @@ namespace MedelLibrary.Controllers
         {
             var patron = this._patronService.GetPatronById(id);
 
-            var model = new ProfileVM(){
+            var model = new ProfileVM()
+            {
                 Id = patron.Id,
                 Firstname = patron.PersonalDetails.Firstname,
                 Middlename = patron.PersonalDetails.Middlename,
@@ -94,7 +95,7 @@ namespace MedelLibrary.Controllers
                 ImageUrl = patron.PersonalDetails.ImageUrl,
                 Email = patron.Email,
                 ContactNumber = patron.PhoneNumber,
-                CurrentFees = this._transactions.GetLibraryCardById(patron.LibraryCard.Id).Fees,
+                CurrentFees = patron.LibraryCard.Fees,
             };
 
             model.Checkouts = this._transactions
@@ -113,11 +114,14 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult Settings(string id)
         {
             var patron = this._patronService.GetPatronById(id);
-            var pdetails = new SettingsPersonalDetailsVM(){
-                Id = patron.PersonalDetails.Id,
+
+            var pdetails = new SettingsPersonalDetailsVM()
+            {
+                Id = patron.Id,
                 Firstname = patron.PersonalDetails.Firstname,
                 Middlename = patron.PersonalDetails.Middlename,
                 Lastname = patron.PersonalDetails.Lastname,
@@ -127,9 +131,34 @@ namespace MedelLibrary.Controllers
                 ContactNumber = patron.PhoneNumber
             };
 
-            var model = new SettingsVM(){
+            var model = new SettingsVM()
+            {
                 PersonalDetails = pdetails
             };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateProfile(SettingsPersonalDetailsVM model)
+        {
+            Patron patron = this._patronService.GetPatronById(model.Id);
+
+            if (patron == null)
+                return RedirectToAction("NotFound", "Error");
+
+            patron.PersonalDetails.Firstname = model.Firstname;
+            patron.PersonalDetails.Middlename = model.Middlename;
+            patron.PersonalDetails.Lastname = model.Lastname;
+            patron.PersonalDetails.Address = model.Address;
+            patron.PersonalDetails.Gender = model.Gender;
+            patron.PersonalDetails.Birthday = model.Birthday;
+            patron.PhoneNumber = model.ContactNumber;
+
+            var result = this._patronService.UpdatePatron(patron);
+
+            if (result)
+                return RedirectToAction("Profile", "Account", new { id = patron.Id });
+
             return View(model);
         }
 

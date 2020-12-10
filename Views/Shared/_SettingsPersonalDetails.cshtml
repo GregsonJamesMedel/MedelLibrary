@@ -1,6 +1,6 @@
 @model MedelLibrary.ViewModels.SettingsPersonalDetailsVM
 
-<form action="" method="post">
+<form asp-controller="Account" asp-action="UpdateProfile" method="post">
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
@@ -43,6 +43,7 @@
                     <option value="Other">Other</option>
                 </select>
                 <span class="text-danger" asp-validation-for="@Model.Gender"></span>
+                <input type="hidden" asp-for="@Model.Id">
             </div>
         </div>
     </div>

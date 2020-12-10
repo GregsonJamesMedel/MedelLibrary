@@ -17,7 +17,6 @@ namespace MedelLibrary.ViewModels
         public string Email { get; set; }
         public string ContactNumber { get; set; }
         public decimal CurrentFees { get; set; }
-        public int LibraryCardId { get; set; }
         public IEnumerable<CheckoutHistoryVM> Checkouts { get; set; }
     }
 }

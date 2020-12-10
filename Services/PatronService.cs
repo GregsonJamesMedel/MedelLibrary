@@ -17,15 +17,15 @@ namespace MedelLibrary.Services
         private readonly DataContext _context;
 
 
-        public PatronService(SignInManager<Patron> signInManager, 
-                            UserManager<Patron> userManager, 
-                            ITransaction transactions, 
+        public PatronService(SignInManager<Patron> signInManager,
+                            UserManager<Patron> userManager,
+                            ITransaction transactions,
                             DataContext context)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
             this._transactions = transactions;
-            _context = context;
+            this._context = context;
         }
 
         public IEnumerable<Patron> GetAllPatrons()
@@ -46,23 +46,35 @@ namespace MedelLibrary.Services
         public async Task<Patron> SignUp(SignUpVM model)
         {
             var pDetails = new PersonalDetails()
-                {
-                    Firstname = model.Firstname,
-                    Lastname = model.Lastname,
-                    Address = model.Address
-                };
+            {
+                Firstname = model.Firstname,
+                Lastname = model.Lastname,
+                Address = model.Address
+            };
 
-                var patron = new Patron()
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    PhoneNumber = model.ContactNumber,
-                    LibraryCard = this._transactions.CreateLibraryCard(),
-                    PersonalDetails = pDetails
-                };
+            var patron = new Patron()
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                PhoneNumber = model.ContactNumber,
+                LibraryCard = this._transactions.CreateLibraryCard(),
+                PersonalDetails = pDetails
+            };
 
             var res = await this._userManager.CreateAsync(patron, model.Password);
             return res.Succeeded ? patron : null;
+        }
+
+        public bool UpdatePatron(Patron patron)
+        {
+            var patronToUpdate = GetPatronById(patron.Id);
+
+            if (patronToUpdate == null)
+                return false;
+
+            this._context.Users.Update(patronToUpdate);
+            return this._context.SaveChanges() > 0;
+
         }
     }
 }

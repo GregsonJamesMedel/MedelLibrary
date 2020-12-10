@@ -12,5 +12,6 @@ namespace MedelLibrary.Services
         Patron GetPatronById(string id);
         Task<SignInResult> SignIn(SignInVM model);
         Task<Patron> SignUp(SignUpVM model);
+        bool UpdatePatron(Patron patron);
     }
 }
