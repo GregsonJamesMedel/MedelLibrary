@@ -79,23 +79,6 @@ namespace MedelLibrary.Controllers
             return RedirectToAction("AssetCatalog", "Asset");
         }
 
-        [HttpGet]
-        public IActionResult Patrons()
-        {
-            var model = this._patronService.GetAllPatrons()
-            .Select(res => new PatronModel()
-            {
-                Id = res.Id,
-                Firstname = res.PersonalDetails.Firstname,
-                Lastname = res.PersonalDetails.Lastname,
-                Email = res.Email,
-                Address = res.PersonalDetails.Address,
-                ImageUrl = res.PersonalDetails.ImageUrl
-            });
-
-            return View(model);
-        }
-
         public IActionResult Profile(string id)
         {
             var patron = this._patronService.GetPatronById(id);

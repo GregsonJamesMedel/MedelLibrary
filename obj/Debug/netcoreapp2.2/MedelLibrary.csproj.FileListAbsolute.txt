@@ -14,7 +14,6 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.TagHelpers.input.cache
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.TagHelpers.output.cache
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/MedelLibrary.RazorCoreGenerate.cache
-/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Patrons.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Profile.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/Settings.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Account/SignIn.g.cshtml.cs
@@ -58,3 +57,4 @@
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SettingsProfilePhoto.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_SettingsChangePassword.g.cshtml.cs
 /home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Transactions/Payments.g.cshtml.cs
+/home/medel/Documents/MedelLibrary/obj/Debug/netcoreapp2.2/Razor/Views/Patrons/PatronsList.g.cshtml.cs
