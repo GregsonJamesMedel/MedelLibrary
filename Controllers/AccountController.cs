@@ -89,7 +89,8 @@ namespace MedelLibrary.Controllers
                 Firstname = res.PersonalDetails.Firstname,
                 Lastname = res.PersonalDetails.Lastname,
                 Email = res.Email,
-                Address = res.PersonalDetails.Address
+                Address = res.PersonalDetails.Address,
+                ImageUrl = res.PersonalDetails.ImageUrl
             });
 
             return View(model);

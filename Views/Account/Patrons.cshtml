@@ -7,7 +7,7 @@
 <div class="col-md-12">
     <table class="table table-hover" id="patronsTable">
         <thead>
-            <th>Id</th>
+            <th>Photo</th>
             <th>Email</th>
             <th>Firstname</th>
             <th>Lastname</th>
@@ -17,7 +17,11 @@
             @foreach (var patron in Model)
             {
                 <tr>
-                    <td>@patron.Id.Substring(0,8)</td>
+                    <td>
+                        <a asp-controller="Account" asp-action="Profile" asp-route-id="@patron.Id">
+                            <img src="~/ProfilePhotos/@patron.ImageUrl" style="width: 60px; height: 80px" asp-append-version="true">
+                        </a>
+                    </td>
                     <td>@patron.Email</td>
                     <td>@patron.Firstname</td>
                     <td>@patron.Lastname</td>
