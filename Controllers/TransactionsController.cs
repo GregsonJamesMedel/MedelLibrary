@@ -139,6 +139,11 @@ namespace MedelLibrary.Controllers
             return View(model);
         }
 
+        public IActionResult Payments()
+        {
+            return View();
+        }
+
         private CheckoutVM BuildCheckVM(int assetId)
         {
             var asset = this._libraryAsset.GetAsset(assetId);
@@ -170,7 +175,7 @@ namespace MedelLibrary.Controllers
             });
         }
 
-        
+
 
     }
 }

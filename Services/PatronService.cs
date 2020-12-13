@@ -48,6 +48,11 @@ namespace MedelLibrary.Services
             return this._context.Users.Include(pd => pd.PersonalDetails).Include(lc => lc.LibraryCard);
         }
 
+        public IEnumerable<Patron> GetAllPatronsWithFees()
+        {
+            return GetAllPatrons().Where(l => l.LibraryCard.Fees > 0);
+        }
+
         public Patron GetPatronById(string id)
         {
             return this.GetAllPatrons().FirstOrDefault(p => p.Id == id);

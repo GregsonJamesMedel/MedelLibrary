@@ -9,10 +9,12 @@ namespace MedelLibrary.Services
     public interface IPatron
     {
         IEnumerable<Patron> GetAllPatrons();
+        IEnumerable<Patron> GetAllPatronsWithFees();
         Patron GetPatronById(string id);
         Task<SignInResult> SignIn(SignInVM model);
         Task<Patron> SignUp(SignUpVM model);
         bool UpdatePatron(Patron patron);
         Task<bool> ChangePassword(Patron patron, string currentPassword, string newPassword);
+
     }
 }
