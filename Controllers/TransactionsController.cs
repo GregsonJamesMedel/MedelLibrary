@@ -13,15 +13,16 @@ namespace MedelLibrary.Controllers
     {
         private readonly ITransaction _transactions;
         private readonly ILibraryAsset _libraryAsset;
-        private readonly UserManager<Patron> _userManager;
+        private readonly IPatron _patronService;
 
         public TransactionsController(ITransaction transactions,
                                         ILibraryAsset libraryAsset,
-                                        UserManager<Patron> userManager)
+                                        UserManager<Patron> userManager, 
+                                        IPatron patronService)
         {
             this._transactions = transactions;
             this._libraryAsset = libraryAsset;
-            this._userManager = userManager;
+            _patronService = patronService;
         }
 
         [HttpGet]
@@ -161,13 +162,15 @@ namespace MedelLibrary.Controllers
 
         private IEnumerable<PatronLibraryCardVM> GetPatronsWithLibraryCard()
         {
-            return this._userManager.Users.Select(result => new PatronLibraryCardVM()
+            return this._patronService.GetAllPatrons().Select(result => new PatronLibraryCardVM()
             {
                 PatronId = result.Id,
                 PatronFullname = result.PersonalDetails.Lastname + " " + result.PersonalDetails.Firstname,
                 LibraryCardId = result.LibraryCard.Id
             });
         }
+
+        
 
     }
 }
