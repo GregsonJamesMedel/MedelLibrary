@@ -16,6 +16,7 @@ namespace MedelLibrary.Services
         bool UpdateStatus(int id,string status); 
         Hold GetMostRecentHold(int assetId);
         bool RemoveHold(int holdId);
+        bool SettleFees(string patronId);
         IEnumerable<Checkout> GetAllCheckouts();
         IEnumerable<CheckoutHistory> GetAllCheckoutHistoryByLibraryCardId(int id);
         IEnumerable<CheckoutHistory> GetCheckoutHistoriesByAssetId(int assetId);

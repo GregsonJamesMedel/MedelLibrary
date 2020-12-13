@@ -143,7 +143,7 @@ namespace MedelLibrary.Controllers
         public IActionResult Payments()
         {
             var model = this._patronService.GetAllPatronsWithFees()
-            .Select(res => new TransactionsPaymentVM{
+                .Select(res => new TransactionsPaymentVM{
                 PatronId = res.Id,
                 FullName = res.PersonalDetails.Firstname + " " + 
                             res.PersonalDetails.Middlename + " " + 
@@ -153,6 +153,13 @@ namespace MedelLibrary.Controllers
             });
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Payments(string Id)
+        {
+            this._transactions.SettleFees(Id);
+            return RedirectToAction("Payments","Transactions");
         }
 
         private CheckoutVM BuildCheckVM(int assetId)

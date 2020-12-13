@@ -200,5 +200,25 @@ namespace MedelLibrary.Services
             this._context.Holds.Remove(hold);
             return this._context.SaveChanges() > 0;
         }
+
+        public bool SettleFees(string patronId)
+        {
+            var patron = this._context.Users
+                    .Include(l => l.LibraryCard)
+                    .SingleOrDefault(p => p.Id == patronId);
+            
+            if(patron == null)
+                return false;
+            
+            if(patron.LibraryCard.Fees > 0)
+            {
+                patron.LibraryCard.Fees = 0;
+                this._context.Users.Update(patron);
+                return this._context.SaveChanges() > 0;
+            }
+
+            return false;
+
+        }
     }
 }
