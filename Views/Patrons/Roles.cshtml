@@ -1,0 +1,36 @@
+@model MedelLibrary.ViewModels.PatronsRolesVM
+@{
+    ViewBag.Title = "Roles";
+}
+<div class="jumbotron p-4">
+    <h3 class="text-primary text-center">Role Assignment</h3>
+    <form action="">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <select class="form-control">
+                        <option value="">Select Patron</option>
+                        @foreach (var patron in Model.Patrons)
+                        {
+                            <option value="@patron.Id">@patron.PersonalDetails.Lastname @patron.PersonalDetails.Firstname</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <select class="form-control">
+                        <option value="">Select Role</option>
+                        @foreach (var role in Model.Roles)
+                        {
+                            <option value="@role.Id">@role.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
