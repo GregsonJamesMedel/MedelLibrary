@@ -138,10 +138,21 @@ namespace MedelLibrary.Controllers
 
             return View(model);
         }
-
+        
+        [HttpGet]
         public IActionResult Payments()
         {
-            return View();
+            var model = this._patronService.GetAllPatronsWithFees()
+            .Select(res => new TransactionsPaymentVM{
+                PatronId = res.Id,
+                FullName = res.PersonalDetails.Firstname + " " + 
+                            res.PersonalDetails.Middlename + " " + 
+                            res.PersonalDetails.Lastname,
+                CurrentFees = res.LibraryCard.Fees
+
+            });
+
+            return View(model);
         }
 
         private CheckoutVM BuildCheckVM(int assetId)
