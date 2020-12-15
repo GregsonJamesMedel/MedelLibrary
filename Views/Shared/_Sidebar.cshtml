@@ -1,3 +1,11 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Http;
+@inject UserManager<Patron> _userManager;
+@inject IHttpContextAccessor _httpContextAccessor;
+@{
+    var user = _httpContextAccessor.HttpContext.User;
+}
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -23,46 +31,62 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" asp-controller="Asset" asp-action="AssetCatalog">Asset catalog</a>
-                <a class="collapse-item" asp-controller="Category" asp-action="Categories">Categories</a>
 
-                <h6 class="collapse-header">Add New Asset:</h6>
-                <a class="collapse-item" asp-controller="Book" asp-action="AddBook">Book</a>
-                <a class="collapse-item" asp-controller="Video" asp-action="AddVideo">Video</a>
-                <a class="collapse-item" asp-controller="Category" asp-action="AddCategory">Category</a>
+                @if (user.IsInRole("Administrator") || user.IsInRole("Staff"))
+                {
+                    <a class="collapse-item" asp-controller="Category" asp-action="Categories">Categories</a>
+
+                    <h6 class="collapse-header">Add New Asset:</h6>
+                    <a class="collapse-item" asp-controller="Book" asp-action="AddBook">Book</a>
+                    <a class="collapse-item" asp-controller="Video" asp-action="AddVideo">Video</a>
+                    <a class="collapse-item" asp-controller="Category" asp-action="AddCategory">Category</a>
+                }
+
             </div>
         </div>
     </li>
 
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Patron Manager</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" asp-controller="Patrons" asp-action="PatronsList">Patrons</a>
-                <a class="collapse-item" asp-controller="Patrons" asp-action="Roles">Roles</a>
+    @if(user.IsInRole("Administrator") || user.IsInRole("Staff"))
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Patron Manager</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" asp-controller="Patrons" asp-action="PatronsList">Patrons</a>
+                    @if(user.IsInRole("Administrator"))
+                    {
+                        <a class="collapse-item" asp-controller="Patrons" asp-action="Roles">Roles</a>
+                    }
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    }
+
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-list"></i>
-            <span>Transactions</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" asp-controller="Transactions" asp-action="CheckoutList">Checkouts</a>
-                <a class="collapse-item" asp-controller="Transactions" asp-action="Payments">Payments</a>
+    @if(user.IsInRole("Administrator") || user.IsInRole("Staff"))
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                aria-controls="collapsePages">
+                <i class="fas fa-fw fa-list"></i>
+                <span>Transactions</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" asp-controller="Transactions" asp-action="CheckoutList">Checkouts</a>
+                    <a class="collapse-item" asp-controller="Transactions" asp-action="Payments">Payments</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    }
+
 
 
     <!-- Divider -->

@@ -58,7 +58,7 @@ namespace MedelLibrary.Controllers
         public async Task<IActionResult> AssignToRole(PatronsAssignToRoleVM model)
         {
             if(model.PatronId == "none" || model.RoleId == "none")
-                RedirectToAction("Roles");
+                return RedirectToAction("Roles");
 
             var role = await this._roleManager.FindByIdAsync(model.RoleId);
             var patron = await this._userManager.FindByIdAsync(model.PatronId);

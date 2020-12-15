@@ -49,7 +49,6 @@ namespace MedelLibrary
             services.AddScoped<ICategory, CategoryService>();
             services.AddScoped<ILibraryAsset, LibraryAssetService>();
             services.AddScoped<IImage, ImageProcessor>();
-            services.AddScoped<IPersonalDetails,PersonalDetailsService>();
             services.AddScoped<ITransaction,TransactionService>();
             services.AddScoped<IPatron,PatronService>();
         }
