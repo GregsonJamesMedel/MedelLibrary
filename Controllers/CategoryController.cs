@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MedelLibrary.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,Staff")]
     public class CategoryController : Controller
     {
         private readonly ICategory _category;

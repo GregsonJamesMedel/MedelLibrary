@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 using MedelLibrary.Models;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 namespace MedelLibrary.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly SignInManager<Patron> _signInManager;
@@ -30,12 +32,15 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult SignIn() => View();
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult SignUp() => View();
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> SignUp(SignUpVM model)
         {
             if (ModelState.IsValid)
@@ -53,6 +58,7 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> SignIn(SignInVM model, string returnUrl)
         {
             if (ModelState.IsValid)

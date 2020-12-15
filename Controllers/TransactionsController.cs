@@ -4,11 +4,13 @@ using System.Linq;
 using MedelLibrary.Models;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedelLibrary.Controllers
 {
+    [Authorize(Roles = "Administrator,Staff")]
     public class TransactionsController : Controller
     {
         private readonly ITransaction _transactions;

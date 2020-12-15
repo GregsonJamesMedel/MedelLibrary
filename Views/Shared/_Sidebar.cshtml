@@ -1,6 +1,4 @@
-@using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Http;
-@inject UserManager<Patron> _userManager;
 @inject IHttpContextAccessor _httpContextAccessor;
 @{
     var user = _httpContextAccessor.HttpContext.User;

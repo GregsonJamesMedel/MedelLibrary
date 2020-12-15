@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MedelLibrary.Controllers
 {
-    [Authorize(Roles = "Administrator")]
     public class PatronsController : Controller
     {
         private readonly IPatron _patronService;
@@ -17,7 +16,7 @@ namespace MedelLibrary.Controllers
         private readonly UserManager<Patron> _userManager;
 
         public PatronsController(IPatron patronService,
-                                RoleManager<IdentityRole> roleManager, 
+                                RoleManager<IdentityRole> roleManager,
                                 UserManager<Patron> userManager)
         {
             _patronService = patronService;
@@ -26,6 +25,7 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator,Staff")]
         public IActionResult PatronsList()
         {
             var model = this._patronService.GetAllPatrons()
@@ -43,6 +43,7 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Roles()
         {
             var model = new PatronsRolesVM()
@@ -55,19 +56,20 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AssignToRole(PatronsAssignToRoleVM model)
         {
-            if(model.PatronId == "none" || model.RoleId == "none")
+            if (model.PatronId == "none" || model.RoleId == "none")
                 return RedirectToAction("Roles");
 
             var role = await this._roleManager.FindByIdAsync(model.RoleId);
             var patron = await this._userManager.FindByIdAsync(model.PatronId);
 
-            var isInRole = await this._userManager.IsInRoleAsync(patron,role.Name);
+            var isInRole = await this._userManager.IsInRoleAsync(patron, role.Name);
 
-            if(!isInRole)
-                await this._userManager.AddToRoleAsync(patron,role.Name);
-            
+            if (!isInRole)
+                await this._userManager.AddToRoleAsync(patron, role.Name);
+
             return RedirectToAction("Roles");
         }
 

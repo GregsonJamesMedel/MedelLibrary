@@ -1,10 +1,12 @@
 using System.Linq;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedelLibrary.Controllers
 {
+    [Authorize(Roles="Administrator,Staff")]
     public class AssetController : Controller
     {
         private readonly ILibraryAsset _asset;
@@ -19,6 +21,7 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             var asset = this._asset.GetAsset(id);
@@ -49,6 +52,7 @@ namespace MedelLibrary.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult AssetCatalog()
         {
             var assets = this._asset.GetAllAssets();

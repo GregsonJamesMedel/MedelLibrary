@@ -1,10 +1,12 @@
 using MedelLibrary.Models;
 using MedelLibrary.Services;
 using MedelLibrary.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedelLibrary.Controllers
 {
+    [Authorize(Roles = "Administrator,Staff")]
     public class VideoController : Controller
     {
         private readonly ICategory _category;
