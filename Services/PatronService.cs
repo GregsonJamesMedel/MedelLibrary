@@ -70,7 +70,7 @@ namespace MedelLibrary.Services
                 Firstname = model.Firstname,
                 Lastname = model.Lastname,
                 Address = model.Address,
-                ImageUrl = "NoProfilePhoto.jpeg"
+                ImageUrl = "NoProfilePhoto.png"
             };
 
             var patron = new Patron()
