@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/medel/Documents/MedelLibrary/MedelLibrary.csproj",
+  "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\MedelLibrary.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -12,7 +12,7 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 1166456464,
+        "HashCode": -1243270949,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -209,7 +209,7 @@
         }
       },
       {
-        "HashCode": 993244483,
+        "HashCode": -1693306798,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -336,7 +336,7 @@
         }
       },
       {
-        "HashCode": -1672675258,
+        "HashCode": 691347310,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.DistributedCacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -468,7 +468,7 @@
         }
       },
       {
-        "HashCode": 1712692349,
+        "HashCode": -968928787,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.EnvironmentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -514,7 +514,7 @@
         }
       },
       {
-        "HashCode": -1961503105,
+        "HashCode": 494058107,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormActionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -931,7 +931,7 @@
         }
       },
       {
-        "HashCode": 429167704,
+        "HashCode": 1976618017,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1033,7 +1033,7 @@
         }
       },
       {
-        "HashCode": -885852021,
+        "HashCode": 1656044842,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1079,7 +1079,7 @@
         }
       },
       {
-        "HashCode": 419827825,
+        "HashCode": 956186392,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1149,7 +1149,7 @@
         }
       },
       {
-        "HashCode": -237183403,
+        "HashCode": 2070792935,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1182,7 +1182,7 @@
         }
       },
       {
-        "HashCode": -816740091,
+        "HashCode": -706578553,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1378,7 +1378,7 @@
         }
       },
       {
-        "HashCode": -1340604155,
+        "HashCode": -1161674847,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.OptionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1406,7 +1406,7 @@
         }
       },
       {
-        "HashCode": 851464913,
+        "HashCode": -86754519,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1487,7 +1487,7 @@
         }
       },
       {
-        "HashCode": -229449804,
+        "HashCode": -15936578,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1640,7 +1640,7 @@
         }
       },
       {
-        "HashCode": 356739912,
+        "HashCode": 1382549104,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.SelectTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1699,7 +1699,7 @@
         }
       },
       {
-        "HashCode": -80937417,
+        "HashCode": 1490874892,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.TextAreaTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1741,7 +1741,7 @@
         }
       },
       {
-        "HashCode": -1889275495,
+        "HashCode": 1447650283,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1773,7 +1773,7 @@
         }
       },
       {
-        "HashCode": -859101446,
+        "HashCode": -2138081554,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -1807,7 +1807,7 @@
         }
       },
       {
-        "HashCode": -1442333404,
+        "HashCode": 1482330922,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.SpaServices.Prerendering.PrerenderTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.SpaServices",
@@ -1872,198 +1872,198 @@
   "RootNamespace": "MedelLibrary",
   "Documents": [
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Logout_Modal.cshtml",
-      "TargetPath": "Views\\Shared\\_Logout_Modal.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/CheckoutList.cshtml",
-      "TargetPath": "Views\\Transactions\\CheckoutList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/AssetCatalog.cshtml",
-      "TargetPath": "Views\\Asset\\AssetCatalog.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_SettingsChangePassword.cshtml",
-      "TargetPath": "Views\\Shared\\_SettingsChangePassword.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/SaveVideo.cshtml",
-      "TargetPath": "Views\\Video\\SaveVideo.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/_ViewImports.cshtml",
-      "TargetPath": "Views\\Account\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/EditBook.cshtml",
-      "TargetPath": "Views\\Book\\EditBook.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Patrons/Roles.cshtml",
-      "TargetPath": "Views\\Patrons\\Roles.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/CheckOut.cshtml",
-      "TargetPath": "Views\\Transactions\\CheckOut.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_DeleteModal.cshtml",
-      "TargetPath": "Views\\Shared\\_DeleteModal.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/SignUp.cshtml",
-      "TargetPath": "Views\\Account\\SignUp.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_CookieConsentPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Category/SaveCategory.cshtml",
-      "TargetPath": "Views\\Category\\SaveCategory.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/Details.cshtml",
-      "TargetPath": "Views\\Asset\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_SettingsProfilePhoto.cshtml",
-      "TargetPath": "Views\\Shared\\_SettingsProfilePhoto.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/_Layout.cshtml",
-      "TargetPath": "Views\\Account\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Asset/EditCover.cshtml",
-      "TargetPath": "Views\\Asset\\EditCover.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Settings.cshtml",
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Account\\Settings.cshtml",
       "TargetPath": "Views\\Account\\Settings.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_SettingsProfilePhoto.cshtml",
+      "TargetPath": "Views\\Shared\\_SettingsProfilePhoto.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Category/Categories.cshtml",
-      "TargetPath": "Views\\Category\\Categories.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Search/Results.cshtml",
-      "TargetPath": "Views\\Search\\Results.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/Profile.cshtml",
-      "TargetPath": "Views\\Account\\Profile.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/SaveBook.cshtml",
-      "TargetPath": "Views\\Book\\SaveBook.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Error/NotFound.cshtml",
-      "TargetPath": "Views\\Error\\NotFound.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Navbar.cshtml",
-      "TargetPath": "Views\\Shared\\_Navbar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Patrons/PatronsList.cshtml",
-      "TargetPath": "Views\\Patrons\\PatronsList.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Book/Books.cshtml",
-      "TargetPath": "Views\\Book\\Books.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_SettingsPersonalDetails.cshtml",
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_SettingsPersonalDetails.cshtml",
       "TargetPath": "Views\\Shared\\_SettingsPersonalDetails.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Sidebar.cshtml",
-      "TargetPath": "Views\\Shared\\_Sidebar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_AssetCatalog.cshtml",
-      "TargetPath": "Views\\Shared\\_AssetCatalog.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/Payments.cshtml",
-      "TargetPath": "Views\\Transactions\\Payments.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Video/EditVideo.cshtml",
-      "TargetPath": "Views\\Video\\EditVideo.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Transactions/Hold.cshtml",
-      "TargetPath": "Views\\Transactions\\Hold.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Shared/_Footer.cshtml",
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_Footer.cshtml",
       "TargetPath": "Views\\Shared\\_Footer.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/medel/Documents/MedelLibrary/Views/Account/SignIn.cshtml",
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Patrons\\Roles.cshtml",
+      "TargetPath": "Views\\Patrons\\Roles.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Account\\SignUp.cshtml",
+      "TargetPath": "Views\\Account\\SignUp.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Category\\SaveCategory.cshtml",
+      "TargetPath": "Views\\Category\\SaveCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Error\\NotFound.cshtml",
+      "TargetPath": "Views\\Error\\NotFound.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Book\\SaveBook.cshtml",
+      "TargetPath": "Views\\Book\\SaveBook.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Transactions\\CheckoutList.cshtml",
+      "TargetPath": "Views\\Transactions\\CheckoutList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Transactions\\Hold.cshtml",
+      "TargetPath": "Views\\Transactions\\Hold.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Category\\Categories.cshtml",
+      "TargetPath": "Views\\Category\\Categories.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_Sidebar.cshtml",
+      "TargetPath": "Views\\Shared\\_Sidebar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_DeleteModal.cshtml",
+      "TargetPath": "Views\\Shared\\_DeleteModal.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Video\\SaveVideo.cshtml",
+      "TargetPath": "Views\\Video\\SaveVideo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Transactions\\Payments.cshtml",
+      "TargetPath": "Views\\Transactions\\Payments.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Patrons\\PatronsList.cshtml",
+      "TargetPath": "Views\\Patrons\\PatronsList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Account\\Profile.cshtml",
+      "TargetPath": "Views\\Account\\Profile.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_Navbar.cshtml",
+      "TargetPath": "Views\\Shared\\_Navbar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Asset\\EditCover.cshtml",
+      "TargetPath": "Views\\Asset\\EditCover.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Video\\EditVideo.cshtml",
+      "TargetPath": "Views\\Video\\EditVideo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Account\\_Layout.cshtml",
+      "TargetPath": "Views\\Account\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Transactions\\CheckOut.cshtml",
+      "TargetPath": "Views\\Transactions\\CheckOut.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Account\\_ViewImports.cshtml",
+      "TargetPath": "Views\\Account\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_SettingsChangePassword.cshtml",
+      "TargetPath": "Views\\Shared\\_SettingsChangePassword.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_AssetCatalog.cshtml",
+      "TargetPath": "Views\\Shared\\_AssetCatalog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Book\\EditBook.cshtml",
+      "TargetPath": "Views\\Book\\EditBook.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Asset\\Details.cshtml",
+      "TargetPath": "Views\\Asset\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_Logout_Modal.cshtml",
+      "TargetPath": "Views\\Shared\\_Logout_Modal.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Search\\Results.cshtml",
+      "TargetPath": "Views\\Search\\Results.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Book\\Books.cshtml",
+      "TargetPath": "Views\\Book\\Books.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Asset\\AssetCatalog.cshtml",
+      "TargetPath": "Views\\Asset\\AssetCatalog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Account\\SignIn.cshtml",
       "TargetPath": "Views\\Account\\SignIn.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\Views\\Shared\\_CookieConsentPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_CookieConsentPartial.cshtml",
       "FileKind": "mvc"
     }
   ],

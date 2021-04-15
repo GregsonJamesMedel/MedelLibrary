@@ -51,10 +51,11 @@ namespace MedelLibrary
             services.AddScoped<IImage, ImageProcessor>();
             services.AddScoped<ITransaction,TransactionService>();
             services.AddScoped<IPatron,PatronService>();
+            services.AddScoped<IDbSeeder,DbSeeder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IDbSeeder seeder)
         {
             if (env.IsDevelopment())
             {
@@ -71,6 +72,8 @@ namespace MedelLibrary
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+
+            seeder.Seed();
 
             app.UseMvc(routes =>
             {

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/home/medel/Documents/MedelLibrary/MedelLibrary.csproj": {}
+    "C:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\MedelLibrary.csproj": {}
   },
   "projects": {
-    "/home/medel/Documents/MedelLibrary/MedelLibrary.csproj": {
+    "C:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\MedelLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/medel/Documents/MedelLibrary/MedelLibrary.csproj",
+        "projectUniqueName": "C:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\MedelLibrary.csproj",
         "projectName": "MedelLibrary",
-        "projectPath": "/home/medel/Documents/MedelLibrary/MedelLibrary.csproj",
-        "packagesPath": "/home/medel/.nuget/packages/",
-        "outputPath": "/home/medel/Documents/MedelLibrary/obj/",
+        "projectPath": "C:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\MedelLibrary.csproj",
+        "packagesPath": "C:\\Users\\GregsonJamesMedel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\GregsonJamesMedel\\Documents\\MedelLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/medel/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\GregsonJamesMedel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
